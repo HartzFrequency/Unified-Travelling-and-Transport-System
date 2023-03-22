@@ -1,0 +1,1 @@
+print("All SQL querries will be here!")
