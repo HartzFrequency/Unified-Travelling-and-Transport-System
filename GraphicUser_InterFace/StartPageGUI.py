@@ -97,6 +97,14 @@ class Main(customtkinter.CTk):
 
         
         
+        # self.label_tab_3 = customtkinter.CTkLabel(self.tabview.tab("Transport"))
+        # self.label_tab_3.grid(row=0, column=0, padx=20, pady=20)
+
+        self.Truck_button = customtkinter.CTkButton(self.tabview.tab("Transport"), text="Truck",command=self.open_Truck_window)
+        self.Truck_button.grid(row=4, column=0, padx=20, pady=(10, 10))
+
+        self.Ship_button = customtkinter.CTkButton(self.tabview.tab("Transport"), text="Ship",command=self.open_Ship_window)
+        self.Ship_button.grid(row=4, column=1, padx=20, pady=(10, 10))
         
         
         
@@ -152,8 +160,8 @@ class Main(customtkinter.CTk):
         # self.combobox_1 = customtkinter.CTkComboBox(self.tabview.tab("Travel"),
         #                                             values=["Value 1", "Value 2", "Value Long....."])
         # self.combobox_1.grid(row=1, column=0, padx=20, pady=(10, 10))
-        self.label_tab_3 = customtkinter.CTkLabel(self.tabview.tab("Transport"))
-        self.label_tab_3.grid(row=0, column=0, padx=20, pady=20)
+
+        
         
 
         # self.lower_frame = customtkinter.CTkFrame(self, width=140, corner_radius=5)
@@ -209,6 +217,16 @@ class Main(customtkinter.CTk):
         self.destroy()            
         import Airplane_Home_page
         Airplane_Home_page.Airplane().mainloop()
+
+    def open_Truck_window(self):
+        self.destroy()            
+        import Truck_Home_page
+        Truck_Home_page.Truck().mainloop()
+
+    def open_Ship_window(self):
+        self.destroy()            
+        import Ship_Home_page
+        Ship_Home_page.Ship().mainloop()
 
 
         
