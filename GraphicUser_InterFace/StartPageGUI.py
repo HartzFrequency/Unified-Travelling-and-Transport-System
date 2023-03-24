@@ -2,8 +2,11 @@ import tkinter
 import tkinter.messagebox
 import customtkinter
 from PIL import Image, ImageTk
+import os
+from tkinter import PhotoImage
 
-window = customtkinter.CTk()
+
+window1 = customtkinter.CTk()
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
@@ -77,14 +80,66 @@ class App(customtkinter.CTk):
 
         self.label_tab_2 = customtkinter.CTkLabel(self.tabview.tab("Travel"))
         self.label_tab_2.grid(row=0, column=0, padx=20, pady=20)
-        # self.label_tab_2 = customtkinter.CTkImage(Image.open("Image/ss11.png"), size=(26, 26))
-    
-        # self.label_tab_2 = customtkinter.CTkButton(master=window)
-        # # self.label_tab_2.pack()
+
+        self.string_input_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Bus",
+                                                           command=self.open_new_window)
+        self.string_input_button.grid(row=2, column=0, padx=20, pady=(10, 10))
+
+
+        
+        
+        
+        
+        
+        
+        # image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "Images")
+
+        # self.add_user_image = customtkinter.CTkImage(light_image=Image.open(os.path.join(image_path, "BUS.png")),
+        #                                              dark_image=Image.open(os.path.join(image_path, "BUS.png")), size=(20, 20))
+        
+        
+
+
+
+        # self.bus_image = customtkinter.CTkLabel(self.label_tab_2)
+        # self.image = customtkinter.CTkImage("Image/BUS.png")
+        # self.bus_image.configure(image = self.image)
+        # self.bus_image.pack()
+        # self.tabview.add(self.label_tab_2)
+        # self.tabview.pack()
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        # image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "Image")
+
+        # self.bus_image = customtkinter.CTkImage(Image.open(os.path.join(image_path,"BUS.png")),size=(30,30))
+
 
         # self.optionmenu_1 = customtkinter.CTkOptionMenu(self.tabview.tab("Travel"), dynamic_resizing=True,
         #                                                 values=["Value 1", "Value 2", "Value Long Long Long"])
         # self.optionmenu_1.grid(row=0, column=0, padx=20, pady=(20, 10))
+
+
+        # bus_image = self.label_tab_2()
+        # photo = self.PhotoImage(file = "Image/BUS.jpg")
+        # bus_image.config(image = photo)
+        # bus_image.pack()
+
+
+        # # self.label_tab_2 = customtkinter.CTkImage(Image.open("Image/ss11.png"), size=(26, 26))
+    
+        # self.label_tab_2 = customtkinter.CTkButton(master=window)
+        # # self.label_tab_2.pack()
         # self.combobox_1 = customtkinter.CTkComboBox(self.tabview.tab("Travel"),
         #                                             values=["Value 1", "Value 2", "Value Long....."])
         # self.combobox_1.grid(row=1, column=0, padx=20, pady=(10, 10))
@@ -122,10 +177,26 @@ class App(customtkinter.CTk):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         customtkinter.set_widget_scaling(new_scaling_float)
 
+
+
+    def open_new_window(self):
+        self.destroy()  # close current window
+        import Bus_Home_page
+        Bus_Home_page.Window2().mainloop()
+        
+         #  Window2().mainloop()  
+        # dialog = customtkinter.CTkInputDialog(text="Type in a number:", title="CTkInputDialog")
+        # print("CTkInputDialog:", dialog.get_input())
    
 
     
 
+
+# class Window2(customtkinter.CTk):
+#     def __init__(self):
+#         super().__init__()
+#         self.title("Window 2")
+#         self.geometry(f"{1100}x{580}")
 
 
 
@@ -134,3 +205,6 @@ class App(customtkinter.CTk):
 if __name__ == "__main__":
     app = App()
     app.mainloop()
+
+    # bus = Window2()
+    # Window2.mainloop()
