@@ -17,7 +17,10 @@ class Main(customtkinter.CTk):
 
         # configure window
         self.title("Home page")
-        self.geometry(f"{1100}x{580}")
+        self.geometry(f"{1700}x{580}")
+        # screen_width = self.winfo_screenwidth()
+        # screen_height = self.winfo_screenheight()
+        # self.geometry("%dx%d" % (screen_width, screen_height))
 
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=1)
@@ -28,9 +31,6 @@ class Main(customtkinter.CTk):
 
         # self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="Profile", font=customtkinter.CTkFont(size=35, weight="bold"))
         # self.logo_label.grid(row=0, column=0, padx=20, pady=20, sticky ="ew")
-        # screen_width = self.winfo_screenwidth()
-        # screen_height = self.winfo_screenheight()
-        # self.geometry("%dx%d" % (screen_width, screen_height))
 
 
         self.sidebar_frame = customtkinter.CTkFrame(self, width=120, corner_radius=0)
@@ -83,16 +83,16 @@ class Main(customtkinter.CTk):
 
         
         self.Bus_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Bus",command=self.open_Bus_window)
-        self.Bus_button.grid(row=2, column=0, padx=20, pady=(10, 10))
+        self.Bus_button.grid(row=4, column=0, padx=20, pady=(10, 10))
 
         self.Car_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Car",command=self.open_Car_window)
-        self.Car_button.grid(row=2, column=1, padx=20, pady=(10, 10))
+        self.Car_button.grid(row=4, column=1, padx=20, pady=(10, 10))
 
         self.Train_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Train",command=self.open_Train_window)
-        self.Train_button.grid(row=2, column=2, padx=20, pady=(10, 10))
+        self.Train_button.grid(row=4, column=2, padx=20, pady=(10, 10))
 
         self.Airplane_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Airplane",command=self.open_Airplane_window)
-        self.Airplane_button.grid(row=2, column=3, padx=20, pady=(10, 10))
+        self.Airplane_button.grid(row=4, column=3, padx=20, pady=(10, 10))
 
 
         
@@ -165,18 +165,19 @@ class Main(customtkinter.CTk):
     
 
         self.tabview = customtkinter.CTkTabview(self, width=250, height= 100)
-        self.tabview.grid(row=10, column=2, padx=(20, 0), pady=(20, 0), sticky="nsew")
+        self.tabview.grid(row=10, column=2, padx=(20, 0), pady=(20, 0))
         self.tabview.add("Feedback")
 
         self.string_input_button = customtkinter.CTkButton(self.tabview.tab("Feedback"), text="Feedback Button",
                                                            command=self.open_input_dialog_event)
-        self.string_input_button.grid(row=10, column=6, padx=20, pady=(10, 10))
+        self.string_input_button.grid(row=10, column=19, padx=20, pady=(10, 10), sticky="ew")
+        self.string_input_button.pack(side="bottom", anchor="center")
 
 
 
 
     def open_input_dialog_event(self):
-        dialog = customtkinter.CTkInputDialog(text="Please enter your valuable Feedback :", title="CTkInputDialog")
+        dialog = customtkinter.CTkInputDialog(text="Please enter your valuable Feedback :", title="Feedback Window")
         print("Feedback :", dialog.get_input())
 
 
@@ -196,18 +197,18 @@ class Main(customtkinter.CTk):
 
     def open_Car_window(self):
         self.destroy()            
-        # import Bus_Home_page
-        # Bus_Home_page.Bus().mainloop()
+        import Car_Home_page
+        Car_Home_page.Car().mainloop()
 
     def open_Train_window(self):
         self.destroy()            
-        # import Bus_Home_page
-        # Bus_Home_page.Bus().mainloop()
+        import Train_Home_page
+        Train_Home_page.Train().mainloop()
 
     def open_Airplane_window(self):
         self.destroy()            
-        # import Bus_Home_page
-        # Bus_Home_page.Bus().mainloop()
+        import Airplane_Home_page
+        Airplane_Home_page.Airplane().mainloop()
 
 
         
