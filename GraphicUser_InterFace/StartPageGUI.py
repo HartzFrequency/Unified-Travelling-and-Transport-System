@@ -11,7 +11,7 @@ customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 
-class App(customtkinter.CTk):
+class Main(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
@@ -78,12 +78,13 @@ class App(customtkinter.CTk):
         self.tabview.tab("Travel").grid_columnconfigure(0, weight=1)  # configure grid of individual tabs
         self.tabview.tab("Transport").grid_columnconfigure(0, weight=1)
 
-        self.label_tab_2 = customtkinter.CTkLabel(self.tabview.tab("Travel"))
-        self.label_tab_2.grid(row=0, column=0, padx=20, pady=20)
+        # self.label_tab_2 = customtkinter.CTkLabel(self.tabview.tab("Travel"))
+        # self.label_tab_2.grid(row=0, column=0, padx=20, pady=20)
 
-        self.string_input_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Bus",
-                                                           command=self.open_new_window)
-        self.string_input_button.grid(row=2, column=0, padx=20, pady=(10, 10))
+        
+        self.Bus_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Bus",
+                                                           command=self.open_Bus_window)
+        self.Bus_button.grid(row=2, column=0, padx=20, pady=(10, 10))
 
 
         
@@ -158,6 +159,7 @@ class App(customtkinter.CTk):
         self.tabview = customtkinter.CTkTabview(self, width=250, height= 100)
         self.tabview.grid(row=10, column=2, padx=(20, 0), pady=(20, 0), sticky="nsew")
         self.tabview.add("Feedback")
+
         self.string_input_button = customtkinter.CTkButton(self.tabview.tab("Feedback"), text="Feedback Button",
                                                            command=self.open_input_dialog_event)
         self.string_input_button.grid(row=10, column=6, padx=20, pady=(10, 10))
@@ -179,32 +181,16 @@ class App(customtkinter.CTk):
 
 
 
-    def open_new_window(self):
-        self.destroy()  # close current window
+    def open_Bus_window(self):
+        self.destroy()            
         import Bus_Home_page
-        Bus_Home_page.Window2().mainloop()
+        Bus_Home_page.Bus().mainloop()
         
-         #  Window2().mainloop()  
-        # dialog = customtkinter.CTkInputDialog(text="Type in a number:", title="CTkInputDialog")
-        # print("CTkInputDialog:", dialog.get_input())
-   
-
-    
-
-
-# class Window2(customtkinter.CTk):
-#     def __init__(self):
-#         super().__init__()
-#         self.title("Window 2")
-#         self.geometry(f"{1100}x{580}")
-
-
-
+        
 
 
 if __name__ == "__main__":
-    app = App()
-    app.mainloop()
+    app1 = Main()
+    app1.mainloop()
 
-    # bus = Window2()
-    # Window2.mainloop()
+    
