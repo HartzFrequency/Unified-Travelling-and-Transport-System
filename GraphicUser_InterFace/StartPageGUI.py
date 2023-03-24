@@ -71,7 +71,7 @@ class Main(customtkinter.CTk):
         
         # create tabview
         self.tabview = customtkinter.CTkTabview(self, width=500, height= 250)
-        self.tabview.grid(row=3, column=2, pady=(5, 0))
+        self.tabview.grid(row=8, column=2, padx=(20, 0), pady=(20, 0))
         self.tabview.add("Travel")
         self.tabview.add("Transport")
     
@@ -83,16 +83,16 @@ class Main(customtkinter.CTk):
 
         
         self.Bus_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Bus",command=self.open_Bus_window)
-        self.Bus_button.grid(row=1, column=1)
+        self.Bus_button.grid(row=2, column=0, padx=20, pady=(10, 10))
 
         self.Car_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Car",command=self.open_Car_window)
-        self.Car_button.grid(row=1, column=2, padx=20, pady=(10, 10))
+        self.Car_button.grid(row=2, column=1, padx=20, pady=(10, 10))
 
         self.Train_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Train",command=self.open_Train_window)
-        self.Train_button.grid(row=1, column=3, padx=20, pady=(10, 10))
+        self.Train_button.grid(row=2, column=2, padx=20, pady=(10, 10))
 
         self.Airplane_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Airplane",command=self.open_Airplane_window)
-        self.Airplane_button.grid(row=1, column=4, padx=20, pady=(10, 10))
+        self.Airplane_button.grid(row=2, column=3, padx=20, pady=(10, 10))
 
 
         
