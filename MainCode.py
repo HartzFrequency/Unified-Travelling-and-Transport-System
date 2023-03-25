@@ -2,7 +2,7 @@ import mysql.connector
 UTTSdb = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='harsh',
+    password='*****',
     database='UTTS')
 #print(UTTSdb.connection_id)
 #print to check connection establishment
