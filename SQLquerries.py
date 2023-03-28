@@ -23,3 +23,14 @@ ManyValues=[("harsh","shrivastava","2003-06-05",8109288418,"Hathi Khana Road Mor
     ("jethalal","gada","2004-12-02",7852773891,"Phool Bagh","Gwalior","MP"),
     ("kartik","aryan","1995-02-14",7143143143,"Thatipur","Gwalior","MP")]
 #cur.executemany(s,Values)
+#UTTSdb.commit()
+
+#Query to update
+updatedata="UPDATE users SET price=price+10 WHERE price>200"
+#cur.execute(updatedata)
+#uttsdb.commit()
+
+DeleteData="DELETE FROM users WHERE title='condition'"
+#cur.execute(DeleteData)
+#uutsdb.commit()
+

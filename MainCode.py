@@ -7,6 +7,8 @@ UTTSdb = mysql.connector.connect(
 #print(UTTSdb.connection_id)
 #print to check connection establishment
 cur=UTTSdb.cursor()
+s="SELECT * from users"
+cur.execute(s)
+result=cur.fetchall()
 
-
-UTTSdb.commit()
+print(result)
