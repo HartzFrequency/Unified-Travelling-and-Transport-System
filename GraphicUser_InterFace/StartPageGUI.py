@@ -27,6 +27,18 @@ class Main(customtkinter.CTk):
         self.grid_columnconfigure((2, 3), weight=0)
         self.grid_rowconfigure((0, 1, 2), weight=1)
 
+
+
+         # Back to login page
+        self.top_left_corner_frame = customtkinter.CTkFrame(self)
+        self.top_left_corner_frame.grid(row=0,column=0)
+        self.profile_button = customtkinter.CTkButton(self.top_left_corner_frame,text="Profile")
+        self.profile_button.grid(row=0,column=0,padx=10,pady=15)
+
+        self.back_to_loginPage_button = customtkinter.CTkButton(self.top_left_corner_frame,text="Back to Login\nPage ", command=self.open_Login_window)
+        self.back_to_loginPage_button.grid(row=1, column=0, padx=10, pady=10)
+
+
         
 
         # self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="Profile", font=customtkinter.CTkFont(size=35, weight="bold"))
@@ -63,7 +75,6 @@ class Main(customtkinter.CTk):
         
         self.project_name = customtkinter.CTkLabel(self.upper_name_frame, text="Unified Traveling and Transportation System (UTTS)", font=customtkinter.CTkFont(size=50, weight="bold"))
         self.project_name.grid(row=0, column=2, padx=200, pady=50)
-
 
 
         
@@ -195,6 +206,15 @@ class Main(customtkinter.CTk):
     def change_scaling_event(self, new_scaling: str):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         customtkinter.set_widget_scaling(new_scaling_float)
+
+
+
+
+
+    def open_Login_window(self):
+        self.destroy()            
+        import Login_page
+        Login_page.Login().mainloop()
 
 
 

@@ -5,6 +5,7 @@ from PIL import Image, ImageTk
 import os
 from tkinter import PhotoImage
 
+
 customtkinter.set_appearance_mode("dark")
 
 
@@ -52,7 +53,12 @@ class Login(customtkinter.CTk):
        
 
     def login_event(self):
-        # print("Login pressed - username:", self.username_entry.get(), "password:", self.password_entry.get())
+        entered_username = self.username_entry.get()
+        entered_password = self.password_entry.get()
+
+        print("Login pressed - username:", entered_username, "password:",entered_password)
+
+
         self.destroy()            
         import StartPageGUI
         StartPageGUI.Main().mainloop()
