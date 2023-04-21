@@ -36,10 +36,26 @@ class Login(customtkinter.CTk):
         self.login_button = customtkinter.CTkButton(self.login_frame, text="Login", command=self.login_event, width=200)
         self.login_button.grid(row=4, column=0, padx=30, pady=(15, 15))
 
+
+    # def write_to_file(self):
+        
     def login_event(self):
+
         entered_username = self.username_entry.get()
         entered_password = self.password_entry.get()
+        
+       
+        
+        file = open("password.txt", "w")
+        file.write(entered_password)
+        file.close()
+
+
         print("Login pressed - username:", entered_username, "password:",entered_password)
         self.destroy()            
         import StartPageGUI
         StartPageGUI.Main().mainloop()
+
+if __name__ == "__main__":
+    app9 = Login()
+    app9.mainloop()
