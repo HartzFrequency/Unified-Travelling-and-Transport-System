@@ -25,6 +25,32 @@ class Bus(customtkinter.CTk):
         
 
 
+   #Appearance and Scaling 
+        self.sidebar_frame = customtkinter.CTkFrame(self, width=120, corner_radius=0)
+        self.sidebar_frame.grid(row=35, column=0, rowspan=4, sticky="ew")
+        self.sidebar_frame.grid_rowconfigure(4, weight=1)
+        
+        
+        self.appearance_mode_label = customtkinter.CTkLabel(self.sidebar_frame, text="Appearance Mode:", anchor="w")
+        self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10,0))
+        self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"],
+                                                                  command=self.change_appearance_mode_event)
+        self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady =(10,10), sticky ="ew")
+        
+        
+        self.scaling_label = customtkinter.CTkLabel(self.sidebar_frame, text="UI Scaling:", anchor="w")
+        self.scaling_label.grid(row=7, column=0, padx=20, pady=(10,0))
+        self.scaling_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["70%", "80%", "90%", "100%", "110%", "120%", "130%"],
+                                                               command=self.change_scaling_event)
+        self.scaling_optionemenu.grid(row=8, column=0, padx=20, pady=(10,20), sticky ="ew")
+
+        self.appearance_mode_optionemenu.set("Dark")
+        self.scaling_optionemenu.set("110%")
+
+
+
+
+
 # name of transport
         self.sidebar_frame0 = customtkinter.CTkFrame(self, width=100,height=30, corner_radius=0) 
         self.sidebar_frame0.grid(row=0, column=15, rowspan=10)
@@ -181,6 +207,14 @@ class Bus(customtkinter.CTk):
         self.destroy()            
         import Route_Info
         Route_Info.Route().mainloop()
+
+    
+    def change_appearance_mode_event(self, new_appearance_mode: str):
+        customtkinter.set_appearance_mode(new_appearance_mode)
+
+    def change_scaling_event(self, new_scaling: str):
+        new_scaling_float = int(new_scaling.replace("%", "")) / 100
+        customtkinter.set_widget_scaling(new_scaling_float)
 
 
 

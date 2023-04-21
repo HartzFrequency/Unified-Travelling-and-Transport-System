@@ -1,54 +1,3 @@
-# import tkinter
-# import tkinter.messagebox
-# import customtkinter
-# from PIL import Image, ImageTk
-# import os
-# from tkinter import PhotoImage
-
-
-
-
-# window5 = customtkinter.CTk()
-# customtkinter.set_appearance_mode("System")  
-# customtkinter.set_default_color_theme("blue") 
-
-# class Airplane(customtkinter.CTk):
-#     def __init__(self):
-#         super().__init__()
-#         self.title("Airplane Home Page")
-#         self.geometry(f"{1100}x{580}")
-
-
-#         self.string_input_button = customtkinter.CTkButton(self,text="Back Button", command=self.open_Main_window)
-#         self.string_input_button.grid(row=10, column=6, padx=20, pady=(10, 10))
-
-
-       
-
-
-
-#     def open_Main_window(self):
-#             self.destroy()            
-#             import StartPageGUI
-#             StartPageGUI.Main().mainloop()
-
-
-
-
-# if __name__ == "__main__":
-#     app5 = Airplane()
-#     app5.mainloop()
-
-
-
-
-
-
-
-
-
-
-
 import tkinter as tk
 import tkinter.messagebox
 import customtkinter
@@ -71,6 +20,34 @@ class Airplane(customtkinter.CTk):
         super().__init__()
         self.title("Airplane Home Page")
         self.geometry(f"{1700}x{580}")
+
+
+    #Appearance and Scaling 
+        self.sidebar_frame = customtkinter.CTkFrame(self, width=120, corner_radius=0)
+        self.sidebar_frame.grid(row=35, column=0, rowspan=4, sticky="ew")
+        self.sidebar_frame.grid_rowconfigure(4, weight=1)
+        
+        
+        self.appearance_mode_label = customtkinter.CTkLabel(self.sidebar_frame, text="Appearance Mode:", anchor="w")
+        self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10,0))
+        self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"],
+                                                                  command=self.change_appearance_mode_event)
+        self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady =(10,10), sticky ="ew")
+        
+        
+        self.scaling_label = customtkinter.CTkLabel(self.sidebar_frame, text="UI Scaling:", anchor="w")
+        self.scaling_label.grid(row=7, column=0, padx=20, pady=(10,0))
+        self.scaling_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["70%", "80%", "90%", "100%", "110%", "120%", "130%"],
+                                                               command=self.change_scaling_event)
+        self.scaling_optionemenu.grid(row=8, column=0, padx=20, pady=(10,20), sticky ="ew")
+
+        self.appearance_mode_optionemenu.set("Dark")
+        self.scaling_optionemenu.set("110%")
+
+
+
+
+
          
         
 
@@ -231,6 +208,14 @@ class Airplane(customtkinter.CTk):
         self.destroy()            
         import Route_Info
         Route_Info.Route().mainloop()
+
+
+    def change_appearance_mode_event(self, new_appearance_mode: str):
+        customtkinter.set_appearance_mode(new_appearance_mode)
+
+    def change_scaling_event(self, new_scaling: str):
+        new_scaling_float = int(new_scaling.replace("%", "")) / 100
+        customtkinter.set_widget_scaling(new_scaling_float)
 
 
 
