@@ -12,8 +12,19 @@ UTTSdb = mysql.connector.connect(
 # result=cur.fetchall()
 # print(result[0])
 
-Login_page = GraphicUser_InterFace.Login_page.Login()
-Login_page.mainloop()
+# Login_page = GraphicUser_InterFace.Login_page.Login()
+# Login_page.mainloop()
+
+
+#===========================================
+
+file = open('password.txt', 'r')
+password = file.read()
+file.close()
+
+#===========================================
+
+
 
 def Check_UP():
     print("inside function")    

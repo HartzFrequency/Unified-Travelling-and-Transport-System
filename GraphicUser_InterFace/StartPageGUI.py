@@ -69,16 +69,38 @@ class Main(customtkinter.CTk):
 
         
         
-        self.upper_name_frame = customtkinter.CTkFrame(self, width=140, corner_radius=5)
+        self.upper_name_frame = customtkinter.CTkFrame(self, width=140,height=50, corner_radius=5)
         self.upper_name_frame.grid(row=0, column=2, rowspan=4, sticky="nsew")
         self.upper_name_frame.grid_rowconfigure(6, weight=1)
         
         self.project_name = customtkinter.CTkLabel(self.upper_name_frame, text="Unified Traveling and Transportation System (UTTS)", font=customtkinter.CTkFont(size=50, weight="bold"))
         self.project_name.grid(row=0, column=2, padx=200, pady=50)
 
+        #Progress bar
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self, width=200, height=20, fg_color="transparent")
+        self.slider_progressbar_frame.grid(row=6, column=2, padx=(20, 0), pady=(20, 0))
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=4)
+        self.slider_progressbar_frame.grid_rowconfigure(14, weight=4)
+        self.progressbar_1 = customtkinter.CTkProgressBar(self.slider_progressbar_frame)
+        self.progressbar_1.grid(row=6, column=2, padx=(20, 10), pady=(10, 10))
 
-        
-      
+        self.progressbar_1.configure(mode="indeterminate")
+        self.progressbar_1.start()
+
+
+
+
+
+        # self.slider_progressbar_frame = customtkinter.CTkFrame(self, width=100,height=20,fg_color="transparent")
+        # self.slider_progressbar_frame.grid(row=6, column=2, padx=(20, 0), pady=(20, 0))
+        # self.slider_progressbar_frame.grid_columnconfigure(0, weight=4)
+        # self.slider_progressbar_frame.grid_rowconfigure(14, weight=4)
+        # self.progressbar_1 = customtkinter.CTkProgressBar(self.slider_progressbar_frame, width=200)
+        # self.progressbar_1.grid(row=6, column=2, padx=(20, 10), pady=(10, 10))
+
+        # self.progressbar_1.configure(mode="indeterminnate")
+        # self.progressbar_1.start()
+
         
         # create tabview
         self.tabview = customtkinter.CTkTabview(self, width=500, height= 250)
