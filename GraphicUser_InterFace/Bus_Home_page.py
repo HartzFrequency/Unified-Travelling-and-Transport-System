@@ -19,7 +19,7 @@ class Bus(customtkinter.CTk):
     def __init__(self):
         super().__init__()
         self.title("Bus Home Page")
-        self.geometry(f"{500}x{580}")
+        self.geometry(f"{1700}x{580}")
         self.part1()
          
         
@@ -37,11 +37,11 @@ class Bus(customtkinter.CTk):
         self.string_input_button.grid(row=10, column=0, padx=20, pady=(10, 10))
 
 # name of transport
-        self.sidebar_frame0 = customtkinter.CTkFrame(self, width=180, corner_radius=0) 
-        self.sidebar_frame0.grid(row=0, column=0, rowspan=8, sticky="nsew")
-        self.sidebar_frame0.grid_rowconfigure(4, weight=1)
-        self.logo_label = customtkinter.CTkLabel(self.sidebar_frame0, text="Bus Booking Services", font=customtkinter.CTkFont(size=20, weight="bold"))
-        self.logo_label.grid(row=1, column=0, padx=20, pady=(20, 10))
+        self.sidebar_frame0 = customtkinter.CTkFrame(self, width=80, corner_radius=0) 
+        self.sidebar_frame0.grid(row=0, column=2, rowspan=1, sticky="nsew")
+        self.sidebar_frame0.grid_rowconfigure(1, weight=1)
+        self.logo_label = customtkinter.CTkLabel(self.sidebar_frame0, text="Bus Booking Services", font=customtkinter.CTkFont(size=50, weight="bold"))
+        self.logo_label.grid(row=0, column=2, padx=10, pady=(20, 10))
 
 # textbox
         self.textbox = customtkinter.CTkTextbox(self, width=450)
@@ -51,27 +51,27 @@ class Bus(customtkinter.CTk):
 
 # from button
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame, text="FROM", anchor="w")
-        self.to_label.grid(row=2, column=2, padx=20, pady=(10,0))
+        self.to_label.grid(row=5, column=2, padx=20, pady=(10,0))
         self.from_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame,values=["-Select-","Muscat", "Mumbai", "Delhi",'Bangalore'])
-        self.from_optionemenu.grid(row=3, column=2, padx=20, pady=(10,20), sticky ="ew")
+        self.from_optionemenu.grid(row=5, column=2, padx=20, pady=(10,20), sticky ="ew")
 
 # to button
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame, text="TO", anchor="w")
-        self.to_label.grid(row=2, column=6, padx=20, pady=(10,0))
+        self.to_label.grid(row=5, column=2, padx=20, pady=(10,0))
         self.to_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["-Select-","Muscat", "Mumbai", "Delhi",'Bangalore'])
-        self.to_optionemenu.grid(row=3, column=6, padx=20, pady=(10,20), sticky ="ew")
+        self.to_optionemenu.grid(row=5, column=2, padx=20, pady=(10,20), sticky ="ew")
 
 # to select no. of adults travelling
         self.adult_label = customtkinter.CTkLabel(self.sidebar_frame, text="Adults ", anchor="w")
-        self.adult_label.grid(row=4, column=2, padx=20, pady=(10,0))
+        self.adult_label.grid(row=5, column=2, padx=20, pady=(10,0))
         self.adult_optionemenu= tk.Spinbox(self.sidebar_frame,from_=0, to=5, increment =1)
-        self.adult_optionemenu.grid(row=7, column=2, padx=25, pady=(10,20), sticky ="ew")
+        self.adult_optionemenu.grid(row=5, column=2, padx=25, pady=(10,20), sticky ="ew")
 
 # to select no. of children travelling
         self.children_label = customtkinter.CTkLabel(self.sidebar_frame, text="Childrens ", anchor="w")
-        self.children_label.grid(row=4, column=6, padx=20, pady=(10,0))
+        self.children_label.grid(row=5, column=2, padx=20, pady=(10,0))
         self.children_optionemenu= tk.Spinbox(self.sidebar_frame,from_=0, to=5, increment =1)
-        self.children_optionemenu.grid(row=7, column=6, padx=20, pady=(10,20), sticky ="ew")
+        self.children_optionemenu.grid(row=5, column=2, padx=20, pady=(10,20), sticky ="ew")
 
 # method of travel
         var=int
@@ -84,11 +84,11 @@ class Bus(customtkinter.CTk):
             print(selection) 
 
         self.label_radio_group = customtkinter.CTkLabel(master=self.radiobutton_frame, text="Method of Travel")
-        self.label_radio_group.grid(row=9, column=11, columnspan=1, padx=10, pady=10, sticky="")
+        self.label_radio_group.grid(row=19, column=11, columnspan=1, padx=10, pady=10, sticky="")
         self.radio_button_1 = customtkinter.CTkRadioButton(master=self.radiobutton_frame, text="One1-way",variable=self.radio_var, value=0)
-        self.radio_button_1.grid(row=10, column=11, pady=10, padx=20, sticky="n")
+        self.radio_button_1.grid(row=20, column=11, pady=10, padx=20, sticky="n")
         self.radio_button_2 = customtkinter.CTkRadioButton(master=self.radiobutton_frame,text="Round-trip", variable=self.radio_var, value=1)
-        self.radio_button_2.grid(row=11, column=11, pady=10, padx=20, sticky="n")
+        self.radio_button_2.grid(row=21, column=11, pady=10, padx=20, sticky="n")
 
 # select class
         def cls():
@@ -96,11 +96,11 @@ class Bus(customtkinter.CTk):
             selection1=str(var1.get())
 
         self.label_radio_group = customtkinter.CTkLabel(master=self.radiobutton_frame, text="CLASS")
-        self.label_radio_group.grid(row=13, column=11, columnspan=1, padx=10, pady=10, sticky="")
+        self.label_radio_group.grid(row=22, column=11, columnspan=1, padx=10, pady=10, sticky="")
         self.radio_button_3 = customtkinter.CTkRadioButton(master=self.radiobutton_frame, text="Economy",variable=self.radio_var, value=0)
-        self.radio_button_3.grid(row=15, column=11, pady=10, padx=20, sticky="n")
+        self.radio_button_3.grid(row=23, column=11, pady=10, padx=20, sticky="n")
         self.radio_button_4 = customtkinter.CTkRadioButton(master=self.radiobutton_frame,text="Business", variable=self.radio_var, value=1)
-        self.radio_button_4.grid(row=16, column=11, pady=10, padx=20, sticky="n")
+        self.radio_button_4.grid(row=24, column=11, pady=10, padx=20, sticky="n")
 
 
 # continue button
