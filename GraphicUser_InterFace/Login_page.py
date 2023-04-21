@@ -43,13 +43,14 @@ class Login(customtkinter.CTk):
 
         entered_username = self.username_entry.get()
         entered_password = self.password_entry.get()
-        
-       
-        
-        file = open("password.txt", "w")
+                
+        file = open("LocalDATA//password.txt", "w")
         file.write(entered_password)
         file.close()
 
+        file = open("LocalDATA//username.txt", "w")
+        file.write(entered_username)
+        file.close()
 
         print("Login pressed - username:", entered_username, "password:",entered_password)
         self.destroy()            
