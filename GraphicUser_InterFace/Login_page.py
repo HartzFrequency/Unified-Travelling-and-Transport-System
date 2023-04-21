@@ -37,6 +37,15 @@ class Login(customtkinter.CTk):
         self.login_button.grid(row=4, column=0, padx=30, pady=(15, 15))
 
     def login_event(self):
+        # Open a file in write mode
+        file = open("myfile.txt", "w")
+
+        # Write something to the file
+        file.write("Hello, World!")
+
+        # Close the file
+        file.close()
+
         entered_username = self.username_entry.get()
         entered_password = self.password_entry.get()
         print("Login pressed - username:", entered_username, "password:",entered_password)
