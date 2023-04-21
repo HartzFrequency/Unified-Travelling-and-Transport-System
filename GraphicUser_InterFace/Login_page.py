@@ -53,6 +53,15 @@ class Login(customtkinter.CTk):
        
 
     def login_event(self):
+        # Open a file in write mode
+        file = open("myfile.txt", "w")
+
+        # Write something to the file
+        file.write("Hello, World!")
+
+        # Close the file
+        file.close()
+
         entered_username = self.username_entry.get()
         entered_password = self.password_entry.get()
 
