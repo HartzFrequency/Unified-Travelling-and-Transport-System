@@ -137,7 +137,7 @@ class Bus(customtkinter.CTk):
    
 # back button
         self.string_input_button = customtkinter.CTkButton(self,text="Back Button", command=self.open_Main_window)
-        self.string_input_button.grid(row=10, column=0, padx=20, pady=(10, 10))
+        self.string_input_button.grid(row=1, column=0, padx=20, pady=(10, 10))
 
 
     
