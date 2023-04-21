@@ -43,7 +43,3 @@ class Login(customtkinter.CTk):
         self.destroy()            
         import StartPageGUI
         StartPageGUI.Main().mainloop()
-
-# if __name__ == "__main__":
-#     app9 = Login()
-#     app9.mainloop()
