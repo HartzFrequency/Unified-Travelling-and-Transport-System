@@ -5,7 +5,11 @@ from PIL import Image, ImageTk
 import os
 from tkinter import PhotoImage
 from tkinter import messagebox
+from tkinter import ttk
+from tkinter import *
+from tkinter.ttk import *
 import mysql.connector
+
 
 UTTSdb = mysql.connector.connect(
     host='localhost',
@@ -69,13 +73,13 @@ class Bus(customtkinter.CTk):
         self.sidebar_frame1.grid(row=15,column=15,rowspan=25, padx=20, pady=10)
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text="FROM",font=customtkinter.CTkFont(size=20),anchor="w")
         self.to_label.grid(row=15, column=15, padx=100, pady=10)
-        self.from_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1,values=["-Select-","Muscat", "Mumbai", "Delhi",'Bangalore'])
+        self.from_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1,values=["-Select-","Gwalior", "Bhopal","Mumbai", "Delhi"])
         self.from_optionemenu.grid(row=16, column=15, padx=100, pady=10)
 
 # # to button
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text="TO",font=customtkinter.CTkFont(size=20), anchor="w")
         self.to_label.grid(row=15, column=19, padx=20, pady=(10,0))
-        self.to_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1, values=["-Select-","Muscat", "Mumbai", "Delhi",'Bangalore'])
+        self.to_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1, values=["-Select-", "Delhi","Mumbai","Bhopal","Gwalior"])
         self.to_optionemenu.grid(row=16, column=19, padx=100, pady=10)
 
 # to select no. of adults travelling
@@ -182,10 +186,16 @@ class Bus(customtkinter.CTk):
     def end_e(self):#function to end app-GUI
         global rawa
         global rawc
+        
         global f1
-        f1 = self.from_optionemenu.get() #from value
+        f1= self.from_optionemenu.get() #from value
+        os.environ['F1'] = str(f1)
+        
+        
+        
         global f2
-        f2 = self.to_optionemenu.get() #to value
+        f2= self.to_optionemenu.get() #to value
+
         a = self.adult_optionemenu.get()
         rawa=a
         b= self.children_optionemenu.get()
@@ -217,6 +227,7 @@ class Bus(customtkinter.CTk):
         self.destroy()            
         import Route_Info
         Route_Info.Route().mainloop()
+       
 
     
     def change_appearance_mode_event(self, new_appearance_mode: str):
@@ -242,7 +253,6 @@ class Bus(customtkinter.CTk):
     #     itenary.geometry('500x500')
     #     # flightname=flname1
     #     # totalprice=str(tprice1*2)
-
 
 if __name__ == "__main__":
     app2 = Bus()
