@@ -18,10 +18,10 @@ class Login(customtkinter.CTk):
 
         self.title("Login Page")
         self.geometry(f"{1700}x{580}")
-        # self.bg_image = customtkinter.CTkImage(Image.open("Image/Background_gradient.jpg"),
-        #                                        size=(self.width, self.height))
-        # self.bg_image_label = customtkinter.CTkLabel(self, image=self.bg_image)
-        # self.bg_image_label.grid(row=0, column=0)
+        self.bg_image = customtkinter.CTkImage(Image.open("Image/Background_gradient.jpg"),
+                                               size=(self.width, self.height))
+        self.bg_image_label = customtkinter.CTkLabel(self, image=self.bg_image)
+        self.bg_image_label.grid(row=0, column=0)
 
         # create login frame
         self.login_frame = customtkinter.CTkFrame(self, corner_radius=0)
@@ -47,7 +47,7 @@ class Login(customtkinter.CTk):
         UTTSdb = mysql.connector.connect(
         host='localhost',
         user='root',
-        password='harsh',
+        password='Rajput@MySQL',
         database='UTTS')
 
         entered_username = self.username_entry.get()
