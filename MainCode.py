@@ -24,12 +24,13 @@ cur=UTTSdb.cursor()
 s="SELECT * FROM users WHERE first_name = '{}' AND Password = '{}'".format(username,password)
 cur.execute(s)
 QueryCheckForPassword=cur.fetchall()
-
+print(QueryCheckForPassword)
 #If to check wether password right or wrong
 #if(QueryCheckForPassword==""):
 
-# Home_page = GraphicUser_InterFace.StartPageGUI.Main()
-# Home_page.mainloop()
+Login_page.destroy()
+Home_page = GraphicUser_InterFace.StartPageGUI.Main()
+Home_page.mainloop()
 
 
 #print(UTTSdb.connection_id)
