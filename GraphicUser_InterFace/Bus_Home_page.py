@@ -73,13 +73,13 @@ class Bus(customtkinter.CTk):
         self.sidebar_frame1.grid(row=15,column=15,rowspan=25, padx=20, pady=10)
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text="FROM",font=customtkinter.CTkFont(size=20),anchor="w")
         self.to_label.grid(row=15, column=15, padx=100, pady=10)
-        self.from_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1,values=["-Select-","Gwalior", "Bhopal","Mumbai", "Delhi"])
+        self.from_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1,values=["-Select-","GWL", "BHP","MUM", "DLH"])
         self.from_optionemenu.grid(row=16, column=15, padx=100, pady=10)
 
 # # to button
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text="TO",font=customtkinter.CTkFont(size=20), anchor="w")
         self.to_label.grid(row=15, column=19, padx=20, pady=(10,0))
-        self.to_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1, values=["-Select-", "Delhi","Mumbai","Bhopal","Gwalior"])
+        self.to_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1, values=["-Select-", "DLH","MUM","BHP","GWL"])
         self.to_optionemenu.grid(row=16, column=19, padx=100, pady=10)
 
 # to select no. of adults travelling
@@ -215,10 +215,25 @@ class Bus(customtkinter.CTk):
         # elif selection1=='':
         #     return messagebox.showerror("Error", "choose class of travel") 
         else:
-            Query="SELECT BusID,Name,Duration,type,capcity,fare FROM bus WHERE FromLoacation={} AND ToLocation={}".format(f1,f2)
+            
+            Query="SELECT BusID,Name,Duration,type,capacity,fare FROM bus WHERE FromLocation='{}' AND ToLocation='{}'".format(f1,f2)
             cur.execute(Query)
             availableBUS=cur.fetchall()
-            print(availableBUS)
+            bus1_ID=availableBUS[0][0]
+            bus1_Name=availableBUS[0][1]
+            bus1_dur=availableBUS[0][2]
+            bus1_type=availableBUS[0][3]
+            bus1_cap=availableBUS[0][4]       
+            bus1_fare=availableBUS[0][5]
+            bus2_ID=availableBUS[1][0]
+            bus2_Name=availableBUS[1][1]
+            bus2_dur=availableBUS[1][2]
+            bus2_type=availableBUS[1][3]
+            bus2_cap=availableBUS[1][4]
+            bus2_fare=availableBUS[1][5]
+
+            print(bus1_cap,bus1_dur,bus1_fare,bus1_ID,bus1_Name,bus1_type,bus2_cap,bus2_dur,bus2_fare,bus2_ID,bus2_Name,bus2_type)
+
             self.open_Info_window()
 
 

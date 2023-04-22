@@ -41,10 +41,10 @@ class Route(customtkinter.CTk):
         
 
         # f1 = os.environ['F1']
-        self.sidebar_frame1=customtkinter.CTkFrame(self,width=200,height=100)
-        self.sidebar_frame1.grid(row=15,column=15,rowspan=25, padx=20, pady=10)
-        self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text=f1,font=customtkinter.CTkFont(size=20),anchor="w")
-        self.to_label.grid(row=15, column=15, padx=100, pady=10)
+        # self.sidebar_frame1=customtkinter.CTkFrame(self,width=200,height=100)
+        # self.sidebar_frame1.grid(row=15,column=15,rowspan=25, padx=20, pady=10)
+        # self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text=f1,font=customtkinter.CTkFont(size=20),anchor="w")
+        # self.to_label.grid(row=15, column=15, padx=100, pady=10)
 
 
 
