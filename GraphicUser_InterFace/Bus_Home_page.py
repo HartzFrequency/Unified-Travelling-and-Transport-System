@@ -5,7 +5,14 @@ from PIL import Image, ImageTk
 import os
 from tkinter import PhotoImage
 from tkinter import messagebox
+import mysql.connector
 
+UTTSdb = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='harsh',
+    database='UTTS')
+cur=UTTSdb.cursor()
 
 
 window2 = customtkinter.CTk()
@@ -22,9 +29,6 @@ class Bus(customtkinter.CTk):
         self.geometry(f"{1700}x{580}")
         # self.part1()
          
-        
-
-
    #Appearance and Scaling 
         self.sidebar_frame = customtkinter.CTkFrame(self, width=120, corner_radius=0)
         self.sidebar_frame.grid(row=35, column=0, rowspan=4, sticky="ew")
@@ -178,8 +182,10 @@ class Bus(customtkinter.CTk):
     def end_e(self):#function to end app-GUI
         global rawa
         global rawc
-        f1= self.from_optionemenu.get()  #from value
-        f2= self.to_optionemenu.get() #to value
+        global f1
+        f1 = self.from_optionemenu.get() #from value
+        global f2
+        f2 = self.to_optionemenu.get() #to value
         a = self.adult_optionemenu.get()
         rawa=a
         b= self.children_optionemenu.get()
@@ -199,6 +205,10 @@ class Bus(customtkinter.CTk):
         # elif selection1=='':
         #     return messagebox.showerror("Error", "choose class of travel") 
         else:
+            Query="SELECT BusID,Name,Duration,type,capcity,fare FROM bus WHERE FromLoacation={} AND ToLocation={}".format(f1,f2)
+            cur.execute(Query)
+            availableBUS=cur.fetchall()
+            print(availableBUS)
             self.open_Info_window()
 
 
