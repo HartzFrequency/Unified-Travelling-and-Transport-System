@@ -1,9 +1,11 @@
-import tkinter
+import tkinter as tk
 import tkinter.messagebox
+import mysql.connector
 import customtkinter
 from PIL import Image, ImageTk
 import os
 from tkinter import PhotoImage
+from tkinter import messagebox
 
 customtkinter.set_appearance_mode("dark")
 
@@ -41,21 +43,43 @@ class Login(customtkinter.CTk):
         
     def login_event(self):
 
+        
+        UTTSdb = mysql.connector.connect(
+        host='localhost',
+        user='root',
+        password='harsh',
+        database='UTTS')
+
         entered_username = self.username_entry.get()
         entered_password = self.password_entry.get()
-                
-        file = open("LocalDATA//password.txt", "w")
-        file.write(entered_password)
-        file.close()
 
-        file = open("LocalDATA//username.txt", "w")
-        file.write(entered_username)
-        file.close()
+        cur=UTTSdb.cursor()
+        s="SELECT * FROM users WHERE first_name = '{}' AND Password = '{}'".format(entered_username,entered_password)
+        cur.execute(s)
+        # QueryCheckForPassword=cur.fetchall()
+        QueryCheckForPassword=cur.fetchone()
+        # print(QueryCheckForPassword)
+
+        if QueryCheckForPassword:
+            self.destroy()            
+            import StartPageGUI
+            StartPageGUI.Main().mainloop()
+        else:
+            print("error")
+            return messagebox.showerror('Error','Incorrect Username or Password')
+        
+
+
+                
+        # file = open("LocalDATA//password.txt", "w")
+        # file.write(entered_password)
+        # file.close()
+
+        # file = open("LocalDATA//username.txt", "w")
+        # file.write(entered_username)
+        # file.close()
 
         print("Login pressed - username:", entered_username, "password:",entered_password)
-        self.destroy()            
-        import StartPageGUI
-        StartPageGUI.Main().mainloop()
 
 if __name__ == "__main__":
     app9 = Login()
