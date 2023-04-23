@@ -210,6 +210,8 @@ class Train(customtkinter.CTk):
         # elif selection1=='':
         #     return messagebox.showerror("Error", "choose class of travel") 
         else:
+            Train1_PNR = 0
+            Train2_PNR = 0
             Query="SELECT PNR,Name,Duration,type,capacity,fare FROM train WHERE FromLocation='{}' AND ToLocation='{}'".format(f1,f2)
             cur.execute(Query)
             availableTRAIN=cur.fetchall()
@@ -220,13 +222,36 @@ class Train(customtkinter.CTk):
             Train1_type=availableTRAIN[0][3]
             Train1_cap=availableTRAIN[0][4]       
             Train1_fare=availableTRAIN[0][5]
+            
+            travel_vehicle = "Railway"
+            os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
+            os.environ['F1'] = str(f1)
+            os.environ['F2'] = str(f2)
 
-            Train2_ID=availableTRAIN[1][0]
+            os.environ['TRAIN1_PNR'] =  str(Train1_PNR)
+            os.environ['TRAIN1_NAME']  = str(Train1_Name)
+            os.environ['TRAIN1_DUR']  = str(Train1_dur)
+            os.environ['TRAIN1_TYPE']  = str(Train1_type)
+            os.environ['TRAIN1_CAP']  = str(Train1_cap)
+            os.environ['TRAIN1_FARE']  = str(Train1_fare)
+
+
+            Train2_PNR=availableTRAIN[1][0]
             Train2_Name=availableTRAIN[1][1]
             Train2_dur=availableTRAIN[1][2]
             Train2_type=availableTRAIN[1][3]
             Train2_cap=availableTRAIN[1][4]
             Train2_fare=availableTRAIN[1][5]
+            if Train2_PNR == 0:
+                print("Train 2")
+                os.environ['TRAIN2_PNR'] =  str(Train2_PNR)
+            else:
+                os.environ['TRAIN2_PNR'] =  str(Train2_PNR)
+                os.environ['TRAIN2_NAME']  = str(Train2_Name)
+                os.environ['TRAIN2_DUR']  = str(Train2_dur)
+                os.environ['TRAIN2_TYPE']  = str(Train2_type)
+                os.environ['TRAIN2_CAP']  = str(Train2_cap)
+                
 
             self.open_Info_window()
 
