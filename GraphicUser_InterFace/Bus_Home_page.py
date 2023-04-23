@@ -14,7 +14,7 @@ import mysql.connector
 UTTSdb = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='harsh',
+    password='Rajput@MySQL',
     database='UTTS')
 cur=UTTSdb.cursor()
 
@@ -189,7 +189,7 @@ class Bus(customtkinter.CTk):
         
         global f1
         f1= self.from_optionemenu.get() #from value
-        os.environ['F1'] = str(f1)
+        # os.environ['F1'] = str(f1)
         
         
         
