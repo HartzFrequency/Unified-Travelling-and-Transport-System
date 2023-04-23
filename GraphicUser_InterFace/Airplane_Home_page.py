@@ -187,8 +187,10 @@ class Airplane(customtkinter.CTk):
     def end_e(self):#function to end app-GUI
         global rawa
         global rawc
-        f1= self.from_optionemenu.get()  #from value
-        f2= self.to_optionemenu.get() #to value
+        global f1
+        f1 = self.from_optionemenu.get()  #from value
+        global f2
+        f2 = self.to_optionemenu.get() #to value
         a = self.adult_optionemenu.get()
         rawa=a
         b= self.children_optionemenu.get()
@@ -208,6 +210,23 @@ class Airplane(customtkinter.CTk):
         # elif selection1=='':
         #     return messagebox.showerror("Error", "choose class of travel") 
         else:
+            Query="SELECT flightNo,Name,Duration,type,capacity,fare FROM flight WHERE FromLocation='{}' AND ToLocation='{}'".format(f1,f2)
+            cur.execute(Query)
+            availableFLIGHT=cur.fetchall()
+
+            Flight1_PNR=availableFLIGHT[0][0]
+            Flight1_Name=availableFLIGHT[0][1]
+            Flight1_dur=availableFLIGHT[0][2]
+            Flight1_type=availableFLIGHT[0][3]
+            Flight1_cap=availableFLIGHT[0][4]       
+            Flight1_fare=availableFLIGHT[0][5]
+
+            Flight2_ID=availableFLIGHT[1][0]
+            Flight2_Name=availableFLIGHT[1][1]
+            Flight2_dur=availableFLIGHT[1][2]
+            Flight2_type=availableFLIGHT[1][3]
+            Flight2_cap=availableFLIGHT[1][4]
+            Flight2_fare=availableFLIGHT[1][5]
             self.open_Info_window()
 
 
