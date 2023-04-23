@@ -5,7 +5,14 @@ from PIL import Image, ImageTk
 import os
 from tkinter import PhotoImage
 from tkinter import messagebox
+import mysql.connector
 
+UTTSdb = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='Rajput@MySQL',
+    database='UTTS')
+cur=UTTSdb.cursor()
 
 
 window3 = customtkinter.CTk()

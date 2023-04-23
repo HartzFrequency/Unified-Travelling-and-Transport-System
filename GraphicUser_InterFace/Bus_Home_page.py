@@ -250,9 +250,6 @@ class Bus(customtkinter.CTk):
             os.environ['BUS2_CAP'] = str(bus2_cap)
             os.environ['BUS2_FARE'] = str(bus2_fare)
 
-
-            print(bus1_cap,bus1_dur,bus1_fare,bus1_ID,bus1_Name,bus1_type,bus2_cap,bus2_dur,bus2_fare,bus2_ID,bus2_Name,bus2_type)
-
             self.open_Info_window()
 
 

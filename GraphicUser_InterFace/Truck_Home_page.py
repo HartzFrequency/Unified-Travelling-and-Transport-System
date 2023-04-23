@@ -4,7 +4,14 @@ import customtkinter
 from PIL import Image, ImageTk
 import os
 from tkinter import PhotoImage
+import mysql.connector
 
+UTTSdb = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='Rajput@MySQL',
+    database='UTTS')
+cur=UTTSdb.cursor()
 
 
 

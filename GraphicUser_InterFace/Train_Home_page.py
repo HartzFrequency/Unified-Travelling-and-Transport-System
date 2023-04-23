@@ -5,7 +5,14 @@ from PIL import Image, ImageTk
 import os
 from tkinter import PhotoImage
 from tkinter import messagebox
+import mysql.connector
 
+UTTSdb = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='harsh',
+    database='UTTS')
+cur=UTTSdb.cursor()
 
 
 window4 = customtkinter.CTk()
@@ -67,13 +74,13 @@ class Train(customtkinter.CTk):
         self.sidebar_frame1.grid(row=15,column=15,rowspan=50, padx=20, pady=10)
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text="FROM",font=customtkinter.CTkFont(size=20),anchor="w")
         self.to_label.grid(row=15, column=15, padx=100, pady=10)
-        self.from_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1,values=["-Select-","Muscat", "Mumbai", "Delhi",'Bangalore'])
+        self.from_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1,values=["-Select-","GWL", "BHP","MUM", "DLH"])
         self.from_optionemenu.grid(row=16, column=15, padx=100, pady=10)
 
 # # to button
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text="TO",font=customtkinter.CTkFont(size=20), anchor="w")
         self.to_label.grid(row=15, column=19, padx=20, pady=(10,0))
-        self.to_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1, values=["-Select-","Muscat", "Mumbai", "Delhi",'Bangalore'])
+        self.to_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1, values=["-Select-","GWL", "BHP","MUM", "DLH"])
         self.to_optionemenu.grid(row=16, column=19, padx=100, pady=10)
 
 # to select no. of adults travelling
@@ -180,7 +187,9 @@ class Train(customtkinter.CTk):
     def end_e(self):#function to end app-GUI
         global rawa
         global rawc
-        f1= self.from_optionemenu.get()  #from value
+        global f1
+        f1 = self.from_optionemenu.get()  #from value
+        global f2
         f2= self.to_optionemenu.get() #to value
         a = self.adult_optionemenu.get()
         rawa=a
@@ -201,6 +210,24 @@ class Train(customtkinter.CTk):
         # elif selection1=='':
         #     return messagebox.showerror("Error", "choose class of travel") 
         else:
+            Query="SELECT PNR,Name,Duration,type,capacity,fare FROM train WHERE FromLocation='{}' AND ToLocation='{}'".format(f1,f2)
+            cur.execute(Query)
+            availableTRAIN=cur.fetchall()
+
+            Train1_PNR=availableTRAIN[0][0]
+            Train1_Name=availableTRAIN[0][1]
+            Train1_dur=availableTRAIN[0][2]
+            Train1_type=availableTRAIN[0][3]
+            Train1_cap=availableTRAIN[0][4]       
+            Train1_fare=availableTRAIN[0][5]
+
+            Train2_ID=availableTRAIN[1][0]
+            Train2_Name=availableTRAIN[1][1]
+            Train2_dur=availableTRAIN[1][2]
+            Train2_type=availableTRAIN[1][3]
+            Train2_cap=availableTRAIN[1][4]
+            Train2_fare=availableTRAIN[1][5]
+
             self.open_Info_window()
 
 
