@@ -29,23 +29,26 @@ class Login(customtkinter.CTk):
         self.login_frame = customtkinter.CTkFrame(self, corner_radius=20)
         self.login_frame.grid(row=0, column=0, sticky="ns")
         self.login_label = customtkinter.CTkLabel(self.login_frame, text="Welcome!\nUnified Travelling & Transport System",font=customtkinter.CTkFont(size=24, weight="bold", slant="roman", family="Helvetica"))
-
-
         self.login_label.grid(row=0, column=0, padx=30, pady=(150, 15))
+
+        #TEXT : LOGIN PAGE
         self.login_label_2 = customtkinter.CTkLabel(self.login_frame, text="Login Page",font=customtkinter.CTkFont(size=40, weight="bold"))
         self.login_label_2.grid(row=1, column=0, padx=30, pady=(50, 15))
+        
+        #TEXT : USERNAME
         self.username_entry = customtkinter.CTkEntry(self.login_frame, width=300, placeholder_text="Username")
         self.username_entry.grid(row=2, column=0, padx=30, pady=(15, 15))
+        
+        #TEXT : PASSWORD
         self.password_entry = customtkinter.CTkEntry(self.login_frame, width=300, show="*", placeholder_text="Password")
         self.password_entry.grid(row=3, column=0, padx=30, pady=(0, 15))
+        
+        #TEXT : LOGIN BUTTON TEXT
         self.login_button = customtkinter.CTkButton(self.login_frame, text="Login", command=self.login_event, width=200)
         self.login_button.grid(row=4, column=0, padx=30, pady=(15, 15))
 
-
-    # def write_to_file(self):
-        
     def login_event(self):
-     
+        
         UTTSdb = mysql.connector.connect(
         host='localhost',
         user='root',
@@ -69,13 +72,6 @@ class Login(customtkinter.CTk):
             print("error")
             return messagebox.showerror('Error','Incorrect Username or Password')
         
-        # file = open("LocalDATA//password.txt", "w")
-        # file.write(entered_password)
-        # file.close()
-
-        # file = open("LocalDATA//username.txt", "w")
-        # file.write(entered_username)
-        # file.close()
         print("Login pressed - username:", entered_username, "password:",entered_password)
 
 if __name__ == "__main__":
