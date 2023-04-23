@@ -79,6 +79,9 @@ class Route(customtkinter.CTk):
         self.fare_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Fare = "+bus1_fare,font=customtkinter.CTkFont(size=20),anchor="w")
         self.fare_1.grid(row=19, column=16, padx=100, pady=10)
 
+        self.continue_button = customtkinter.CTkButton(self.sidebar_frame1,text="Book")
+        self.continue_button.grid(row=16, column=17,rowspan=100, padx=20, pady=(10,10))
+
 
 
 
@@ -102,6 +105,9 @@ class Route(customtkinter.CTk):
         self.vehicle_type_2.grid(row=44, column=16, padx=100, pady=10)
         self.fare_2 = customtkinter.CTkLabel(self.sidebar_frame2, text="Fare = "+bus2_fare,font=customtkinter.CTkFont(size=20),anchor="w")
         self.fare_2.grid(row=45, column=16, padx=100, pady=10)
+
+        self.continue_button = customtkinter.CTkButton(self.sidebar_frame2,text="Book")
+        self.continue_button.grid(row=42, column=17,rowspan=100, padx=20, pady=(10,10))
 
 
 

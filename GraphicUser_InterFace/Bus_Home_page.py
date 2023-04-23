@@ -256,8 +256,8 @@ class Bus(customtkinter.CTk):
     
     def open_Info_window(self):
         self.destroy()            
-        import Route_Info
-        Route_Info.Route().mainloop()
+        import Bus_Route_Info
+        Bus_Route_Info.Route().mainloop()
        
 
     
