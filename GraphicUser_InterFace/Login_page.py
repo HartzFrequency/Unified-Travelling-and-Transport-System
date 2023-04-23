@@ -11,22 +11,22 @@ from tkinter.font import Font
 customtkinter.set_appearance_mode("dark")
 
 class Login(customtkinter.CTk):
-    width = 1920
+    width = 1080
     height = 1080
     def __init__(self):
         super().__init__()
 
         # OPENEING WINDOW SIZE
         self.title("Login")
-        self.geometry(f"{1920}x{1080}")
-        self.bg_image = customtkinter.CTkImage(Image.open("Image/Background_gradient.jpg"),
-                                               size=(self.width, self.height))
+        self.geometry(f"{1080}x{1080}")
+        self.bg_image = customtkinter.CTkImage(Image.open("Image/Background_gradient.jpg"),size=(self.width, self.height))
         self.bg_image_label = customtkinter.CTkLabel(self, image=self.bg_image)
         self.bg_image_label.grid(row=0, column=0)
 
         # LOGIN FRAME INSIDE WINDOW
         # TEXT : "Welcome!\nUnified Travelling & Transport System"
-        self.login_frame = customtkinter.CTkFrame(self, corner_radius=20)
+        self.login_frame = customtkinter.CTkFrame(self, corner_radius=15)
+        # self.login_frame.place(relx=0.5, rely=0.5, anchor="center")
         self.login_frame.grid(row=0, column=0, sticky="ns")
         self.login_label = customtkinter.CTkLabel(self.login_frame, text="Welcome!\nUnified Travelling & Transport System",font=customtkinter.CTkFont(size=24, weight="bold", slant="roman", family="Helvetica"))
         self.login_label.grid(row=0, column=0, padx=30, pady=(150, 15))
