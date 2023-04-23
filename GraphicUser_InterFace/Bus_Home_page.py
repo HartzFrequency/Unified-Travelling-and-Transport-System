@@ -189,7 +189,6 @@ class Bus(customtkinter.CTk):
         
         global f1
         f1= self.from_optionemenu.get() #from value
-        # os.environ['F1'] = str(f1)
         
         
         
@@ -219,18 +218,38 @@ class Bus(customtkinter.CTk):
             Query="SELECT BusID,Name,Duration,type,capacity,fare FROM bus WHERE FromLocation='{}' AND ToLocation='{}'".format(f1,f2)
             cur.execute(Query)
             availableBUS=cur.fetchall()
+
             bus1_ID=availableBUS[0][0]
             bus1_Name=availableBUS[0][1]
             bus1_dur=availableBUS[0][2]
             bus1_type=availableBUS[0][3]
             bus1_cap=availableBUS[0][4]       
             bus1_fare=availableBUS[0][5]
+            travel_vehicle = "Buses"
+            os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
+            os.environ['F1'] = str(f1)
+            os.environ['F2'] = str(f2)
+            os.environ['BUS1_ID'] = str(bus1_ID)
+            os.environ['BUS1_NAME'] = str(bus1_Name)
+            os.environ['BUS1_DUR'] = str(bus1_dur)
+            os.environ['BUS1_TYPE'] = str(bus1_type)
+            os.environ['BUS1_CAP'] = str(bus1_cap)
+            os.environ['BUS1_FARE'] = str(bus1_fare)
+
+
             bus2_ID=availableBUS[1][0]
             bus2_Name=availableBUS[1][1]
             bus2_dur=availableBUS[1][2]
             bus2_type=availableBUS[1][3]
             bus2_cap=availableBUS[1][4]
             bus2_fare=availableBUS[1][5]
+            os.environ['BUS2_ID'] = str(bus2_ID)
+            os.environ['BUS2_NAME'] = str(bus2_Name)
+            os.environ['BUS2_DUR'] = str(bus2_dur)
+            os.environ['BUS2_TYPE'] = str(bus2_type)
+            os.environ['BUS2_CAP'] = str(bus2_cap)
+            os.environ['BUS2_FARE'] = str(bus2_fare)
+
 
             print(bus1_cap,bus1_dur,bus1_fare,bus1_ID,bus1_Name,bus1_type,bus2_cap,bus2_dur,bus2_fare,bus2_ID,bus2_Name,bus2_type)
 
