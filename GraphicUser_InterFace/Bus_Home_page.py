@@ -32,11 +32,10 @@ class Bus(customtkinter.CTk):
         super().__init__()
         self.title("Bus Home Page")
         self.geometry(f"{1440}x{430}")
-        # self.part1()
-         
-   #Appearance and Scaling 
+
+
         self.sidebar_frame = customtkinter.CTkFrame(self, width=120, corner_radius=15)
-        self.sidebar_frame.grid(row=9, column=0, rowspan=4, sticky="nsew")
+        self.sidebar_frame.grid(row=9, column=0, rowspan=4, sticky="nse")
         self.sidebar_frame.grid_rowconfigure(1, weight=1)
         
         
@@ -62,42 +61,46 @@ class Bus(customtkinter.CTk):
         self.logo_label.grid(row=0, column=15, padx=420, pady=50)
 
 
+ 
         self.sidebar_frame1=customtkinter.CTkFrame(self,width=200,height=100,corner_radius=15)
-        self.sidebar_frame1.grid(row=15,column=15,rowspan=5, padx=0, pady=5,sticky='nsew')
-# # from button
+        self.sidebar_frame1.grid(row=15,column=15, padx=0, pady=5,sticky='nsew')
+
+#FROM TEXT
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text="From",font=customtkinter.CTkFont(size=20),anchor="w")
-        self.to_label.grid(row=15, column=10, padx=100, pady=10,sticky='sw')
+        self.to_label.grid(row=15, column=10, padx=100, pady=(5,0),sticky='sw')
+#DROP DOWN MENU FOR 
         self.from_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1,values=["Select","GWL", "BHP","MUM", "DLH"])
-        self.from_optionemenu.grid(row=16, column=10, padx=100, pady=10,sticky='sw')
-
-# to select no. of adults travelling
+        self.from_optionemenu.grid(row=16, column=10, padx=60, pady=(5,5),sticky='sw')
+#ADULT TEXT
         self.adult_label = customtkinter.CTkLabel(self.sidebar_frame1, text="Adults ",font=customtkinter.CTkFont(size=20) ,anchor="w")
-        self.adult_label.grid(row=17, column=10, padx=100, pady=10,sticky='sw')
+        self.adult_label.grid(row=17, column=10, padx=100, pady=(5,0),sticky='sw')
+#VALUE SELECTOR 
         self.adult_optionemenu= tk.Spinbox(self.sidebar_frame1,from_=0, to=5, increment =1)
-        self.adult_optionemenu.grid(row=18, column=10,padx=100, pady=10,sticky='sw')
+        self.adult_optionemenu.grid(row=18, column=10,padx=75, pady=(5,5),sticky='sw')
 
 
 
-# # to button
+#TO TEXT
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text="To",font=customtkinter.CTkFont(size=20), anchor="w")
-        self.to_label.grid(row=15, column=20, padx=20, pady=(10,0),sticky='se')
+        self.to_label.grid(row=15, column=20, padx=100, pady=(5,0),sticky='se')
+#DROP DOWN MENU FOR TO
         self.to_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1, values=["Select", "DLH","MUM","BHP","GWL"])
-        self.to_optionemenu.grid(row=16, column=20, padx=100, pady=10,sticky='se')
-
-# to select no. of children travelling
+        self.to_optionemenu.grid(row=16, column=20, padx=120, pady=(5,5),sticky='se')
+#CHILDREN TEXT
         self.children_label = customtkinter.CTkLabel(self.sidebar_frame1, text="Childrens ", font=customtkinter.CTkFont(size=20),anchor="w")
-        self.children_label.grid(row=17, column=20, padx=20, pady=(10,0),sticky='se')
+        self.children_label.grid(row=17, column=20, padx=100, pady=(5,0),sticky='se')
+#VALUE SELECTOR
         self.children_optionemenu= tk.Spinbox(self.sidebar_frame1,from_=0, to=5, increment =1)
-        self.children_optionemenu.grid(row=18, column=20, padx=100, pady=10,sticky='se')
+        self.children_optionemenu.grid(row=18, column=20, padx=100, pady=(5,5),sticky='se')
 
 
 
-# continue button
+#COMTINUE
         self.continue_button = customtkinter.CTkButton(self,text="Continue",command=self.end_e)
         self.continue_button.grid(row=150, column=15,rowspan=100, padx=20, pady=(10,10),sticky='se')
 
    
-# back button
+#BACK BUTTON
         self.string_input_button = customtkinter.CTkButton(self,text="Home", command=self.open_Main_window)
         self.string_input_button.grid(row=150, column=0, padx=20, pady=(10, 10),sticky='sw')
 
