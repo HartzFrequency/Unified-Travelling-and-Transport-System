@@ -71,17 +71,14 @@ class Main(customtkinter.CTk):
         # self.slider_progressbar_frame.grid_rowconfigure(14, weight=4)
         # self.progressbar_1 = customtkinter.CTkProgressBar(self.slider_progressbar_frame)
         # self.progressbar_1.grid(row=6, column=2, padx=(20, 10), pady=(10, 10))
-
         # self.progressbar_1.configure(mode="indeterminate")
         # self.progressbar_1.start()
-
         # self.slider_progressbar_frame = customtkinter.CTkFrame(self, width=100,height=20,fg_color="transparent")
         # self.slider_progressbar_frame.grid(row=6, column=2, padx=(20, 0), pady=(20, 0))
         # self.slider_progressbar_frame.grid_columnconfigure(0, weight=4)
         # self.slider_progressbar_frame.grid_rowconfigure(14, weight=4)
         # self.progressbar_1 = customtkinter.CTkProgressBar(self.slider_progressbar_frame, width=200)
         # self.progressbar_1.grid(row=6, column=2, padx=(20, 10), pady=(10, 10))
-
         # self.progressbar_1.configure(mode="indeterminnate")
         # self.progressbar_1.start()
 
