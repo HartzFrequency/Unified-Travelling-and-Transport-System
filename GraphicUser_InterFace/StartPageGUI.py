@@ -94,11 +94,8 @@ class Main(customtkinter.CTk):
         self.tabview.tab("Travel").grid_columnconfigure(0, weight=0)  # configure grid of individual tabs
         self.tabview.add("Transport")
         self.tabview.tab("Transport").grid_columnconfigure(0, weight=1)
-        # self.grid_columnconfigure((2, 3), weight=0)
-        # self.label_tab_2 = customtkinter.CTkLabel(self.tabview.tab("Travel"))
-        # self.label_tab_2.grid(row=0, column=0, padx=20, pady=20)
 
-        
+        #TRAVEL
         self.Bus_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Bus",command=self.open_Bus_window)
         self.Bus_button.grid(row=4, column=0, padx=(0,110), pady=(10, 10),sticky="w")
 
@@ -112,14 +109,12 @@ class Main(customtkinter.CTk):
         self.Airplane_button.grid(row=4, column=3, padx=(110,0), pady=(10, 10),sticky="e")
 
 
-        
-        
-        # self.label_tab_3 = customtkinter.CTkLabel(self.tabview.tab("Transport"))
-        # self.label_tab_3.grid(row=0, column=0, padx=20, pady=20)
+        #TRUCK
         self.Truck_button = customtkinter.CTkButton(self.tabview.tab("Transport"), text="Truck",command=self.open_Truck_window)
-        self.Truck_button.grid(row=4, column=0, padx=20, pady=(10, 10))
+        self.Truck_button.grid(row=4, column=0, padx=20, pady=(10, 10),sticky="w")
+        
         self.Ship_button = customtkinter.CTkButton(self.tabview.tab("Transport"), text="Railways",command=self.open_Ship_window)
-        self.Ship_button.grid(row=4, column=1, padx=20, pady=(10, 10))
+        self.Ship_button.grid(row=4, column=1, padx=20, pady=(10, 10),sticky="e")
         
         
         
