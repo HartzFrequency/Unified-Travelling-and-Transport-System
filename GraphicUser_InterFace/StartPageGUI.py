@@ -26,7 +26,6 @@ class Main(customtkinter.CTk):
         self.grid_columnconfigure((2, 3), weight=0)
         self.grid_rowconfigure((0, 1, 2), weight=0)
 
-
         self.sidebar_frame = customtkinter.CTkFrame(self, width=120, corner_radius=15)
         self.sidebar_frame.grid(row=9, column=0, rowspan=4, sticky="ns")
         self.sidebar_frame.grid_rowconfigure(1, weight=1)
@@ -109,95 +108,26 @@ class Main(customtkinter.CTk):
         self.Airplane_button.grid(row=4, column=3, padx=(110,0), pady=(10, 10),sticky="e")
 
 
-        #TRUCK
+        #TRANSPORT
         self.Truck_button = customtkinter.CTkButton(self.tabview.tab("Transport"), text="Truck",command=self.open_Truck_window)
         self.Truck_button.grid(row=4, column=0, padx=20, pady=(10, 10),sticky="w")
         
         self.Ship_button = customtkinter.CTkButton(self.tabview.tab("Transport"), text="Railways",command=self.open_Ship_window)
         self.Ship_button.grid(row=4, column=1, padx=20, pady=(10, 10),sticky="e")
-        
-        
-        
-        
-        # image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "Images")
+            
 
-        # self.add_user_image = customtkinter.CTkImage(light_image=Image.open(os.path.join(image_path, "BUS.png")),
-        #                                              dark_image=Image.open(os.path.join(image_path, "BUS.png")), size=(20, 20))
-        
-        
+        self.tabview = customtkinter.CTkTabview(self, width=240, height= 80)
+        self.tabview.grid(row=10, column=2, padx=0, pady=0,sticky="s")
+        self.tabview.add("!Error Encountered!")
 
-
-
-        # self.bus_image = customtkinter.CTkLabel(self.label_tab_2)
-        # self.image = customtkinter.CTkImage("Image/BUS.png")
-        # self.bus_image.configure(image = self.image)
-        # self.bus_image.pack()
-        # self.tabview.add(self.label_tab_2)
-        # self.tabview.pack()
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        # image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "Image")
-
-        # self.bus_image = customtkinter.CTkImage(Image.open(os.path.join(image_path,"BUS.png")),size=(30,30))
-
-
-        # self.optionmenu_1 = customtkinter.CTkOptionMenu(self.tabview.tab("Travel"), dynamic_resizing=True,
-        #                                                 values=["Value 1", "Value 2", "Value Long Long Long"])
-        # self.optionmenu_1.grid(row=0, column=0, padx=20, pady=(20, 10))
-
-
-        # bus_image = self.label_tab_2()
-        # photo = self.PhotoImage(file = "Image/BUS.jpg")
-        # bus_image.config(image = photo)
-        # bus_image.pack()
-
-
-        # # self.label_tab_2 = customtkinter.CTkImage(Image.open("Image/ss11.png"), size=(26, 26))
-    
-        # self.label_tab_2 = customtkinter.CTkButton(master=window)
-        # # self.label_tab_2.pack()
-        # self.combobox_1 = customtkinter.CTkComboBox(self.tabview.tab("Travel"),
-        #                                             values=["Value 1", "Value 2", "Value Long....."])
-        # self.combobox_1.grid(row=1, column=0, padx=20, pady=(10, 10))
-
-        
-        
-
-        # self.lower_frame = customtkinter.CTkFrame(self, width=140, corner_radius=5)
-        # self.lower_frame.grid(row=4, column=10, rowspan=4, sticky="nsew")
-        # self.lower_frame.grid_rowconfigure(4, weight=0)
-        
-        # self.transport_name = customtkinter.CTkLabel(self.lower_frame, text="Hellllllllllllo", font=customtkinter.CTkFont(size=50, weight="bold"))
-        # self.transport_name.grid(row=0, column=0, padx=200, pady=(50, 10))
-    
-
-        self.tabview = customtkinter.CTkTabview(self, width=250, height= 100)
-        self.tabview.grid(row=10, column=2, padx=(20, 0), pady=(20, 0))
-        self.tabview.add("Feedback")
-
-        self.string_input_button = customtkinter.CTkButton(self.tabview.tab("Feedback"), text="Feedback Button",
-                                                           command=self.open_input_dialog_event)
-        self.string_input_button.grid(row=10, column=19, padx=20, pady=(10, 10), sticky="ew")
-        self.string_input_button.pack(side="bottom", anchor="center")
-
-
+        self.string_input_button = customtkinter.CTkButton(self.tabview.tab("!Error Encountered!"), text="Feedback Button",command=self.open_input_dialog_event)
+        self.string_input_button.grid(row=10, column=19, padx=20, pady=(10, 10), sticky="nsew")
+        self.string_input_button.pack(side="top", anchor="center")
 
 
     def open_input_dialog_event(self):
         dialog = customtkinter.CTkInputDialog(text="Please enter your valuable Feedback :", title="Feedback Window")
         print("Feedback :", dialog.get_input())
-
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)
@@ -242,12 +172,6 @@ class Main(customtkinter.CTk):
         Ship_Home_page.Ship().mainloop()
 
 
-        
-        
-
-
 if __name__ == "__main__":
     app1 = Main()
-    app1.mainloop()
-
-    
+    app1.mainloop()    
