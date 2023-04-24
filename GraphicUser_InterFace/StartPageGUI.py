@@ -7,53 +7,54 @@ from tkinter import PhotoImage
 
 
 window1 = customtkinter.CTk()
-customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
-customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
-
+# AVAILABLE MODES->"System", "Dark", "Light"
+customtkinter.set_appearance_mode("System") 
+#AVAILABLE THEMES->"blue", "green", "dark-blue" 
+customtkinter.set_default_color_theme("green")
 
 class Main(customtkinter.CTk):
+
     def __init__(self):
         super().__init__()
 
-        # configure window
+        #DEFINING WINDOW NAME AND SIZE
         self.title("Home page")
-        self.geometry(f"{1700}x{580}")
-        # screen_width = self.winfo_screenwidth()
-        # screen_height = self.winfo_screenheight()
-        # self.geometry("%dx%d" % (screen_width, screen_height))
+        self.geometry(f"{1240}x{720}")
 
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=1)
         self.grid_columnconfigure((2, 3), weight=0)
         self.grid_rowconfigure((0, 1, 2), weight=1)
 
+        #Sidebar frame
+        # self.sidebar_frame = customtkinter.CTkFrame(self, width=140, corner_radius=0)
+        # self.sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nsew")
+        # self.sidebar_frame.grid_rowconfigure(4, weight=1)
+        
 
-
-         # Back to login page
         self.top_left_corner_frame = customtkinter.CTkFrame(self)
         self.top_left_corner_frame.grid(row=0,column=0)
+        # PROFILE BUTTON
         self.profile_button = customtkinter.CTkButton(self.top_left_corner_frame,text="Profile")
         self.profile_button.grid(row=0,column=0,padx=10,pady=15)
-
-        self.back_to_loginPage_button = customtkinter.CTkButton(self.top_left_corner_frame,text="Back to Login\nPage ", command=self.open_Login_window)
+        # LOGIN BUTTON
+        self.back_to_loginPage_button = customtkinter.CTkButton(self.top_left_corner_frame,text="Log Out", command=self.open_Login_window)
         self.back_to_loginPage_button.grid(row=1, column=0, padx=10, pady=10)
 
-
-        
 
         # self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="Profile", font=customtkinter.CTkFont(size=35, weight="bold"))
         # self.logo_label.grid(row=0, column=0, padx=20, pady=20, sticky ="ew")
 
 
+
         self.sidebar_frame = customtkinter.CTkFrame(self, width=120, corner_radius=0)
-        self.sidebar_frame.grid(row=9, column=0, rowspan=4, sticky="ew")
+        self.sidebar_frame.grid(row=9, column=0, rowspan=4, sticky="nsew")
         self.sidebar_frame.grid_rowconfigure(4, weight=1)
         
         
         self.appearance_mode_label = customtkinter.CTkLabel(self.sidebar_frame, text="Appearance Mode:", anchor="w")
         self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10,0))
-        self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"],
-                                                                  command=self.change_appearance_mode_event)
+        self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"],command=self.change_appearance_mode_event)
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady =(10,10), sticky ="ew")
         
         
@@ -73,10 +74,10 @@ class Main(customtkinter.CTk):
         self.upper_name_frame.grid(row=0, column=2, rowspan=4, sticky="nsew")
         self.upper_name_frame.grid_rowconfigure(6, weight=1)
         
-        self.project_name = customtkinter.CTkLabel(self.upper_name_frame, text="Unified Traveling and Transportation System (UTTS)", font=customtkinter.CTkFont(size=50, weight="bold"))
-        self.project_name.grid(row=0, column=2, padx=200, pady=50)
+        self.project_name = customtkinter.CTkLabel(self.upper_name_frame, text="UTTS\nUnified Traveling and Transportation System", font=customtkinter.CTkFont(size=38, weight="bold"))
+        self.project_name.grid(row=0, column=2, padx=200, pady=24)
 
-        #Progress bar
+        #PROGRESS BAR
         self.slider_progressbar_frame = customtkinter.CTkFrame(self, width=200, height=20, fg_color="transparent")
         self.slider_progressbar_frame.grid(row=6, column=2, padx=(20, 0), pady=(20, 0))
         self.slider_progressbar_frame.grid_columnconfigure(0, weight=4)
@@ -106,9 +107,8 @@ class Main(customtkinter.CTk):
         self.tabview = customtkinter.CTkTabview(self, width=500, height= 250)
         self.tabview.grid(row=8, column=2, padx=(20, 0), pady=(20, 0))
         self.tabview.add("Travel")
-        self.tabview.add("Transport")
-    
         self.tabview.tab("Travel").grid_columnconfigure(0, weight=1)  # configure grid of individual tabs
+        self.tabview.add("Transport")
         self.tabview.tab("Transport").grid_columnconfigure(0, weight=1)
 
         # self.label_tab_2 = customtkinter.CTkLabel(self.tabview.tab("Travel"))
@@ -136,7 +136,7 @@ class Main(customtkinter.CTk):
         self.Truck_button = customtkinter.CTkButton(self.tabview.tab("Transport"), text="Truck",command=self.open_Truck_window)
         self.Truck_button.grid(row=4, column=0, padx=20, pady=(10, 10))
 
-        self.Ship_button = customtkinter.CTkButton(self.tabview.tab("Transport"), text="Ship",command=self.open_Ship_window)
+        self.Ship_button = customtkinter.CTkButton(self.tabview.tab("Transport"), text="Railways",command=self.open_Ship_window)
         self.Ship_button.grid(row=4, column=1, padx=20, pady=(10, 10))
         
         
@@ -236,7 +236,7 @@ class Main(customtkinter.CTk):
     def open_Login_window(self):
         self.destroy()            
         import Login_page
-        Login_page.Login().mainloop()
+        Login_page.mainloop()
 
 
 
