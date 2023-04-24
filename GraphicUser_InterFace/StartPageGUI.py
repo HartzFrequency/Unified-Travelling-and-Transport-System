@@ -236,7 +236,7 @@ class Main(customtkinter.CTk):
     def open_Login_window(self):
         self.destroy()            
         import Login_page
-        Login_page.mainloop()
+        Login_page.Login.mainloop()
 
 
 

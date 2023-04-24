@@ -210,8 +210,8 @@ class Train(customtkinter.CTk):
         # elif selection1=='':
         #     return messagebox.showerror("Error", "choose class of travel") 
         else:
-            Train1_PNR = 0
-            Train2_PNR = 0
+            # Train1_PNR = 0
+            # Train2_PNR = 0
             Query="SELECT PNR,Name,Duration,type,capacity,fare FROM train WHERE FromLocation='{}' AND ToLocation='{}'".format(f1,f2)
             cur.execute(Query)
             availableTRAIN=cur.fetchall()
@@ -222,6 +222,8 @@ class Train(customtkinter.CTk):
             os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
             os.environ['F1'] = str(f1)
             os.environ['F2'] = str(f2)
+            os.environ['RAWA'] = str(rawa)
+            os.environ['RAWC'] = str(rawc)
             
             Number_of_train = len(availableTRAIN)
             print(Number_of_train)
