@@ -19,7 +19,7 @@ class Main(customtkinter.CTk):
 
         #DEFINING WINDOW NAME AND SIZE
         self.title("Home page")
-        self.geometry(f"{1640}x{540}")
+        self.geometry(f"{1440}x{540}")
 
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=0)
@@ -87,40 +87,37 @@ class Main(customtkinter.CTk):
         # self.progressbar_1.start()
 
 
-
         #CREATING TAB VIEW
-        self.tabview = customtkinter.CTkTabview(self, width=1240, height= 50, corner_radius=15)
+        self.tabview = customtkinter.CTkTabview(self, width=1240, height= 50, corner_radius=10)
         self.tabview.grid(row=4, column=2, padx=0, pady=(5, 10))
         self.tabview.add("Travel")
-        self.tabview.tab("Travel").grid_columnconfigure(0, weight=1)  # configure grid of individual tabs
+        self.tabview.tab("Travel").grid_columnconfigure(0, weight=0)  # configure grid of individual tabs
         self.tabview.add("Transport")
         self.tabview.tab("Transport").grid_columnconfigure(0, weight=1)
-
+        # self.grid_columnconfigure((2, 3), weight=0)
         # self.label_tab_2 = customtkinter.CTkLabel(self.tabview.tab("Travel"))
         # self.label_tab_2.grid(row=0, column=0, padx=20, pady=20)
 
         
         self.Bus_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Bus",command=self.open_Bus_window)
-        self.Bus_button.grid(row=4, column=0, padx=20, pady=(10, 10))
+        self.Bus_button.grid(row=4, column=0, padx=(0,110), pady=(10, 10),sticky="w")
 
         self.Car_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Car",command=self.open_Car_window)
-        self.Car_button.grid(row=4, column=1, padx=20, pady=(10, 10))
+        self.Car_button.grid(row=4, column=1, padx=(110,110), pady=(10, 10),sticky="nsew")
 
         self.Train_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Train",command=self.open_Train_window)
-        self.Train_button.grid(row=4, column=2, padx=20, pady=(10, 10))
+        self.Train_button.grid(row=4, column=2, padx=(110,110), pady=(10, 10),sticky="nsew")
 
         self.Airplane_button = customtkinter.CTkButton(self.tabview.tab("Travel"), text="Airplane",command=self.open_Airplane_window)
-        self.Airplane_button.grid(row=4, column=3, padx=20, pady=(10, 10))
+        self.Airplane_button.grid(row=4, column=3, padx=(110,0), pady=(10, 10),sticky="e")
 
 
         
         
         # self.label_tab_3 = customtkinter.CTkLabel(self.tabview.tab("Transport"))
         # self.label_tab_3.grid(row=0, column=0, padx=20, pady=20)
-
         self.Truck_button = customtkinter.CTkButton(self.tabview.tab("Transport"), text="Truck",command=self.open_Truck_window)
         self.Truck_button.grid(row=4, column=0, padx=20, pady=(10, 10))
-
         self.Ship_button = customtkinter.CTkButton(self.tabview.tab("Transport"), text="Railways",command=self.open_Ship_window)
         self.Ship_button.grid(row=4, column=1, padx=20, pady=(10, 10))
         
