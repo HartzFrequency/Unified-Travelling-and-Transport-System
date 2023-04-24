@@ -19,16 +19,16 @@ class Main(customtkinter.CTk):
 
         #DEFINING WINDOW NAME AND SIZE
         self.title("Home page")
-        self.geometry(f"{1240}x{720}")
+        self.geometry(f"{1640}x{540}")
 
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=0)
-        self.grid_columnconfigure((2, 3), weight=1)
-        self.grid_rowconfigure((0, 1, 2), weight=1)
+        self.grid_columnconfigure((2, 3), weight=0)
+        self.grid_rowconfigure((0, 1, 2), weight=0)
 
 
         self.sidebar_frame = customtkinter.CTkFrame(self, width=120, corner_radius=15)
-        self.sidebar_frame.grid(row=9, column=0, rowspan=4, sticky="nsew")
+        self.sidebar_frame.grid(row=9, column=0, rowspan=4, sticky="ns")
         self.sidebar_frame.grid_rowconfigure(1, weight=1)
         
         # PROFILE BUTTON
@@ -56,29 +56,25 @@ class Main(customtkinter.CTk):
         self.appearance_mode_optionemenu.set("Dark")
         self.scaling_optionemenu.set("100%")
 
+    
         
-        
-        self.upper_name_frame = customtkinter.CTkFrame(self, width=140,height=50, corner_radius=5)
+        self.upper_name_frame = customtkinter.CTkFrame(self, width=140,height=50, corner_radius=15)
         self.upper_name_frame.grid(row=0, column=2, rowspan=4, sticky="nsew")
         self.upper_name_frame.grid_rowconfigure(6, weight=1)
         
         self.project_name = customtkinter.CTkLabel(self.upper_name_frame, text="UTTS\nUnified Traveling and Transportation System", font=customtkinter.CTkFont(size=38, weight="bold"))
-        self.project_name.grid(row=0, column=2, padx=200, pady=24)
+        self.project_name.grid(row=0, column=2, padx=200, pady=6)
 
-        #PROGRESS BAR
-        self.slider_progressbar_frame = customtkinter.CTkFrame(self, width=200, height=20, fg_color="transparent")
-        self.slider_progressbar_frame.grid(row=6, column=2, padx=(20, 0), pady=(20, 0))
-        self.slider_progressbar_frame.grid_columnconfigure(0, weight=4)
-        self.slider_progressbar_frame.grid_rowconfigure(14, weight=4)
-        self.progressbar_1 = customtkinter.CTkProgressBar(self.slider_progressbar_frame)
-        self.progressbar_1.grid(row=6, column=2, padx=(20, 10), pady=(10, 10))
+        #PROGRESS BAR TO BE COMPLETED
+        # self.slider_progressbar_frame = customtkinter.CTkFrame(self, width=200, height=20, fg_color="transparent")
+        # self.slider_progressbar_frame.grid(row=6, column=2, padx=(20, 0), pady=(20, 0))
+        # self.slider_progressbar_frame.grid_columnconfigure(0, weight=4)
+        # self.slider_progressbar_frame.grid_rowconfigure(14, weight=4)
+        # self.progressbar_1 = customtkinter.CTkProgressBar(self.slider_progressbar_frame)
+        # self.progressbar_1.grid(row=6, column=2, padx=(20, 10), pady=(10, 10))
 
-        self.progressbar_1.configure(mode="indeterminate")
-        self.progressbar_1.start()
-
-
-
-
+        # self.progressbar_1.configure(mode="indeterminate")
+        # self.progressbar_1.start()
 
         # self.slider_progressbar_frame = customtkinter.CTkFrame(self, width=100,height=20,fg_color="transparent")
         # self.slider_progressbar_frame.grid(row=6, column=2, padx=(20, 0), pady=(20, 0))
@@ -90,10 +86,11 @@ class Main(customtkinter.CTk):
         # self.progressbar_1.configure(mode="indeterminnate")
         # self.progressbar_1.start()
 
-        
-        # create tabview
-        self.tabview = customtkinter.CTkTabview(self, width=500, height= 250)
-        self.tabview.grid(row=8, column=2, padx=(20, 0), pady=(20, 0))
+
+
+        #CREATING TAB VIEW
+        self.tabview = customtkinter.CTkTabview(self, width=1240, height= 50, corner_radius=15)
+        self.tabview.grid(row=4, column=2, padx=0, pady=(5, 10))
         self.tabview.add("Travel")
         self.tabview.tab("Travel").grid_columnconfigure(0, weight=1)  # configure grid of individual tabs
         self.tabview.add("Transport")
