@@ -114,12 +114,12 @@ class Railway(customtkinter.CTk):
         # elif selection1=='':
         #     return messagebox.showerror("Error", "choose class of travel") 
         else:
-            Query="SELECT truckNo,Name,fare,time FROM trucks WHERE fare = '500'"
+            Query="SELECT PNR,name,fare,time FROM railways WHERE fare = '500'"
             cur.execute(Query)
             availableTRUCK=cur.fetchall()
 
           
-            travel_vehicle = "Truck"
+            travel_vehicle = "Railway"
             os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
             os.environ['F1'] = str(f1)
             os.environ['F2'] = str(f2)
@@ -174,7 +174,7 @@ class Railway(customtkinter.CTk):
                os.environ['VEHICLE1_FARE'] = str(truck1_fare)
 
             else:
-                return messagebox.showerror("Error", "No Truck for this Route ")
+                return messagebox.showerror("Error", "No Railway for this Route ")
             self.open_Info_window()
 
     
@@ -195,5 +195,5 @@ class Railway(customtkinter.CTk):
 
 
 if __name__ == "__main__":
-    app6 = Truck()
+    app6 = Railway()
     app6.mainloop()
