@@ -50,7 +50,7 @@ class Train(customtkinter.CTk):
         self.scaling_optionemenu.grid(row=8, column=0, padx=20, pady=(10,20), sticky ="ew")
 
         self.appearance_mode_optionemenu.set("Dark")
-        self.scaling_optionemenu.set("110%")
+        self.scaling_optionemenu.set("100%")
 
 
 
@@ -225,10 +225,10 @@ class Train(customtkinter.CTk):
             os.environ['RAWA'] = str(rawa)
             os.environ['RAWC'] = str(rawc)
             
-            Number_of_train = len(availableTRAIN)
-            print(Number_of_train)
-            os.environ['NUMBER_OF_TRAIN'] = str(Number_of_train)
-            if Number_of_train == 2:
+            Number_of_vehicle = len(availableTRAIN)
+            # print(Number_of_train)
+            os.environ['NUMBER_OF_VEHICLE'] = str(Number_of_vehicle)
+            if Number_of_vehicle == 2:
                Train1_PNR=availableTRAIN[0][0]
                Train1_Name=availableTRAIN[0][1]
                Train1_dur=availableTRAIN[0][2]
@@ -236,12 +236,12 @@ class Train(customtkinter.CTk):
                Train1_cap=availableTRAIN[0][4]       
                Train1_fare=availableTRAIN[0][5]
    
-               os.environ['TRAIN1_PNR'] =  str(Train1_PNR)
-               os.environ['TRAIN1_NAME']  = str(Train1_Name)
-               os.environ['TRAIN1_DUR']  = str(Train1_dur)
-               os.environ['TRAIN1_TYPE']  = str(Train1_type)
-               os.environ['TRAIN1_CAP']  = str(Train1_cap)
-               os.environ['TRAIN1_FARE']  = str(Train1_fare)
+               os.environ['VEHICLE1_ID'] =  str(Train1_PNR)
+               os.environ['VEHICLE1_NAME']  = str(Train1_Name)
+               os.environ['VEHICLE1_DUR']  = str(Train1_dur)
+               os.environ['VEHICLE1_TYPE']  = str(Train1_type)
+               os.environ['VEHICLE1_CAP']  = str(Train1_cap)
+               os.environ['VEHICLE1_FARE']  = str(Train1_fare)
    
    
                Train2_PNR=availableTRAIN[1][0]
@@ -251,14 +251,14 @@ class Train(customtkinter.CTk):
                Train2_cap=availableTRAIN[1][4]
                Train2_fare=availableTRAIN[1][5]
                
-               os.environ['TRAIN2_PNR'] =  str(Train2_PNR)
-               os.environ['TRAIN2_PNR'] =  str(Train2_PNR)
-               os.environ['TRAIN2_NAME']  = str(Train2_Name)
-               os.environ['TRAIN2_DUR']  = str(Train2_dur)
-               os.environ['TRAIN2_TYPE']  = str(Train2_type)
-               os.environ['TRAIN2_CAP']  = str(Train2_cap)
-               os.environ['TRAIN2_FARE'] =  str(Train2_fare)
-            elif Number_of_train == 1:
+               os.environ['VEHICLE2_ID'] =  str(Train2_PNR)
+               os.environ['VEHICLE2_PNR'] =  str(Train2_PNR)
+               os.environ['VEHICLE2_NAME']  = str(Train2_Name)
+               os.environ['VEHICLE2_DUR']  = str(Train2_dur)
+               os.environ['VEHICLE2_TYPE']  = str(Train2_type)
+               os.environ['VEHICLE2_CAP']  = str(Train2_cap)
+               os.environ['VEHICLE2_FARE'] =  str(Train2_fare)
+            elif Number_of_vehicle == 1:
                Train1_PNR=availableTRAIN[0][0]
                Train1_Name=availableTRAIN[0][1]
                Train1_dur=availableTRAIN[0][2]
@@ -266,12 +266,12 @@ class Train(customtkinter.CTk):
                Train1_cap=availableTRAIN[0][4]       
                Train1_fare=availableTRAIN[0][5]
    
-               os.environ['TRAIN1_PNR'] =  str(Train1_PNR)
-               os.environ['TRAIN1_NAME']  = str(Train1_Name)
-               os.environ['TRAIN1_DUR']  = str(Train1_dur)
-               os.environ['TRAIN1_TYPE']  = str(Train1_type)
-               os.environ['TRAIN1_CAP']  = str(Train1_cap)
-               os.environ['TRAIN1_FARE']  = str(Train1_fare)
+               os.environ['VEHICLE1_ID'] =  str(Train1_PNR)
+               os.environ['VEHICLE1_NAME']  = str(Train1_Name)
+               os.environ['VEHICLE1_DUR']  = str(Train1_dur)
+               os.environ['VEHICLE1_TYPE']  = str(Train1_type)
+               os.environ['VEHICLE1_CAP']  = str(Train1_cap)
+               os.environ['VEHICLE1_FARE']  = str(Train1_fare)
             else:
                 return messagebox.showerror("Error", "No trian for this Route ")
 
@@ -282,8 +282,8 @@ class Train(customtkinter.CTk):
     
     def open_Info_window(self):
         self.destroy()            
-        import Train_Route_Info
-        Train_Route_Info.Route().mainloop()
+        import Route_Info
+        Route_Info.Route().mainloop()
 
 
     def change_appearance_mode_event(self, new_appearance_mode: str):

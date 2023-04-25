@@ -218,46 +218,71 @@ class Bus(customtkinter.CTk):
             Query="SELECT BusID,Name,Duration,type,capacity,fare FROM bus WHERE FromLocation='{}' AND ToLocation='{}'".format(f1,f2)
             cur.execute(Query)
             availableBUS=cur.fetchall()
-
-            bus1_ID=availableBUS[0][0]
-            bus1_Name=availableBUS[0][1]
-            bus1_dur=availableBUS[0][2]
-            bus1_type=availableBUS[0][3]
-            bus1_cap=availableBUS[0][4]       
-            bus1_fare=availableBUS[0][5]
+            
             travel_vehicle = "Buses"
             os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
             os.environ['F1'] = str(f1)
             os.environ['F2'] = str(f2)
-            os.environ['BUS1_ID'] = str(bus1_ID)
-            os.environ['BUS1_NAME'] = str(bus1_Name)
-            os.environ['BUS1_DUR'] = str(bus1_dur)
-            os.environ['BUS1_TYPE'] = str(bus1_type)
-            os.environ['BUS1_CAP'] = str(bus1_cap)
-            os.environ['BUS1_FARE'] = str(bus1_fare)
+            os.environ['RAWA'] = str(rawa)
+            os.environ['RAWC'] = str(rawc)
+
+            
+            Number_of_vehicle = len(availableBUS)
+            
+            os.environ['NUMBER_OF_VEHICLE'] = str(Number_of_vehicle)
+            if Number_of_vehicle == 2:
+               bus1_ID=availableBUS[0][0]
+               bus1_Name=availableBUS[0][1]
+               bus1_dur=availableBUS[0][2]
+               bus1_type=availableBUS[0][3]
+               bus1_cap=availableBUS[0][4]       
+               bus1_fare=availableBUS[0][5]
+               
+               os.environ['VEHICLE1_ID'] = str(bus1_ID)
+               os.environ['VEHICLE1_NAME'] = str(bus1_Name)
+               os.environ['VEHICLE1_DUR'] = str(bus1_dur)
+               os.environ['VEHICLE1_TYPE'] = str(bus1_type)
+               os.environ['VEHICLE1_CAP'] = str(bus1_cap)
+               os.environ['VEHICLE1_FARE'] = str(bus1_fare)
 
 
-            bus2_ID=availableBUS[1][0]
-            bus2_Name=availableBUS[1][1]
-            bus2_dur=availableBUS[1][2]
-            bus2_type=availableBUS[1][3]
-            bus2_cap=availableBUS[1][4]
-            bus2_fare=availableBUS[1][5]
-            os.environ['BUS2_ID'] = str(bus2_ID)
-            os.environ['BUS2_NAME'] = str(bus2_Name)
-            os.environ['BUS2_DUR'] = str(bus2_dur)
-            os.environ['BUS2_TYPE'] = str(bus2_type)
-            os.environ['BUS2_CAP'] = str(bus2_cap)
-            os.environ['BUS2_FARE'] = str(bus2_fare)
+               bus2_ID=availableBUS[1][0]
+               bus2_Name=availableBUS[1][1]
+               bus2_dur=availableBUS[1][2]
+               bus2_type=availableBUS[1][3]
+               bus2_cap=availableBUS[1][4]
+               bus2_fare=availableBUS[1][5]
+               os.environ['VEHICLE2_ID'] = str(bus2_ID)
+               os.environ['VEHICLE2_NAME'] = str(bus2_Name)
+               os.environ['VEHICLE2_DUR'] = str(bus2_dur)
+               os.environ['VEHICLE2_TYPE'] = str(bus2_type)
+               os.environ['VEHICLE2_CAP'] = str(bus2_cap)
+               os.environ['VEHICLE2_FARE'] = str(bus2_fare)
+            elif Number_of_vehicle == 1:
+               bus1_ID=availableBUS[0][0]
+               bus1_Name=availableBUS[0][1]
+               bus1_dur=availableBUS[0][2]
+               bus1_type=availableBUS[0][3]
+               bus1_cap=availableBUS[0][4]       
+               bus1_fare=availableBUS[0][5]
+            
+               os.environ['VEHICLE1_ID'] = str(bus1_ID)
+               os.environ['VEHICLE1_NAME'] = str(bus1_Name)
+               os.environ['VEHICLE1_DUR'] = str(bus1_dur)
+               os.environ['VEHICLE1_TYPE'] = str(bus1_type)
+               os.environ['VEHICLE1_CAP'] = str(bus1_cap)
+               os.environ['VEHICLE1_FARE'] = str(bus1_fare)
 
+            else:
+                return messagebox.showerror("Error", "No Bus for this Route ")
             self.open_Info_window()
 
 
     
     def open_Info_window(self):
         self.destroy()            
-        import Bus_Route_Info
-        Bus_Route_Info.Route().mainloop()
+        import Route_Info
+        Route_Info.Route().mainloop()
        
 
     
