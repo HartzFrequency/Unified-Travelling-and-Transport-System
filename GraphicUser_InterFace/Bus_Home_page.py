@@ -93,13 +93,9 @@ class Bus(customtkinter.CTk):
         self.children_optionemenu= tk.Spinbox(self.sidebar_frame1,from_=0, to=5, increment =1)
         self.children_optionemenu.grid(row=18, column=20, padx=100, pady=(5,5),sticky='se')
 
-
-
 #COMTINUE
         self.continue_button = customtkinter.CTkButton(self,text="Continue",command=self.end_e)
-        self.continue_button.grid(row=150, column=15,rowspan=100, padx=20, pady=(10,10),sticky='se')
-
-   
+        self.continue_button.grid(row=150, column=15,rowspan=100, padx=20, pady=(10,10),sticky='se')   
 #BACK BUTTON
         self.string_input_button = customtkinter.CTkButton(self,text="Home", command=self.open_Main_window)
         self.string_input_button.grid(row=150, column=0, padx=20, pady=(10, 10),sticky='sw')
