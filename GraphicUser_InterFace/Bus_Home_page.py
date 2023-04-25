@@ -31,7 +31,7 @@ class Bus(customtkinter.CTk):
 
         super().__init__()
         self.title("Bus Home Page")
-        self.geometry(f"{1440}x{430}")
+        self.geometry(f"{1024}x{360}")
 
 
         self.sidebar_frame = customtkinter.CTkFrame(self, width=120, corner_radius=15)
@@ -53,12 +53,12 @@ class Bus(customtkinter.CTk):
         self.appearance_mode_optionemenu.set("Dark")
         self.scaling_optionemenu.set("100%")
 
-# name of transport
+#SIDE BAR FIRST
         self.sidebar_frame0 = customtkinter.CTkFrame(self, width=120,height=100, corner_radius=15) 
         self.sidebar_frame0.grid(row=0, column=15, rowspan=15,sticky='nsew')
         self.sidebar_frame0.grid_rowconfigure(8, weight=1)
         self.logo_label = customtkinter.CTkLabel(self.sidebar_frame0, text="Bus Booking Services", font=customtkinter.CTkFont(size=42, weight="bold"))
-        self.logo_label.grid(row=0, column=15, padx=420, pady=50)
+        self.logo_label.grid(row=0, column=15, padx=220, pady=50)
 
 
  
@@ -82,10 +82,10 @@ class Bus(customtkinter.CTk):
 
 #TO TEXT
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text="To",font=customtkinter.CTkFont(size=20), anchor="w")
-        self.to_label.grid(row=15, column=20, padx=100, pady=(5,0),sticky='se')
+        self.to_label.grid(row=15, column=20, padx=140, pady=(5,0),sticky='se')
 #DROP DOWN MENU FOR TO
         self.to_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1, values=["Select", "DLH","MUM","BHP","GWL"])
-        self.to_optionemenu.grid(row=16, column=20, padx=120, pady=(5,5),sticky='se')
+        self.to_optionemenu.grid(row=16, column=20, padx=80, pady=(5,5),sticky='se')
 #CHILDREN TEXT
         self.children_label = customtkinter.CTkLabel(self.sidebar_frame1, text="Childrens ", font=customtkinter.CTkFont(size=20),anchor="w")
         self.children_label.grid(row=17, column=20, padx=100, pady=(5,0),sticky='se')
