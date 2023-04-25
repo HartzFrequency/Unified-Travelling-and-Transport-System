@@ -51,26 +51,26 @@ class Route(customtkinter.CTk):
         global Vehicle2_fare
         f1 = os.environ['F1']
         f2 = os.environ['F2']
-        rawa = os.environ['RAWA']
-        rawc = os.environ['RAWC']
+        # rawa = os.environ['RAWA']
+        # rawc = os.environ['RAWC']
 
-        rawa1 = int(rawa)
-        rawc1 = int(rawc)
+        # rawa1 = int(rawa)
+        # rawc1 = int(rawc)
           
         if int(Number_of_vehicle) == 2:
           Vehicle1_ID = os.environ['VEHICLE1_ID'] 
           Vehicle1_Name = os.environ['VEHICLE1_NAME'] 
           Vehicle1_dur = os.environ['VEHICLE1_DUR'] 
-          Vehicle1_type = os.environ['VEHICLE1_TYPE'] 
-          Vehicle1_cap = os.environ['VEHICLE1_CAP'] 
+        #   Vehicle1_type = os.environ['VEHICLE1_TYPE'] 
+        #   Vehicle1_cap = os.environ['VEHICLE1_CAP'] 
           Vehicle1_fare = os.environ['VEHICLE1_FARE'] 
           # new_Train1_fare = Train1_fare
   
           Vehicle2_ID = os.environ['VEHICLE2_ID'] 
           Vehicle2_Name = os.environ['VEHICLE2_NAME'] 
           Vehicle2_dur = os.environ['VEHICLE2_DUR'] 
-          Vehicle2_type = os.environ['VEHICLE2_TYPE'] 
-          Vehicle2_cap = os.environ['VEHICLE2_CAP'] 
+        #   Vehicle2_type = os.environ['VEHICLE2_TYPE'] 
+        #   Vehicle2_cap = os.environ['VEHICLE2_CAP'] 
           Vehicle2_fare = os.environ['VEHICLE2_FARE'] 
           # new_Trai2_fare = Train2_fare
   
@@ -90,12 +90,13 @@ class Route(customtkinter.CTk):
   
           self.duration_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Duration = "+Vehicle1_dur,font=customtkinter.CTkFont(size=20),anchor="w")
           self.duration_1.grid(row=17, column=16, padx=100, pady=10)
-          self.vehicle_type_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Type = "+Vehicle1_type,font=customtkinter.CTkFont(size=20),anchor="w")
-          self.vehicle_type_1.grid(row=18, column=16, padx=100, pady=10)
+
+        #   self.vehicle_type_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Type = "+Vehicle1_type,font=customtkinter.CTkFont(size=20),anchor="w")
+        #   self.vehicle_type_1.grid(row=18, column=16, padx=100, pady=10)
           self.fare_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Fare = "+Vehicle1_fare,font=customtkinter.CTkFont(size=20),anchor="w")
           self.fare_1.grid(row=19, column=16, padx=100, pady=10)
-          self.fare_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Capcity = "+Vehicle1_cap,font=customtkinter.CTkFont(size=20),anchor="w")
-          self.fare_1.grid(row=20, column=16, padx=100, pady=10)
+        #   self.fare_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Capcity = "+Vehicle1_cap,font=customtkinter.CTkFont(size=20),anchor="w")
+        #   self.fare_1.grid(row=20, column=16, padx=100, pady=10)
   
           self.continue_button = customtkinter.CTkButton(self.sidebar_frame1,text="Book",command=self.Book1)
           self.continue_button.grid(row=16, column=17,rowspan=100, padx=20, pady=(10,10))
@@ -119,12 +120,15 @@ class Route(customtkinter.CTk):
   
           self.duration_2 = customtkinter.CTkLabel(self.sidebar_frame2, text="Duration = "+Vehicle2_dur,font=customtkinter.CTkFont(size=20),anchor="w")
           self.duration_2.grid(row=43, column=16, padx=100, pady=10)
-          self.vehicle_type_2 = customtkinter.CTkLabel(self.sidebar_frame2, text="Type = "+Vehicle2_type,font=customtkinter.CTkFont(size=20),anchor="w")
-          self.vehicle_type_2.grid(row=44, column=16, padx=100, pady=10)
+          
+        #   self.vehicle_type_2 = customtkinter.CTkLabel(self.sidebar_frame2, text="Type = "+Vehicle2_type,font=customtkinter.CTkFont(size=20),anchor="w")
+        #   self.vehicle_type_2.grid(row=44, column=16, padx=100, pady=10)
+          
           self.fare_2 = customtkinter.CTkLabel(self.sidebar_frame2, text="Fare = "+Vehicle2_fare,font=customtkinter.CTkFont(size=20),anchor="w")
           self.fare_2.grid(row=45, column=16, padx=100, pady=10)
-          self.fare_2 = customtkinter.CTkLabel(self.sidebar_frame2, text="Capcity = "+Vehicle2_cap,font=customtkinter.CTkFont(size=20),anchor="w")
-          self.fare_2.grid(row=46, column=16, padx=100, pady=10)
+         
+        #   self.fare_2 = customtkinter.CTkLabel(self.sidebar_frame2, text="Capcity = "+Vehicle2_cap,font=customtkinter.CTkFont(size=20),anchor="w")
+        #   self.fare_2.grid(row=46, column=16, padx=100, pady=10)
   
           self.continue_button = customtkinter.CTkButton(self.sidebar_frame2,text="Book",command = self.Book2)
           self.continue_button.grid(row=42, column=17,rowspan=100, padx=20, pady=(10,10))
@@ -132,10 +136,10 @@ class Route(customtkinter.CTk):
           Vehicle1_ID = os.environ['VEHICLE1_ID'] 
           Vehicle1_Name = os.environ['VEHICLE1_NAME'] 
           Vehicle1_dur = os.environ['VEHICLE1_DUR'] 
-          Vehicle1_type = os.environ['VEHICLE1_TYPE'] 
-          Vehicle1_cap = os.environ['VEHICLE1_CAP'] 
+        #   Vehicle1_type = os.environ['VEHICLE1_TYPE'] 
+        #   Vehicle1_cap = os.environ['VEHICLE1_CAP'] 
           # global Train1_fare
-          Vehicle1_fare = os.environ['VEHICLE1_FARE'] 
+          Vehicle1_fare = os.environ['TRAIN1_FARE'] 
           # new_Train1_fare = Train1_fare
 
           self.sidebar_frame1=customtkinter.CTkFrame(self,width=200,height=100)
@@ -153,21 +157,25 @@ class Route(customtkinter.CTk):
   
           self.duration_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Duration = "+Vehicle1_dur,font=customtkinter.CTkFont(size=20),anchor="w")
           self.duration_1.grid(row=17, column=16, padx=100, pady=10)
-          self.vehicle_type_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Type = "+Vehicle1_type,font=customtkinter.CTkFont(size=20),anchor="w")
-          self.vehicle_type_1.grid(row=18, column=16, padx=100, pady=10)
+         
+        #   self.vehicle_type_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Type = "+Vehicle1_type,font=customtkinter.CTkFont(size=20),anchor="w")
+        #   self.vehicle_type_1.grid(row=18, column=16, padx=100, pady=10)
+          
           self.fare_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Fare = "+Vehicle1_fare,font=customtkinter.CTkFont(size=20),anchor="w")
           self.fare_1.grid(row=19, column=16, padx=100, pady=10)
-          self.fare_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Capcity = "+Vehicle1_cap,font=customtkinter.CTkFont(size=20),anchor="w")
-          self.fare_1.grid(row=20, column=16, padx=100, pady=10)
+          
+        #   self.fare_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Capcity = "+Vehicle1_cap,font=customtkinter.CTkFont(size=20),anchor="w")
+        #   self.fare_1.grid(row=20, column=16, padx=100, pady=10)
   
           self.continue_button = customtkinter.CTkButton(self.sidebar_frame1,text="Book",command=self.Book1)
           self.continue_button.grid(row=16, column=17,rowspan=100, padx=20, pady=(10,10))
   
     def Book1(self):
       # self.destroy()
-      new_Vehicel1_fare = int(Vehicle1_fare)
-      total_fare = (new_Vehicel1_fare*rawa1) + ((new_Vehicel1_fare/2)*rawc1)
-      result = f"Your ticket has been booked\nFrom : {f1}\nTo : {f2}\nNumber of Adults : {rawa1}\nNumber of Children : {rawc1}\nAmount : {total_fare}"
+    #   new_Vehicel1_fare = int(Vehicle1_fare)
+    #   total_fare = (new_Vehicel1_fare*rawa1) + ((new_Vehicel1_fare/2)*rawc1)
+     
+      result = f"Your transport cargo has been booked\nFrom : {f1}\nTo : {f2}\nAmount : {Vehicle1_fare}"
       # print(int(new_Train2_fare))
       # print(rawa1)
       # print(rawc1)
@@ -186,11 +194,11 @@ class Route(customtkinter.CTk):
        
     def Book2(self):
       # self.destroy()
-      new_Vehicel2_fare =  int(Vehicle2_fare)
-      total_fare = (new_Vehicel2_fare*rawa1) + ((new_Vehicel2_fare/2)*rawc1)
+    #   new_Vehicel2_fare =  int(Vehicle2_fare)
+    #   total_fare = (new_Vehicel2_fare*rawa1) + ((new_Vehicel2_fare/2)*rawc1)
 
-      result = f"Your ticket has been booked\nFrom : {f1}\nTo : {f2}\nNumber of Adults : {rawa1}\nNumber of Children : {rawc1}\nAmount : {total_fare}"
-      
+      result = f"Your transport cargo has been booked\nFrom : {f1}\nTo : {f2}\nAmount : {Vehicle2_fare}"
+       
 
       conformation = customtkinter.CTkToplevel(self)
       conformation.title("Ticket Conformation Window")

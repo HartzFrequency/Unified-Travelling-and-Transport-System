@@ -16,7 +16,7 @@ cur=UTTSdb.cursor()
 
 window3 = customtkinter.CTk()
 customtkinter.set_appearance_mode("System")  
-customtkinter.set_default_color_theme("green") 
+customtkinter.set_default_color_theme("blue") 
 
 
 class Car(customtkinter.CTk):
