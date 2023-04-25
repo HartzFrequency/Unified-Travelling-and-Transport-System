@@ -45,8 +45,10 @@ class Route(customtkinter.CTk):
         global f2
         global rawa1
         global rawc1
-        global new_Train1_fare
-        global new_Train2_fare
+        # global new_Train1_fare
+        # global new_Train2_fare
+        global Train1_fare
+        global Train2_fare
         f1 = os.environ['F1']
         f2 = os.environ['F2']
         rawa = os.environ['RAWA']
@@ -61,18 +63,16 @@ class Route(customtkinter.CTk):
           Train1_dur = os.environ['TRAIN1_DUR'] 
           Train1_type = os.environ['TRAIN1_TYPE'] 
           Train1_cap = os.environ['TRAIN1_CAP'] 
-          # global Train1_fare
           Train1_fare = os.environ['TRAIN1_FARE'] 
-          new_Train1_fare = Train1_fare
+          # new_Train1_fare = Train1_fare
   
           Train2_PNR = os.environ['TRAIN2_PNR'] 
           Train2_Name = os.environ['TRAIN2_NAME'] 
           Train2_dur = os.environ['TRAIN2_DUR'] 
           Train2_type = os.environ['TRAIN2_TYPE'] 
           Train2_cap = os.environ['TRAIN2_CAP'] 
-          # global Train2_fare
           Train2_fare = os.environ['TRAIN2_FARE'] 
-          new_Trai2_fare = Train2_fare
+          # new_Trai2_fare = Train2_fare
   
   
           self.sidebar_frame1=customtkinter.CTkFrame(self,width=200,height=100)
@@ -132,7 +132,7 @@ class Route(customtkinter.CTk):
           Train1_cap = os.environ['TRAIN1_CAP'] 
           # global Train1_fare
           Train1_fare = os.environ['TRAIN1_FARE'] 
-          new_Train1_fare = Train1_fare
+          # new_Train1_fare = Train1_fare
 
           self.sidebar_frame1=customtkinter.CTkFrame(self,width=200,height=100)
           self.sidebar_frame1.grid(row=15,column=10,rowspan=25, padx=20, pady=10)
@@ -154,17 +154,22 @@ class Route(customtkinter.CTk):
           self.fare_1 = customtkinter.CTkLabel(self.sidebar_frame1, text="Fare = "+Train1_fare,font=customtkinter.CTkFont(size=20),anchor="w")
           self.fare_1.grid(row=19, column=16, padx=100, pady=10)
   
-          self.continue_button = customtkinter.CTkButton(self.sidebar_frame1,text="Book")
+          self.continue_button = customtkinter.CTkButton(self.sidebar_frame1,text="Book",command=self.Book1)
           self.continue_button.grid(row=16, column=17,rowspan=100, padx=20, pady=(10,10))
   
     def Book1(self):
-      self.destroy()
-      total_fare = int(new_Train1_fare*rawa1 + (new_Train1_fare/2)*rawc1)
+      # self.destroy()
+      new_Train1_fare = int(Train1_fare)
+      total_fare = (new_Train1_fare*rawa1) + ((new_Train1_fare/2)*rawc1)
       result = f"Your ticket has been booked\nFrom : {f1}\nTo : {f2}\nNumber of Adults : {rawa1}\nNumber of Adults : {rawc1}\nAmount : {total_fare}"
+      # print(int(new_Train2_fare))
+      # print(rawa1)
+      # print(rawc1)
+
 
       conformation = customtkinter.CTkToplevel(self)
       conformation.title("Ticket Conformation Window")
-      conformation.geometry("600*400")
+      conformation.geometry("800*400")
 
       self.sidebar_frame0 = customtkinter.CTkFrame(conformation, width=30,height=5, corner_radius=0) 
       self.sidebar_frame0.grid(row=0, column=10, rowspan=10)
@@ -174,14 +179,16 @@ class Route(customtkinter.CTk):
 
        
     def Book2(self):
-      self.destroy()
-      total_fare = int(new_Train2_fare*rawa1 + (new_Train2_fare/2)*rawc1)
+      # self.destroy()
+      new_Train2_fare =  int(Train2_fare)
+      total_fare = (new_Train2_fare*rawa1) + ((new_Train2_fare/2)*rawc1)
+
       result = f"Your ticket has been booked\nFrom : {f1}\nTo : {f2}\nNumber of Adults : {rawa1}\nNumber of Adults : {rawc1}\nAmount : {total_fare}"
       
 
       conformation = customtkinter.CTkToplevel(self)
       conformation.title("Ticket Conformation Window")
-      conformation.geometry("600*800")
+      conformation.geometry("800*400")
 
       self.sidebar_frame0 = customtkinter.CTkFrame(conformation, width=30,height=5, corner_radius=0) 
       self.sidebar_frame0.grid(row=0, column=10, rowspan=10)

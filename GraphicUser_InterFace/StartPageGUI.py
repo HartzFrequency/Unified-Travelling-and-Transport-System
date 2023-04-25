@@ -10,7 +10,7 @@ window1 = customtkinter.CTk()
 # AVAILABLE MODES->"System", "Dark", "Light"
 customtkinter.set_appearance_mode("System") 
 #AVAILABLE THEMES->"blue", "green", "dark-blue" 
-customtkinter.set_default_color_theme("green")
+customtkinter.set_default_color_theme("blue")
 
 class Main(customtkinter.CTk):
 
