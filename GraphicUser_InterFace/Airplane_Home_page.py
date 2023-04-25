@@ -134,19 +134,75 @@ class Airplane(customtkinter.CTk):
             cur.execute(Query)
             availableFLIGHT=cur.fetchall()
 
-            Flight1_PNR=availableFLIGHT[0][0]
-            Flight1_Name=availableFLIGHT[0][1]
-            Flight1_dur=availableFLIGHT[0][2]
-            Flight1_type=availableFLIGHT[0][3]
-            Flight1_cap=availableFLIGHT[0][4]       
-            Flight1_fare=availableFLIGHT[0][5]
+            # Flight1_PNR=availableFLIGHT[0][0]
+            # Flight1_Name=availableFLIGHT[0][1]
+            # Flight1_dur=availableFLIGHT[0][2]
+            # Flight1_type=availableFLIGHT[0][3]
+            # Flight1_cap=availableFLIGHT[0][4]       
+            # Flight1_fare=availableFLIGHT[0][5]
 
-            Flight2_ID=availableFLIGHT[1][0]
-            Flight2_Name=availableFLIGHT[1][1]
-            Flight2_dur=availableFLIGHT[1][2]
-            Flight2_type=availableFLIGHT[1][3]
-            Flight2_cap=availableFLIGHT[1][4]
-            Flight2_fare=availableFLIGHT[1][5]
+            # Flight2_ID=availableFLIGHT[1][0]
+            # Flight2_Name=availableFLIGHT[1][1]
+            # Flight2_dur=availableFLIGHT[1][2]
+            # Flight2_type=availableFLIGHT[1][3]
+            # Flight2_cap=availableFLIGHT[1][4]
+            # Flight2_fare=availableFLIGHT[1][5]
+            travel_vehicle = "Flight"
+            os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
+            os.environ['F1'] = str(f1)
+            os.environ['F2'] = str(f2)
+            os.environ['RAWA'] = str(rawa)
+            os.environ['RAWC'] = str(rawc)
+
+            
+            Number_of_vehicle = len(availableFLIGHT)
+            
+            os.environ['NUMBER_OF_VEHICLE'] = str(Number_of_vehicle)
+            if Number_of_vehicle == 2:
+               flight1_ID=availableFLIGHT[0][0]
+               flight1_Name=availableFLIGHT[0][1]
+               flight1_dur=availableFLIGHT[0][2]
+               flight1_type=availableFLIGHT[0][3]
+               flight1_cap=availableFLIGHT[0][4]       
+               flight1_fare=availableFLIGHT[0][5]
+               
+               os.environ['VEHICLE1_ID'] = str(flight1_ID)
+               os.environ['VEHICLE1_NAME'] = str(flight1_Name)
+               os.environ['VEHICLE1_DUR'] = str(flight1_dur)
+               os.environ['VEHICLE1_TYPE'] = str(flight1_type)
+               os.environ['VEHICLE1_CAP'] = str(flight1_cap)
+               os.environ['VEHICLE1_FARE'] = str(flight1_fare)
+
+
+               flight2_ID=availableFLIGHT[1][0]
+               flight2_Name=availableFLIGHT[1][1]
+               flight2_dur=availableFLIGHT[1][2]
+               flight2_type=availableFLIGHT[1][3]
+               flight2_cap=availableFLIGHT[1][4]
+               flight2_fare=availableFLIGHT[1][5]
+               os.environ['VEHICLE2_ID'] = str(flight2_ID)
+               os.environ['VEHICLE2_NAME'] = str(flight2_Name)
+               os.environ['VEHICLE2_DUR'] = str(flight2_dur)
+               os.environ['VEHICLE2_TYPE'] = str(flight2_type)
+               os.environ['VEHICLE2_CAP'] = str(flight2_cap)
+               os.environ['VEHICLE2_FARE'] = str(flight2_fare)
+            elif Number_of_vehicle == 1:
+               flight1_ID=availableFLIGHT[0][0]
+               flight1_Name=availableFLIGHT[0][1]
+               flight1_dur=availableFLIGHT[0][2]
+               flight1_type=availableFLIGHT[0][3]
+               flight1_cap=availableFLIGHT[0][4]       
+               flight1_fare=availableFLIGHT[0][5]
+            
+               os.environ['VEHICLE1_ID'] = str(flight1_ID)
+               os.environ['VEHICLE1_NAME'] = str(flight1_Name)
+               os.environ['VEHICLE1_DUR'] = str(flight1_dur)
+               os.environ['VEHICLE1_TYPE'] = str(flight1_type)
+               os.environ['VEHICLE1_CAP'] = str(flight1_cap)
+               os.environ['VEHICLE1_FARE'] = str(flight1_fare)
+
+            else:
+                return messagebox.showerror("Error", "No Flight for this Route ")
             self.open_Info_window()
 
 
