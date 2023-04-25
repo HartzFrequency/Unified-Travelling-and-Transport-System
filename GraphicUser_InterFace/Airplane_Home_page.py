@@ -63,7 +63,7 @@ class Airplane(customtkinter.CTk):
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text="From",font=customtkinter.CTkFont(size=20),anchor="w")
         self.to_label.grid(row=15, column=10, padx=100, pady=(5,0),sticky='sw')
 #DROP DOWN MENU FOR 
-        self.from_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1,values=["Select","GWL", "BHP","MUM", "DLH"])
+        self.from_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1,values=["Select","CDG", "DEL","BOM", "LHR","PEK","ATL","SYD","FRA"])
         self.from_optionemenu.grid(row=16, column=10, padx=60, pady=(5,5),sticky='sw')
 #ADULT TEXT
         self.adult_label = customtkinter.CTkLabel(self.sidebar_frame1, text="Adults ",font=customtkinter.CTkFont(size=20) ,anchor="w")
@@ -78,7 +78,7 @@ class Airplane(customtkinter.CTk):
         self.to_label = customtkinter.CTkLabel(self.sidebar_frame1, text="To",font=customtkinter.CTkFont(size=20), anchor="w")
         self.to_label.grid(row=15, column=20, padx=140, pady=(5,0),sticky='se')
 #DROP DOWN MENU FOR TO
-        self.to_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1, values=["Select", "DLH","MUM","BHP","GWL"])
+        self.to_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1, values=["Select", "ORD","HND","LHR","DXB","JFK","SFO","LAX","CDG"])
         self.to_optionemenu.grid(row=16, column=20, padx=80, pady=(5,5),sticky='se')
 #CHILDREN TEXT
         self.children_label = customtkinter.CTkLabel(self.sidebar_frame1, text="Childrens ", font=customtkinter.CTkFont(size=20),anchor="w")
@@ -158,7 +158,7 @@ class Airplane(customtkinter.CTk):
             Number_of_vehicle = len(availableFLIGHT)
             
             os.environ['NUMBER_OF_VEHICLE'] = str(Number_of_vehicle)
-            if Number_of_vehicle == 2:
+            if Number_of_vehicle >= 2:
                flight1_ID=availableFLIGHT[0][0]
                flight1_Name=availableFLIGHT[0][1]
                flight1_dur=availableFLIGHT[0][2]

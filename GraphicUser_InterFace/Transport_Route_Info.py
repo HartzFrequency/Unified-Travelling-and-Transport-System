@@ -175,7 +175,7 @@ class Route(customtkinter.CTk):
     #   new_Vehicel1_fare = int(Vehicle1_fare)
     #   total_fare = (new_Vehicel1_fare*rawa1) + ((new_Vehicel1_fare/2)*rawc1)
      
-      result = f"Your transport vehicel has been booked\nFrom : {f1}\nTo : {f2}\nAmount : {Vehicle1_fare}"
+      result = f"Your transport cargo has been booked\nFrom : {f1}\nTo : {f2}\nAmount : {Vehicle1_fare}"
       # print(int(new_Train2_fare))
       # print(rawa1)
       # print(rawc1)
@@ -197,7 +197,7 @@ class Route(customtkinter.CTk):
     #   new_Vehicel2_fare =  int(Vehicle2_fare)
     #   total_fare = (new_Vehicel2_fare*rawa1) + ((new_Vehicel2_fare/2)*rawc1)
 
-      result = f"Your transport vehicel has been booked\nFrom : {f1}\nTo : {f2}\nAmount : {Vehicle2_fare}"
+      result = f"Your transport cargo has been booked\nFrom : {f1}\nTo : {f2}\nAmount : {Vehicle2_fare}"
        
 
       conformation = customtkinter.CTkToplevel(self)

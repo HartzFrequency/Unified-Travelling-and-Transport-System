@@ -10,7 +10,7 @@ import mysql.connector
 UTTSdb = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='harsh',
+    password='Rajput@MySQL',
     database='UTTS')
 cur=UTTSdb.cursor()
 

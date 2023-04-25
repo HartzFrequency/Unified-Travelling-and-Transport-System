@@ -135,7 +135,7 @@ class Route(customtkinter.CTk):
           Vehicle1_type = os.environ['VEHICLE1_TYPE'] 
           Vehicle1_cap = os.environ['VEHICLE1_CAP'] 
           # global Train1_fare
-          Vehicle1_fare = os.environ['TRAIN1_FARE'] 
+          Vehicle1_fare = os.environ['VEHICLE1_FARE'] 
           # new_Train1_fare = Train1_fare
 
           self.sidebar_frame1=customtkinter.CTkFrame(self,width=200,height=100)
