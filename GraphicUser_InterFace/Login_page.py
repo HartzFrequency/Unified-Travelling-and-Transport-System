@@ -51,7 +51,7 @@ class Login(customtkinter.CTk):
         UTTSdb = mysql.connector.connect(
         host='localhost',
         user='root',
-        password='harsh',
+        password='Rajput@MySQL',
         database='UTTS')
 
         entered_username = self.username_entry.get()
