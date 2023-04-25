@@ -20,7 +20,7 @@ window6 = customtkinter.CTk()
 customtkinter.set_appearance_mode("System")  
 customtkinter.set_default_color_theme("blue") 
 
-class Truck(customtkinter.CTk):
+class Railway(customtkinter.CTk):
     def __init__(self):
         super().__init__()
         self.title("Truck Home Page")
@@ -48,7 +48,7 @@ class Truck(customtkinter.CTk):
         self.sidebar_frame0 = customtkinter.CTkFrame(self, width=120,height=100, corner_radius=15) 
         self.sidebar_frame0.grid(row=0, column=15, rowspan=15, sticky = 'nsew')
         self.sidebar_frame0.grid_rowconfigure(8, weight=1)
-        self.logo_label = customtkinter.CTkLabel(self.sidebar_frame0, text="Truck Booking Services", font=customtkinter.CTkFont(size=42, weight="bold"))
+        self.logo_label = customtkinter.CTkLabel(self.sidebar_frame0, text="Railway Booking Services", font=customtkinter.CTkFont(size=42, weight="bold"))
         self.logo_label.grid(row=0, column=15, padx=220, pady=50)
 
 

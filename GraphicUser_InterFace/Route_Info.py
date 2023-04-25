@@ -40,7 +40,7 @@ class Route(customtkinter.CTk):
         self.logo_label = customtkinter.CTkLabel(self.sidebar_frame0, text="Available "+travel_vehicle, font=customtkinter.CTkFont(size=30, weight="bold"))
         self.logo_label.grid(row=0, column=15, padx=150, pady=20)
         
-        Number_of_train = os.environ['NUMBER_OF_VEHICLE']
+        Number_of_vehicle = os.environ['NUMBER_OF_VEHICLE']
         global f1
         global f2
         global rawa1
@@ -57,7 +57,7 @@ class Route(customtkinter.CTk):
         rawa1 = int(rawa)
         rawc1 = int(rawc)
           
-        if int(Number_of_train) == 2:
+        if int(Number_of_vehicle) == 2:
           Vehicle1_ID = os.environ['VEHICLE1_ID'] 
           Vehicle1_Name = os.environ['VEHICLE1_NAME'] 
           Vehicle1_dur = os.environ['VEHICLE1_DUR'] 

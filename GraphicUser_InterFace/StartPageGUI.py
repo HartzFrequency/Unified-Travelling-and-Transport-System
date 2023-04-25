@@ -166,8 +166,8 @@ class Main(customtkinter.CTk):
 
     def open_Ship_window(self):
         self.destroy()            
-        import Ship_Home_page
-        Ship_Home_page.Ship().mainloop()
+        import Railway_Home_page
+        Railway_Home_page.Railway().mainloop()
 
 
 if __name__ == "__main__":
