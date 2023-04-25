@@ -175,9 +175,9 @@ class Route(customtkinter.CTk):
 
       conformation = customtkinter.CTkToplevel(self)
       conformation.title("Ticket Conformation Window")
-      conformation.geometry("800*400")
+      conformation.geometry("800*600")
 
-      self.sidebar_frame0 = customtkinter.CTkFrame(conformation, width=30,height=5, corner_radius=0) 
+      self.sidebar_frame0 = customtkinter.CTkFrame(conformation, width=50,height=8, corner_radius=0) 
       self.sidebar_frame0.grid(row=0, column=10, rowspan=10)
       self.sidebar_frame0.grid_rowconfigure(8, weight=1)
       self.logo_label = customtkinter.CTkLabel(self.sidebar_frame0, text=result, font=customtkinter.CTkFont(size=20))
@@ -194,9 +194,9 @@ class Route(customtkinter.CTk):
 
       conformation = customtkinter.CTkToplevel(self)
       conformation.title("Ticket Conformation Window")
-      conformation.geometry("800*400")
+      conformation.geometry("800*600")
 
-      self.sidebar_frame0 = customtkinter.CTkFrame(conformation, width=30,height=5, corner_radius=0) 
+      self.sidebar_frame0 = customtkinter.CTkFrame(conformation, width=50,height=8, corner_radius=0) 
       self.sidebar_frame0.grid(row=0, column=10, rowspan=10)
       self.sidebar_frame0.grid_rowconfigure(8, weight=1)
       self.logo_label = customtkinter.CTkLabel(self.sidebar_frame0, text=result, font=customtkinter.CTkFont(size=20))

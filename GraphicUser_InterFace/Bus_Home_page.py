@@ -21,7 +21,7 @@ cur=UTTSdb.cursor()
 
 window2 = customtkinter.CTk()
 customtkinter.set_appearance_mode("System")  
-customtkinter.set_default_color_theme("green") 
+customtkinter.set_default_color_theme("blue") 
 
 
 class Bus(customtkinter.CTk):
@@ -70,7 +70,7 @@ class Bus(customtkinter.CTk):
         self.to_label.grid(row=15, column=10, padx=100, pady=(5,0),sticky='sw')
 #DROP DOWN MENU FOR 
         self.from_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame1,values=["Select","GWL", "BHP","MUM", "DLH"])
-        self.from_optionemenu.grid(row=16, column=10, padx=60, pady=(5,5),sticky='sw')
+        self.from_optionemenu.grid(row=16, column=10, padx=75, pady=(5,5),sticky='sw')
 #ADULT TEXT
         self.adult_label = customtkinter.CTkLabel(self.sidebar_frame1, text="Adults ",font=customtkinter.CTkFont(size=20) ,anchor="w")
         self.adult_label.grid(row=17, column=10, padx=100, pady=(5,0),sticky='sw')
@@ -91,7 +91,7 @@ class Bus(customtkinter.CTk):
         self.children_label.grid(row=17, column=20, padx=100, pady=(5,0),sticky='se')
 #VALUE SELECTOR
         self.children_optionemenu= tk.Spinbox(self.sidebar_frame1,from_=0, to=5, increment =1)
-        self.children_optionemenu.grid(row=18, column=20, padx=100, pady=(5,5),sticky='se')
+        self.children_optionemenu.grid(row=18, column=20, padx=80, pady=(5,5),sticky='se')
 
 #COMTINUE
         self.continue_button = customtkinter.CTkButton(self,text="Continue",command=self.end_e)

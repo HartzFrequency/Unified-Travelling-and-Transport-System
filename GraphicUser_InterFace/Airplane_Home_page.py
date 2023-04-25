@@ -11,13 +11,13 @@ import mysql.connector
 UTTSdb = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='harsh',
+    password='Rajput@MySQL',
     database='UTTS')
 cur=UTTSdb.cursor()
 
 window5 = customtkinter.CTk()
 customtkinter.set_appearance_mode("System")  
-customtkinter.set_default_color_theme("green") 
+customtkinter.set_default_color_theme("blue") 
 
 class Airplane(customtkinter.CTk):
 
