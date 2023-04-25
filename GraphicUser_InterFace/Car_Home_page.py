@@ -10,7 +10,7 @@ import mysql.connector
 UTTSdb = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='harsh',
+    password='Rajput@MySQL',
     database='UTTS')
 cur=UTTSdb.cursor()
 
@@ -128,20 +128,78 @@ class Car(customtkinter.CTk):
             cur.execute(Query)
             availableCAR=cur.fetchall()
 
-            Car1_PNR=availableCAR[0][0]
-            Car1_Name=availableCAR[0][1]
-            Car1_dur=availableCAR[0][2]
-            Car1_type=availableCAR[0][3]
-            Car1_cap=availableCAR[0][4]       
-            Car1_fare=availableCAR[0][5]
+            # Car1_PNR=availableCAR[0][0]
+            # Car1_Name=availableCAR[0][1]
+            # Car1_dur=availableCAR[0][2]
+            # Car1_type=availableCAR[0][3]
+            # Car1_cap=availableCAR[0][4]       
+            # Car1_fare=availableCAR[0][5]
 
-            Car2_ID=availableCAR[1][0]
-            Car2_Name=availableCAR[1][1]
-            Car2_dur=availableCAR[1][2]
-            Car2_type=availableCAR[1][3]
-            Car2_cap=availableCAR[1][4]
-            Car2_fare=availableCAR[1][5]
+            # Car2_ID=availableCAR[1][0]
+            # Car2_Name=availableCAR[1][1]
+            # Car2_dur=availableCAR[1][2]
+            # Car2_type=availableCAR[1][3]
+            # Car2_cap=availableCAR[1][4]
+            # Car2_fare=availableCAR[1][5]
+            # self.open_Info_window()
+            travel_vehicle = "Cars"
+            os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
+            os.environ['F1'] = str(f1)
+            os.environ['F2'] = str(f2)
+            os.environ['RAWA'] = str(rawa)
+            os.environ['RAWC'] = str(rawc)
+
+            
+            Number_of_vehicle = len(availableCAR)
+            
+            os.environ['NUMBER_OF_VEHICLE'] = str(Number_of_vehicle)
+            if Number_of_vehicle == 2:
+               car1_ID=availableCAR[0][0]
+               car1_Name=availableCAR[0][1]
+               car1_dur=availableCAR[0][2]
+               car1_type=availableCAR[0][3]
+               car1_cap=availableCAR[0][4]       
+               car1_fare=availableCAR[0][5]
+               
+               os.environ['VEHICLE1_ID'] = str(car1_ID)
+               os.environ['VEHICLE1_NAME'] = str(car1_Name)
+               os.environ['VEHICLE1_DUR'] = str(car1_dur)
+               os.environ['VEHICLE1_TYPE'] = str(car1_type)
+               os.environ['VEHICLE1_CAP'] = str(car1_cap)
+               os.environ['VEHICLE1_FARE'] = str(car1_fare)
+
+
+               car2_ID=availableCAR[1][0]
+               car2_Name=availableCAR[1][1]
+               car2_dur=availableCAR[1][2]
+               car2_type=availableCAR[1][3]
+               car2_cap=availableCAR[1][4]
+               car2_fare=availableCAR[1][5]
+               os.environ['VEHICLE2_ID'] = str(car2_ID)
+               os.environ['VEHICLE2_NAME'] = str(car2_Name)
+               os.environ['VEHICLE2_DUR'] = str(car2_dur)
+               os.environ['VEHICLE2_TYPE'] = str(car2_type)
+               os.environ['VEHICLE2_CAP'] = str(car2_cap)
+               os.environ['VEHICLE2_FARE'] = str(car2_fare)
+            elif Number_of_vehicle == 1:
+               car1_ID=availableCAR[0][0]
+               car1_Name=availableCAR[0][1]
+               car1_dur=availableCAR[0][2]
+               car1_type=availableCAR[0][3]
+               car1_cap=availableCAR[0][4]       
+               car1_fare=availableCAR[0][5]
+            
+               os.environ['VEHICLE1_ID'] = str(car1_ID)
+               os.environ['VEHICLE1_NAME'] = str(car1_Name)
+               os.environ['VEHICLE1_DUR'] = str(car1_dur)
+               os.environ['VEHICLE1_TYPE'] = str(car1_type)
+               os.environ['VEHICLE1_CAP'] = str(car1_cap)
+               os.environ['VEHICLE1_FARE'] = str(car1_fare)
+
+            else:
+                return messagebox.showerror("Error", "No Car for this Route ")
             self.open_Info_window()
+
 
 
     
