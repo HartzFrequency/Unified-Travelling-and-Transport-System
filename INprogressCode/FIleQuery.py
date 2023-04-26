@@ -16,3 +16,10 @@ print(availableCAR)
 #         # write each item on a new line
 #         fp.write("%s\n" % item)
 #     print('Done')
+
+data = [(1, 'Car 1', 'DI', 4, 500), 
+        (20, 'Car 20','EV', 4, 500)]
+
+with open("output.txt", "w") as f:
+    for line in data:
+        f.write(str(line) + "\n")
