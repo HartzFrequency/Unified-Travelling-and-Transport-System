@@ -10,7 +10,7 @@ window1 = customtkinter.CTk()
 # AVAILABLE MODES->"System", "Dark", "Light"
 customtkinter.set_appearance_mode("System") 
 #AVAILABLE THEMES->"blue", "green", "dark-blue" 
-customtkinter.set_default_color_theme("green")
+customtkinter.set_default_color_theme("blue")
 
 class Main(customtkinter.CTk):
 
@@ -166,8 +166,8 @@ class Main(customtkinter.CTk):
 
     def open_Ship_window(self):
         self.destroy()            
-        import Ship_Home_page
-        Ship_Home_page.Ship().mainloop()
+        import Railway_Home_page
+        Railway_Home_page.Railway().mainloop()
 
 
 if __name__ == "__main__":
