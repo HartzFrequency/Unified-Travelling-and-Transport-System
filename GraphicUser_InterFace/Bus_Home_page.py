@@ -129,7 +129,7 @@ class Bus(customtkinter.CTk):
         elif f1=='-Select-':
             return messagebox.showerror('Error','Please select Departure location')
         elif rawa=='0' and rawc=='0':
-            return messagebox.showerror("Error", "choose no. of passengers")
+            return messagebox.showerror("Error", "choose no of passengers")
         # elif selection=='':
         #     return messagebox.showerror("Error", "choose method of travel")
         # elif selection1=='':
