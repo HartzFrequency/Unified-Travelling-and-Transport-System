@@ -20,6 +20,10 @@ print(availableCAR)
 data = [(1, 'Car 1', 'DI', 4, 500), 
         (20, 'Car 20','EV', 4, 500)]
 
-with open("output.txt", "w") as f:
+# with open("INprogressCode\\buffer_query_data.txt", "w") as f:
+#     for line in availableCAR:
+#         f.write(str(line) + "\n")
+
+with open("INprogressCode\\buffer_query_data.txt", "w") as f:
     for line in data:
         f.write(str(line) + "\n")
