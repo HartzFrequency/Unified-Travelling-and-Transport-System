@@ -1,6 +1,6 @@
 
 
-""under process till than run the code using login.py inside GraphicUser_InterFace directory""
+#""under process till than run the code using login.py inside GraphicUser_InterFace directory""
 
 
 # import mysql.connector
