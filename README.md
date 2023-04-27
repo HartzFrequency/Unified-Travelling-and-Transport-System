@@ -37,7 +37,6 @@ pip install tk
 pip3 install customtkinter
 pip install pillow
 pip install mysql-connector-python
-
 ```
 
 ## Usage
