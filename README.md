@@ -33,7 +33,11 @@ git clone https://github.com/HartzFrequency/Unified-Travelling-and-Transport-Sys
 2. Install the required dependencies:
 
 ```
-pip install -r requirements.txt
+pip install tk
+pip3 install customtkinter
+pip install pillow
+pip install mysql-connector-python
+
 ```
 
 ## Usage
