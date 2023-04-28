@@ -6,14 +6,7 @@ import os
 from tkinter import PhotoImage
 from tkinter import messagebox
 import mysql.connector
-
-UTTSdb = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='Rajput@MySQL',
-    database='UTTS')
-cur=UTTSdb.cursor()
-
+import SQL as sql
 
 window4 = customtkinter.CTk()
 customtkinter.set_appearance_mode("System")  
@@ -124,13 +117,8 @@ class Train(customtkinter.CTk):
         # elif selection1=='':
         #     return messagebox.showerror("Error", "choose class of travel") 
         else:
-            # Train1_PNR = 0
-            # Train2_PNR = 0
-            Query="SELECT PNR,Name,Duration,type,capacity,fare FROM train WHERE FromLocation='{}' AND ToLocation='{}'".format(f1,f2)
-            cur.execute(Query)
-            availableTRAIN=cur.fetchall()
 
-
+            availableTRAIN=sql.Query_GetAvailableTrain(f1, f2)
             
             travel_vehicle = "Railway"
             os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)

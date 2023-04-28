@@ -9,15 +9,7 @@ from tkinter import ttk
 from tkinter import *
 from tkinter.ttk import *
 import mysql.connector
-
-
-UTTSdb = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='harsh',
-    database='UTTS')
-cur=UTTSdb.cursor()
-
+import SQL as sql
 
 window2 = customtkinter.CTk()
 customtkinter.set_appearance_mode("System")  
@@ -136,10 +128,7 @@ class Bus(customtkinter.CTk):
         #     return messagebox.showerror("Error", "choose class of travel") 
         else:
             
-            Query="SELECT BusID,Name,Duration,type,capacity,fare FROM bus WHERE FromLocation='{}' AND ToLocation='{}'".format(f1,f2)
-            cur.execute(Query)
-            availableBUS=cur.fetchall()
-            
+            availableBUS=sql.Query_GetAvailableBus(f1, f2) 
             travel_vehicle = "Buses"
             os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
             os.environ['F1'] = str(f1)

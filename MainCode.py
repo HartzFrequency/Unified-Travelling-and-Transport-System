@@ -3,6 +3,7 @@
 #""under process till than run the code using login.py inside GraphicUser_InterFace directory""
 
 
+# import GraphicUser_InterFace.SQL as sql
 # import mysql.connector
 # import GraphicUser_InterFace.Login_page
 # import GraphicUser_InterFace.StartPageGUI
@@ -45,3 +46,5 @@
 #print(UTTSdb.connection_id)
 #print to check connection establishment
 
+# result=sql.Query_GetAvailableBus("GWL", "BHP")
+# print(result)

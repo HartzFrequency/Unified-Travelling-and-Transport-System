@@ -1,12 +1,13 @@
 import tkinter as tk
 import tkinter.messagebox
-import mysql.connector
-import customtkinter
-from PIL import Image, ImageTk
-import os
 from tkinter import PhotoImage
 from tkinter import messagebox
 from tkinter.font import Font
+import customtkinter
+from PIL import Image, ImageTk
+import os
+import mysql.connector
+import SQL as sql
 
 customtkinter.set_appearance_mode("dark")
 
@@ -48,19 +49,10 @@ class Login(customtkinter.CTk):
 
     def login_event(self):
         
-        UTTSdb = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='harsh',
-        database='UTTS')
-
         entered_username = self.username_entry.get()
         entered_password = self.password_entry.get()
 
-        cur=UTTSdb.cursor()
-        s="SELECT * FROM users WHERE first_name = '{}' AND Password = '{}'".format(entered_username,entered_password)
-        cur.execute(s)
-        QueryCheckForPassword=cur.fetchone()
+        QueryCheckForPassword=sql.Query_LoginCheck(entered_username, entered_password)
 
         if QueryCheckForPassword:
             self.destroy()            

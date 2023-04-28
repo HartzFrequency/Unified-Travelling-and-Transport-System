@@ -6,13 +6,7 @@ import os
 from tkinter import PhotoImage
 from tkinter import messagebox
 import mysql.connector
-
-UTTSdb = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='harsh',
-    database='UTTS')
-cur=UTTSdb.cursor()
+import SQL as sql
 
 window3 = customtkinter.CTk()
 customtkinter.set_appearance_mode("System")  
@@ -124,24 +118,9 @@ class Car(customtkinter.CTk):
         # elif selection1=='':
         #     return messagebox.showerror("Error", "choose class of travel") 
         else:
-            Query="SELECT CarID,Name,Duration,type,capacity,fare FROM car WHERE FromLocation='{}' AND ToLocation='{}'".format(f1,f2)
-            cur.execute(Query)
-            availableCAR=cur.fetchall()
 
-            # Car1_PNR=availableCAR[0][0]
-            # Car1_Name=availableCAR[0][1]
-            # Car1_dur=availableCAR[0][2]
-            # Car1_type=availableCAR[0][3]
-            # Car1_cap=availableCAR[0][4]       
-            # Car1_fare=availableCAR[0][5]
+            availableCAR=sql.Query_GetAvailableCar(f1, f2)
 
-            # Car2_ID=availableCAR[1][0]
-            # Car2_Name=availableCAR[1][1]
-            # Car2_dur=availableCAR[1][2]
-            # Car2_type=availableCAR[1][3]
-            # Car2_cap=availableCAR[1][4]
-            # Car2_fare=availableCAR[1][5]
-            # self.open_Info_window()
             travel_vehicle = "Cars"
             os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
             os.environ['F1'] = str(f1)
