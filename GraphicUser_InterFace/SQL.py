@@ -41,3 +41,13 @@ def Query_WriteSearchResult(QueryContainer):
     with open("LocalDATA\\buffer_query_data.txt", "w") as f:
         for line in QueryContainer:
             f.write(str(line) + "\n")
+
+def Query_FetchFromFile():
+    Buffer = open('LocalDATA\\buffer_query_data.txt', 'r')
+    Lines = Buffer.readlines()
+    list = []
+    for line in Lines:
+        line = line.strip()
+        line = line.strip("()")
+        list.append(line)
+    return list

@@ -24,6 +24,15 @@ data = [(1, 'Car 1', 'DI', 4, 500),
 #     for line in availableCAR:
 #         f.write(str(line) + "\n")
 
-with open("INprogressCode\\buffer_query_data.txt", "w") as f:
-    for line in data:
-        f.write(str(line) + "\n")
+# Using readlines()
+file1 = open('INprogressCode\\buffer_query_data.txt', 'r')
+Lines = file1.readlines()
+
+list = []
+
+for line in Lines:
+    line = line.strip()
+    line = line.strip("()")
+    list.append(line)
+    # print("{}".format(line))
+print(list)

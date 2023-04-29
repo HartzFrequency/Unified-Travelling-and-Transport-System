@@ -103,7 +103,7 @@ class Bus(customtkinter.CTk):
         global rawa
         global rawc
         global f1
-        f1= self.from_optionemenu.get() #from value
+        f1= self.from_optionemenu.get()#from value
         
         global f2
         f2= self.to_optionemenu.get() #to value

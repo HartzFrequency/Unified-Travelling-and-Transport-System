@@ -1,5 +1,5 @@
 import customtkinter
-
+import SQL as sql
 
 class App(customtkinter.CTk):
     def __init__(self):
@@ -15,7 +15,11 @@ class App(customtkinter.CTk):
 
         self.textbox = customtkinter.CTkTextbox(master=self)
         self.textbox.grid(row=0, column=0, columnspan=2, padx=20, pady=(20, 0), sticky="nsew")
-        self.textbox.insert("0.0", "CTkTextbox\n\n" + "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n\n" * 20)
+
+        #writing availabilty in text box
+        AvailableList = sql.Query_FetchFromFile()
+        for i in range(AvailableList.__len__()):
+            self.textbox.insert("0.0",AvailableList[i]+"\n")
 
         self.combobox = customtkinter.CTkComboBox(master=self, values=["Sample text 1", "Text 2"])
         self.combobox.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
