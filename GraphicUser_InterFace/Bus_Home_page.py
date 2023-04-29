@@ -24,7 +24,7 @@ class Bus(customtkinter.CTk):
         super().__init__()
         self.title("Bus Home Page")
         self.geometry(f"{1024}x{360}")
-
+        
 
         self.sidebar_frame = customtkinter.CTkFrame(self, width=120, corner_radius=15)
         self.sidebar_frame.grid(row=9, column=0, rowspan=4, sticky="nse")
@@ -129,6 +129,8 @@ class Bus(customtkinter.CTk):
         else:
             
             availableBUS=sql.Query_GetAvailableBus(f1, f2) 
+            sql.Query_WriteSearchResult(availableBUS)
+
             travel_vehicle = "Buses"
             os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
             os.environ['F1'] = str(f1)

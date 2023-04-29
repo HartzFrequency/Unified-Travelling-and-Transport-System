@@ -36,3 +36,8 @@ def Query_GetAvailableTrain(frm,to):
     cur.execute(Query)
     Result=cur.fetchall()
     return Result
+
+def Query_WriteSearchResult(QueryContainer):
+    with open("LocalDATA\\buffer_query_data.txt", "w") as f:
+        for line in QueryContainer:
+            f.write(str(line) + "\n")
