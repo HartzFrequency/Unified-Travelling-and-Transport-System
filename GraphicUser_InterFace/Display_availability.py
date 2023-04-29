@@ -19,12 +19,15 @@ class App(customtkinter.CTk):
 
         AvailableList = sql.Query_FetchFromFile()
         AvailableList.reverse()
+        list=[]
         indexing_Choices=len(AvailableList)
         for i in range(AvailableList.__len__()):
             self.textbox.insert("0.0",str(indexing_Choices)+"). "+AvailableList[i]+"\n")
-            indexing_Choices=indexing_Choices-1  
-              
-        list=["Sample text 1", "Text 2", "harsh"]
+            indexing_Choices=indexing_Choices-1
+            list.append("Choice "+ str(indexing_Choices+1))  
+        list.append("Select")
+        list.reverse()
+
         self.combobox = customtkinter.CTkComboBox(master=self, values=list)
         self.combobox.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
         self.button = customtkinter.CTkButton(master=self, command=self.button_callback, text="Proceed")
