@@ -14,12 +14,16 @@ class App(customtkinter.CTk):
 
         self.textbox = customtkinter.CTkTextbox(master=self)
         self.textbox.grid(row=0, column=0, columnspan=2, padx=20, pady=(20, 0), sticky="nsew")
+        self.textbox.configure(font=("Arial", 18))
+
 
         AvailableList = sql.Query_FetchFromFile()
-        indexing_Choices=1
+        AvailableList.reverse()
+        indexing_Choices=len(AvailableList)
         for i in range(AvailableList.__len__()):
             self.textbox.insert("0.0",str(indexing_Choices)+"). "+AvailableList[i]+"\n")
-            indexing_Choices=indexing_Choices+1        
+            indexing_Choices=indexing_Choices-1  
+              
         list=["Sample text 1", "Text 2", "harsh"]
         self.combobox = customtkinter.CTkComboBox(master=self, values=list)
         self.combobox.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
