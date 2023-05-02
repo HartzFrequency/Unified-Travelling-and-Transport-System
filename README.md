@@ -62,4 +62,3 @@ Contributions to the Unified Travelling and Transport System are welcome. To con
 ## License
 
 The Unified Travelling and Transport System is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-``` 
