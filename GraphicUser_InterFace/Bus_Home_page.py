@@ -130,62 +130,9 @@ class Bus(customtkinter.CTk):
             
             availableBUS=sql.Query_GetAvailableBus(f1, f2) 
             sql.Query_WriteSearchResult(availableBUS)
-
-            travel_vehicle = "Buses"
-            os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
-            os.environ['F1'] = str(f1)
-            os.environ['F2'] = str(f2)
-            os.environ['RAWA'] = str(rawa)
-            os.environ['RAWC'] = str(rawc)
-
             
             Number_of_vehicle = len(availableBUS)
-            
-            os.environ['NUMBER_OF_VEHICLE'] = str(Number_of_vehicle)
-            if Number_of_vehicle == 2:
-               bus1_ID=availableBUS[0][0]
-               bus1_Name=availableBUS[0][1]
-               bus1_dur=availableBUS[0][2]
-               bus1_type=availableBUS[0][3]
-               bus1_cap=availableBUS[0][4]       
-               bus1_fare=availableBUS[0][5]
-               
-               os.environ['VEHICLE1_ID'] = str(bus1_ID)
-               os.environ['VEHICLE1_NAME'] = str(bus1_Name)
-               os.environ['VEHICLE1_DUR'] = str(bus1_dur)
-               os.environ['VEHICLE1_TYPE'] = str(bus1_type)
-               os.environ['VEHICLE1_CAP'] = str(bus1_cap)
-               os.environ['VEHICLE1_FARE'] = str(bus1_fare)
-
-
-               bus2_ID=availableBUS[1][0]
-               bus2_Name=availableBUS[1][1]
-               bus2_dur=availableBUS[1][2]
-               bus2_type=availableBUS[1][3]
-               bus2_cap=availableBUS[1][4]
-               bus2_fare=availableBUS[1][5]
-               os.environ['VEHICLE2_ID'] = str(bus2_ID)
-               os.environ['VEHICLE2_NAME'] = str(bus2_Name)
-               os.environ['VEHICLE2_DUR'] = str(bus2_dur)
-               os.environ['VEHICLE2_TYPE'] = str(bus2_type)
-               os.environ['VEHICLE2_CAP'] = str(bus2_cap)
-               os.environ['VEHICLE2_FARE'] = str(bus2_fare)
-            elif Number_of_vehicle == 1:
-               bus1_ID=availableBUS[0][0]
-               bus1_Name=availableBUS[0][1]
-               bus1_dur=availableBUS[0][2]
-               bus1_type=availableBUS[0][3]
-               bus1_cap=availableBUS[0][4]       
-               bus1_fare=availableBUS[0][5]
-            
-               os.environ['VEHICLE1_ID'] = str(bus1_ID)
-               os.environ['VEHICLE1_NAME'] = str(bus1_Name)
-               os.environ['VEHICLE1_DUR'] = str(bus1_dur)
-               os.environ['VEHICLE1_TYPE'] = str(bus1_type)
-               os.environ['VEHICLE1_CAP'] = str(bus1_cap)
-               os.environ['VEHICLE1_FARE'] = str(bus1_fare)
-
-            else:
+            if Number_of_vehicle == 0:
                 return messagebox.showerror("Error", "No Bus for this Route ")
             self.open_Info_window()
 
