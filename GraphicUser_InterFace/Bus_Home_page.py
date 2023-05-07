@@ -190,9 +190,9 @@ class Bus(customtkinter.CTk):
             self.open_Info_window()
 
     def open_Info_window(self):
-        self.destroy()            
-        import Route_Info
-        Route_Info.Route().mainloop()
+        self.destroy()        
+        import Display_availability    
+        Display_availability.Available.mainloop()
        
     def change_appearance_mode_event(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)
