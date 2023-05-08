@@ -112,81 +112,23 @@ class Train(customtkinter.CTk):
             return messagebox.showerror('Error','Please select Departure location')
         elif rawa=='0' and rawc=='0':
             return messagebox.showerror("Error", "choose no. of passengers")
-        # elif selection=='':
-        #     return messagebox.showerror("Error", "choose method of travel")
-        # elif selection1=='':
-        #     return messagebox.showerror("Error", "choose class of travel") 
+
         else:
 
             availableTRAIN=sql.Query_GetAvailableTrain(f1, f2)
-            
-            travel_vehicle = "Railway"
-            os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
-            os.environ['F1'] = str(f1)
-            os.environ['F2'] = str(f2)
-            os.environ['RAWA'] = str(rawa)
-            os.environ['RAWC'] = str(rawc)
-            
-            Number_of_vehicle = len(availableTRAIN)
-            # print(Number_of_train)
-            os.environ['NUMBER_OF_VEHICLE'] = str(Number_of_vehicle)
-            if Number_of_vehicle == 2:
-               Train1_PNR=availableTRAIN[0][0]
-               Train1_Name=availableTRAIN[0][1]
-               Train1_dur=availableTRAIN[0][2]
-               Train1_type=availableTRAIN[0][3]
-               Train1_cap=availableTRAIN[0][4]       
-               Train1_fare=availableTRAIN[0][5]
-   
-               os.environ['VEHICLE1_ID'] =  str(Train1_PNR)
-               os.environ['VEHICLE1_NAME']  = str(Train1_Name)
-               os.environ['VEHICLE1_DUR']  = str(Train1_dur)
-               os.environ['VEHICLE1_TYPE']  = str(Train1_type)
-               os.environ['VEHICLE1_CAP']  = str(Train1_cap)
-               os.environ['VEHICLE1_FARE']  = str(Train1_fare)
-   
-   
-               Train2_PNR=availableTRAIN[1][0]
-               Train2_Name=availableTRAIN[1][1]
-               Train2_dur=availableTRAIN[1][2]
-               Train2_type=availableTRAIN[1][3]
-               Train2_cap=availableTRAIN[1][4]
-               Train2_fare=availableTRAIN[1][5]
-               
-               os.environ['VEHICLE2_ID'] =  str(Train2_PNR)
-               os.environ['VEHICLE2_PNR'] =  str(Train2_PNR)
-               os.environ['VEHICLE2_NAME']  = str(Train2_Name)
-               os.environ['VEHICLE2_DUR']  = str(Train2_dur)
-               os.environ['VEHICLE2_TYPE']  = str(Train2_type)
-               os.environ['VEHICLE2_CAP']  = str(Train2_cap)
-               os.environ['VEHICLE2_FARE'] =  str(Train2_fare)
-            elif Number_of_vehicle == 1:
-               Train1_PNR=availableTRAIN[0][0]
-               Train1_Name=availableTRAIN[0][1]
-               Train1_dur=availableTRAIN[0][2]
-               Train1_type=availableTRAIN[0][3]
-               Train1_cap=availableTRAIN[0][4]       
-               Train1_fare=availableTRAIN[0][5]
-   
-               os.environ['VEHICLE1_ID'] =  str(Train1_PNR)
-               os.environ['VEHICLE1_NAME']  = str(Train1_Name)
-               os.environ['VEHICLE1_DUR']  = str(Train1_dur)
-               os.environ['VEHICLE1_TYPE']  = str(Train1_type)
-               os.environ['VEHICLE1_CAP']  = str(Train1_cap)
-               os.environ['VEHICLE1_FARE']  = str(Train1_fare)
-            else:
-                return messagebox.showerror("Error", "No trian for this Route ")
-
+            sql.Query_WriteSearchResult(availableTRAIN)
         
-            self.open_Info_window()
+            Number_of_vehicle = len(availableTRAIN)
 
+            if Number_of_vehicle == 0:
+                return messagebox.showerror("Error", "No Train for this Route ")
+            self.open_Info_window()
 
     
     def open_Info_window(self):
         self.destroy()            
-        import Route_Info
-        Route_Info.Route().mainloop()
-
+        import Display_availability    
+        Display_availability.Available().mainloop()
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)

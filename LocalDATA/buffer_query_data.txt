@@ -1,2 +1,1 @@
-(9, 'Car 9', datetime.timedelta(seconds=36000), 'EV', 4, 700)
-(13, 'Car 13', datetime.timedelta(seconds=36000), 'DI', 4, 700)
+(45678, 'Duronto Express', datetime.timedelta(seconds=39600), 'AC', 60, 1800)
