@@ -40,7 +40,6 @@ class Available(customtkinter.CTk):
         Payment.mainloop()
     
 
-
 if __name__ == "__main__":
     Available = App()
     Available.mainloop()
