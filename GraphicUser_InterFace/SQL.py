@@ -37,6 +37,19 @@ def Query_GetAvailableTrain(frm,to):
     Result=cur.fetchall()
     return Result
 
+def Query_GetAvailableRailway(frm,to):
+    Query="SELECT * FROM railways"
+    cur.execute(Query)
+    Result=cur.fetchall()
+    return Result
+
+def Query_GetAvailableTruck(frm,to):
+    Query="SELECT * FROM trucks"
+    cur.execute(Query)
+    Result=cur.fetchall()
+    return Result
+
+
 def Query_WriteSearchResult(QueryContainer):
     with open("LocalDATA\\buffer_query_data.txt", "w") as f:
         for line in QueryContainer:
