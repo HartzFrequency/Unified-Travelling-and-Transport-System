@@ -71,7 +71,7 @@ class Truck(customtkinter.CTk):
         self.continue_button.grid(row=150, column=15,rowspan=100, padx=20, pady=(10,10),sticky='se')
 
 #BACK BUTTON 
-        self.string_input_button = customtkinter.CTkButton(self,text="Back Button", command=self.open_Main_window)
+        self.string_input_button = customtkinter.CTkButton(self,text="Home", command=self.open_Main_window)
         self.string_input_button.grid(row=150, column=0, padx=20, pady=(10, 10),sticky='sw')
 
 
