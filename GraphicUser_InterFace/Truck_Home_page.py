@@ -6,15 +6,7 @@ import os
 from tkinter import PhotoImage
 from tkinter import messagebox
 import mysql.connector
-
-UTTSdb = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='Rajput@MySQL',
-    database='UTTS')
-cur=UTTSdb.cursor()
-
-
+import SQL as sql
 
 window6 = customtkinter.CTk()
 customtkinter.set_appearance_mode("System")  
@@ -95,10 +87,7 @@ class Truck(customtkinter.CTk):
         f1 = self.from_optionemenu.get()  #from value
         global f2
         f2 = self.to_optionemenu.get() #to value
-        # a = self.adult_optionemenu.get()
-        # rawa=a
-        # b= self.children_optionemenu.get()
-        # rawc=b
+        
         if f1=='-Select-' and f2=='-Select-':
             return messagebox.showerror('Error','Please select Departure & Arrival locations')
         elif f2=='-Select-':
@@ -107,81 +96,21 @@ class Truck(customtkinter.CTk):
             return messagebox.showerror("Error", "Invalid location entry!")
         elif f1=='-Select-':
             return messagebox.showerror('Error','Please select Departure location')
-        # elif rawa=='0' and rawc=='0':
-        #     return messagebox.showerror("Error", "choose no. of passengers")
-        # elif selection=='':
-        #     return messagebox.showerror("Error", "choose method of travel")
-        # elif selection1=='':
-        #     return messagebox.showerror("Error", "choose class of travel") 
+        
         else:
-            Query="SELECT truckNo,Name,fare,time FROM trucks WHERE fare = '500'"
-            cur.execute(Query)
-            availableTRUCK=cur.fetchall()
+            availableTRUCK=sql.Query_GetAvailableTruck(0, 0)
+            sql.Query_WriteSearchResult(availableTRUCK)
 
-          
-            travel_vehicle = "Truck"
-            os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
-            os.environ['F1'] = str(f1)
-            os.environ['F2'] = str(f2)
-            # os.environ['RAWA'] = str(rawa)
-            # os.environ['RAWC'] = str(rawc)
-
-            
             Number_of_vehicle = len(availableTRUCK)
             
-            os.environ['NUMBER_OF_VEHICLE'] = str(Number_of_vehicle)
-            if Number_of_vehicle == 2:
-               truck1_ID=availableTRUCK[0][0]
-               truck1_Name=availableTRUCK[0][1]
-               truck1_fare=availableTRUCK[0][2]
-               truck1_dur=availableTRUCK[0][3]
-            #    truck1_type=availableTRUCK[0][3]
-            #    truck1_cap=availableTRUCK[0][4]       
-               
-               os.environ['VEHICLE1_ID'] = str(truck1_ID)
-               os.environ['VEHICLE1_NAME'] = str(truck1_Name)
-               os.environ['VEHICLE1_DUR'] = str(truck1_dur)
-            #    os.environ['VEHICLE1_TYPE'] = str(truck1_type)
-            #    os.environ['VEHICLE1_CAP'] = str(truck1_cap)
-               os.environ['VEHICLE1_FARE'] = str(truck1_fare)
-
-
-               truck2_ID=availableTRUCK[1][0]
-               truck2_Name=availableTRUCK[1][1]
-               truck2_fare=availableTRUCK[1][2]
-               truck2_dur=availableTRUCK[1][3]
-            #    truck2_type=availableTRUCK[1][3]
-            #    truck2_cap=availableTRUCK[1][4]
-               os.environ['VEHICLE2_ID'] = str(truck2_ID)
-               os.environ['VEHICLE2_NAME'] = str(truck2_Name)
-               os.environ['VEHICLE2_DUR'] = str(truck2_dur)
-            #    os.environ['VEHICLE2_TYPE'] = str(truck2_type)
-            #    os.environ['VEHICLE2_CAP'] = str(truck2_cap)
-               os.environ['VEHICLE2_FARE'] = str(truck2_fare)
-            elif Number_of_vehicle == 1:
-               truck1_ID=availableTRUCK[0][0]
-               truck1_Name=availableTRUCK[0][1]
-               truck1_fare=availableTRUCK[0][2]
-               truck1_dur=availableTRUCK[0][3]
-            #    truck1_type=availableTRUCK[0][3]
-            #    truck1_cap=availableTRUCK[0][4]       
-            
-               os.environ['VEHICLE1_ID'] = str(truck1_ID)
-               os.environ['VEHICLE1_NAME'] = str(truck1_Name)
-               os.environ['VEHICLE1_DUR'] = str(truck1_dur)
-            #    os.environ['VEHICLE1_TYPE'] = str(truck1_type)
-            #    os.environ['VEHICLE1_CAP'] = str(truck1_cap)
-               os.environ['VEHICLE1_FARE'] = str(truck1_fare)
-
-            else:
-                return messagebox.showerror("Error", "No Truck for this Route ")
+            if Number_of_vehicle == 0:
+                return messagebox.showerror("Error", "No Transport for this ")
             self.open_Info_window()
-
     
     def open_Info_window(self):
         self.destroy()            
-        import Transport_Route_Info
-        Transport_Route_Info.Route().mainloop()
+        import Display_availability    
+        Display_availability.Available().mainloop()
 
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
