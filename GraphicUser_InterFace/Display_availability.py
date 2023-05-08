@@ -32,9 +32,13 @@ class Available(customtkinter.CTk):
         self.combobox.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
         self.button = customtkinter.CTkButton(master=self, command=self.button_callback, text="Proceed")
         self.button.grid(row=1, column=1, padx=20, pady=20, sticky="ew")
+        
 
     def button_callback(self):
-        self.textbox.insert("insert", self.combobox.get() + "\n")
+        self.destroy()            
+        import Payment
+        Payment.mainloop()
+    
 
 
 if __name__ == "__main__":
