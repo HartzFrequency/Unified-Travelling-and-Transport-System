@@ -68,7 +68,7 @@ class Bus(customtkinter.CTk):
         self.adult_label.grid(row=17, column=10, padx=100, pady=(5,0),sticky='sw')
 #VALUE SELECTOR 
         self.adult_optionemenu= tk.Spinbox(self.sidebar_frame1,from_=0, to=5, increment =1)
-        self.adult_optionemenu.grid(row=18, column=10,padx=75, pady=(5,5),sticky='sw')
+        self.adult_optionemenu.grid(row=18, column=10,padx=95, pady=(5,5),sticky='sw')
 
 
 
@@ -83,7 +83,7 @@ class Bus(customtkinter.CTk):
         self.children_label.grid(row=17, column=20, padx=100, pady=(5,0),sticky='se')
 #VALUE SELECTOR
         self.children_optionemenu= tk.Spinbox(self.sidebar_frame1,from_=0, to=5, increment =1)
-        self.children_optionemenu.grid(row=18, column=20, padx=80, pady=(5,5),sticky='se')
+        self.children_optionemenu.grid(row=18, column=20, padx=100, pady=(5,5),sticky='se')
 
 #COMTINUE
         self.continue_button = customtkinter.CTkButton(self,text="Continue",command=self.end_e)
