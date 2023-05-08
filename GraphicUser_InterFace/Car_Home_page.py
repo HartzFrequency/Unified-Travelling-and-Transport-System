@@ -113,82 +113,23 @@ class Car(customtkinter.CTk):
             return messagebox.showerror('Error','Please select Departure location')
         elif rawa=='0' and rawc=='0':
             return messagebox.showerror("Error", "choose no. of passengers")
-        # elif selection=='':
-        #     return messagebox.showerror("Error", "choose method of travel")
-        # elif selection1=='':
-        #     return messagebox.showerror("Error", "choose class of travel") 
+
         else:
 
             availableCAR=sql.Query_GetAvailableCar(f1, f2)
+            sql.Query_WriteSearchResult(availableCAR)
 
-            travel_vehicle = "Cars"
-            os.environ['TRAVEL_VEHICLE'] = str(travel_vehicle)
-            os.environ['F1'] = str(f1)
-            os.environ['F2'] = str(f2)
-            os.environ['RAWA'] = str(rawa)
-            os.environ['RAWC'] = str(rawc)
-
-            
             Number_of_vehicle = len(availableCAR)
             
-            os.environ['NUMBER_OF_VEHICLE'] = str(Number_of_vehicle)
-            if Number_of_vehicle == 2:
-               car1_ID=availableCAR[0][0]
-               car1_Name=availableCAR[0][1]
-               car1_dur=availableCAR[0][2]
-               car1_type=availableCAR[0][3]
-               car1_cap=availableCAR[0][4]       
-               car1_fare=availableCAR[0][5]
-               
-               os.environ['VEHICLE1_ID'] = str(car1_ID)
-               os.environ['VEHICLE1_NAME'] = str(car1_Name)
-               os.environ['VEHICLE1_DUR'] = str(car1_dur)
-               os.environ['VEHICLE1_TYPE'] = str(car1_type)
-               os.environ['VEHICLE1_CAP'] = str(car1_cap)
-               os.environ['VEHICLE1_FARE'] = str(car1_fare)
-
-
-               car2_ID=availableCAR[1][0]
-               car2_Name=availableCAR[1][1]
-               car2_dur=availableCAR[1][2]
-               car2_type=availableCAR[1][3]
-               car2_cap=availableCAR[1][4]
-               car2_fare=availableCAR[1][5]
-               os.environ['VEHICLE2_ID'] = str(car2_ID)
-               os.environ['VEHICLE2_NAME'] = str(car2_Name)
-               os.environ['VEHICLE2_DUR'] = str(car2_dur)
-               os.environ['VEHICLE2_TYPE'] = str(car2_type)
-               os.environ['VEHICLE2_CAP'] = str(car2_cap)
-               os.environ['VEHICLE2_FARE'] = str(car2_fare)
-            elif Number_of_vehicle == 1:
-               car1_ID=availableCAR[0][0]
-               car1_Name=availableCAR[0][1]
-               car1_dur=availableCAR[0][2]
-               car1_type=availableCAR[0][3]
-               car1_cap=availableCAR[0][4]       
-               car1_fare=availableCAR[0][5]
-            
-               os.environ['VEHICLE1_ID'] = str(car1_ID)
-               os.environ['VEHICLE1_NAME'] = str(car1_Name)
-               os.environ['VEHICLE1_DUR'] = str(car1_dur)
-               os.environ['VEHICLE1_TYPE'] = str(car1_type)
-               os.environ['VEHICLE1_CAP'] = str(car1_cap)
-               os.environ['VEHICLE1_FARE'] = str(car1_fare)
-
-            else:
-                return messagebox.showerror("Error", "No Car for this Route ")
+            if Number_of_vehicle == 0:
+                return messagebox.showerror("Error", "No Car for this Route")
             self.open_Info_window()
-
-
-
     
     def open_Info_window(self):
         self.destroy()            
-        import Route_Info
-        Route_Info.Route().mainloop()
+        import Display_availability    
+        Display_availability.Available().mainloop()
 
-
-    
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)
@@ -196,23 +137,6 @@ class Car(customtkinter.CTk):
     def change_scaling_event(self, new_scaling: str):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         customtkinter.set_widget_scaling(new_scaling_float)
-
-
-    # def itenary():
-    #     global flightname
-    #     global origin
-    #     global destination
-    #     global departure
-    #     global arrival
-    #     global totalprice
-    #     global f1
-    #     global f2
-    #     itenary=tk.Tk()
-    #     itenary.title('Itenary')
-    #     itenary.geometry('500x500')
-    #     # flightname=flname1
-    #     # totalprice=str(tprice1*2)
-
 
 if __name__ == "__main__":
     app3 = Car()

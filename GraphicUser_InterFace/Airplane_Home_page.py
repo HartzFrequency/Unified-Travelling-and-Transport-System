@@ -119,10 +119,8 @@ class Airplane(customtkinter.CTk):
             return messagebox.showerror('Error','Please select Departure location')
         elif rawa=='0' and rawc=='0':
             return messagebox.showerror("Error", "choose no. of passengers")
-        # elif selection=='':
-        #     return messagebox.showerror("Error", "choose method of travel")
-        # elif selection1=='':
-        #     return messagebox.showerror("Error", "choose class of travel") 
+
+
         else:
             
             availableFLIGHT=sql.Query_GetAvailableFlight(f1, f2)
@@ -137,7 +135,7 @@ class Airplane(customtkinter.CTk):
     def open_Info_window(self):
         self.destroy()        
         import Display_availability    
-        Display_availability.Available.mainloop()
+        Display_availability.Available().mainloop()
 
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
