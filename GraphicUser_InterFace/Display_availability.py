@@ -1,5 +1,5 @@
 import customtkinter
-import SQL as sql
+import Modules.SQL as sql
 
 class Available(customtkinter.CTk):
     def __init__(self):

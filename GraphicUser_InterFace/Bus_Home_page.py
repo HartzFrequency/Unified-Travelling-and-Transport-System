@@ -9,7 +9,7 @@ from tkinter import ttk
 from tkinter import *
 from tkinter.ttk import *
 import mysql.connector
-import SQL as sql
+import Modules.SQL as sql
 
 window2 = customtkinter.CTk()
 customtkinter.set_appearance_mode("System")  

@@ -6,7 +6,7 @@ import os
 from tkinter import PhotoImage
 from tkinter import messagebox
 import mysql.connector
-import SQL as sql
+import Modules.SQL as sql
 
 
 window5 = customtkinter.CTk()
@@ -14,7 +14,6 @@ customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("blue") 
 
 class Airplane(customtkinter.CTk):
-
     
     def __init__(self):
         super().__init__()
@@ -25,8 +24,8 @@ class Airplane(customtkinter.CTk):
         self.sidebar_frame = customtkinter.CTkFrame(self, width=120, corner_radius=15)
         self.sidebar_frame.grid(row=9, column=0, rowspan=4, sticky="nse")
         self.sidebar_frame.grid_rowconfigure(1, weight=1)
-        
-        
+
+
         self.appearance_mode_label = customtkinter.CTkLabel(self.sidebar_frame, text="Appearance Mode", anchor="center")
         self.appearance_mode_label.grid(row=5, column=0, padx=10, pady=(5,0))
         self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"],command=self.change_appearance_mode_event)
@@ -88,7 +87,6 @@ class Airplane(customtkinter.CTk):
         self.string_input_button = customtkinter.CTkButton(self,text="Home", command=self.open_Main_window)
         self.string_input_button.grid(row=150, column=0, padx=20, pady=(10, 10),sticky='sw')
 
-
     
     def open_Main_window(self):
         self.destroy()            
@@ -96,8 +94,6 @@ class Airplane(customtkinter.CTk):
         StartPageGUI.Main().mainloop()
 
 
-        
-        
     def end_e(self):#function to end app-GUI
         global rawa
         global rawc
@@ -146,25 +142,6 @@ class Airplane(customtkinter.CTk):
         customtkinter.set_widget_scaling(new_scaling_float)
 
 
-
-    # def itenary():
-    #     global flightname
-    #     global origin
-    #     global destination
-    #     global departure
-    #     global arrival
-    #     global totalprice
-    #     global f1
-    #     global f2
-    #     itenary=tk.Tk()
-    #     itenary.title('Itenary')
-    #     itenary.geometry('500x500')
-    #     # flightname=flname1
-    #     # totalprice=str(tprice1*2)
-
-
 if __name__ == "__main__":
     app5 = Airplane()
     app5.mainloop()
-    
-    

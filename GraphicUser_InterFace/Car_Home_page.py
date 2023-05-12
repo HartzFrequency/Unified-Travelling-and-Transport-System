@@ -6,7 +6,7 @@ import os
 from tkinter import PhotoImage
 from tkinter import messagebox
 import mysql.connector
-import SQL as sql
+import Modules.SQL as sql
 
 window3 = customtkinter.CTk()
 customtkinter.set_appearance_mode("System")  

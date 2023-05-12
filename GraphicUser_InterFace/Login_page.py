@@ -7,7 +7,7 @@ import customtkinter
 from PIL import Image, ImageTk
 import os
 import mysql.connector
-import SQL as sql
+import Modules.SQL as sql
 
 customtkinter.set_appearance_mode("dark")
 
