@@ -1,5 +1,6 @@
 import customtkinter
 import Modules.SQL as sql
+import Modules.FileHandling as File
 
 class Available(customtkinter.CTk):
     def __init__(self):
@@ -35,6 +36,8 @@ class Available(customtkinter.CTk):
         
 
     def button_callback(self):
+        selection = self.combobox.get()
+        File.Handle_Selection(selection)
         self.destroy()            
         import Payment
         Payment.mainloop()
