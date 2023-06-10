@@ -44,12 +44,11 @@ pip install mysql-connector-python
 To use the Unified Travelling and Transport System, run the following command:
 
 ```
-Import the SQL files as 'utts' database
+Import the SQL files in 'utts' database
 Connect with database using your SQL username and password inside GraphicUser_InterFace\Modules\SQL.py
 Run python File GraphicUser_InterFace\Login_page.py
 ```
 
-This will start the server, and you can access the platform by visiting `http://localhost:5000` in your web browser.
 
 ## Contributing
 
