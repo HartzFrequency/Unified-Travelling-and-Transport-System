@@ -1,6 +1,6 @@
 
 
-#""under process till than run the code using login.py inside GraphicUser_InterFace directory""
+# ""under process till than run the code using login.py inside GraphicUser_InterFace directory""
 
 
 # import GraphicUser_InterFace.SQL as sql
@@ -14,11 +14,11 @@
 #     password='harsh',
 #     database='UTTS')
 
-#login page starter
+# login page starter
 # Login_page = GraphicUser_InterFace.Login_page.Login()
 # Login_page.mainloop()
 
-#saving username and password
+# saving username and password
 # file = open('LocalDATA//password.txt', 'r')
 # password = file.read()
 # file.close()
@@ -31,8 +31,8 @@
 # cur.execute(s)
 # QueryCheckForPassword=cur.fetchall()
 # print(QueryCheckForPassword)
-#If to check wether password right or wrong
-#if(QueryCheckForPassword==""):
+# If to check wether password right or wrong
+# if(QueryCheckForPassword==""):
 
 # s="SELECT * FROM bus"
 # cur.execute(s)
@@ -43,8 +43,8 @@
 # Home_page.mainloop()
 
 
-#print(UTTSdb.connection_id)
-#print to check connection establishment
+# print(UTTSdb.connection_id)
+# print to check connection establishment
 
 # result=sql.Query_GetAvailableBus("GWL", "BHP")
 # print(result)
