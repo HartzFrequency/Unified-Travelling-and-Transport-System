@@ -1,6 +1,6 @@
 # Unified Travelling and Transport System
 
-The Unified Travelling and Transport System is a project aimed at developing a unified platform for all transportation-related activities. It is designed to provide a seamless experience for users, whether they are commuting locally or travelling long distances. The platform provides features such as route planning, real-time tracking, fare estimation, and payment options for different modes of transport.
+The Unified Travelling and Transport System is a project aimed at developing a Unified platform for all transportation-related activities. It is designed to provide a seamless experience for users, whether they are commuting locally or travelling long distances. The platform provides features such as route planning, real-time tracking, fare estimation, and payment options for different modes of transport.
 
 ## Table of Contents
 
