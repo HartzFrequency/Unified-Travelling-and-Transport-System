@@ -1,0 +1,59 @@
+from pymongo import MongoClient
+connection_string = "mongodb+srv://HarshShrivastava:harsh554@cluster0.aghgect.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
+
+
+client = MongoClient(connection_string)
+db = client['UTTS']  
+
+def query_login_check(username, password):
+    # Query to find user by username and password
+    result = db.Users.find({'First': username, 'Password': password})
+    return list(result)
+
+def query_get_available_flight(frm, to):
+    # Query to find available flights from 'frm' to 'to'
+    result = db.flight.find({'FromLocation': frm, 'ToLocation': to})
+    return list(result)
+
+def query_get_available_bus(frm, to):
+    # Query to find available buses from 'frm' to 'to'
+    result = db.Bus.find({'FromLocation': frm, 'ToLocation': to})
+    return list(result)
+
+def query_get_available_car(frm, to):
+    # Query to find available cars from 'frm' to 'to'
+    result = db.Car.find({'FromLocation': frm, 'ToLocation': to})
+    return list(result)
+
+def query_get_available_train(frm, to):
+    # Query to find available trains from 'frm' to 'to'
+    result = db.train.find({'FromLocation': frm, 'ToLocation': to})
+    return list(result)
+
+def query_get_available_railway():
+    # Query to get all available railways
+    result = db.railways.find()
+    return list(result)
+
+def query_get_available_truck():
+    # Query to get all available trucks
+    result = db.trucks.find()
+    return list(result)
+
+def query_write_search_result(query_container):
+    # Write query container to a file
+    with open("LocalDATA\\buffer_query_data.txt", "w") as f:
+        for line in query_container:
+            f.write(str(line) + "\n")
+
+def query_fetch_from_file():
+    # Fetch data from file
+    buffer = open('LocalDATA\\buffer_query_data.txt', 'r')
+    lines = buffer.readlines()
+    result_list = []
+    for line in lines:
+        line = line.strip()
+        line = line.strip("()")
+        result_list.append(line)
+    return result_list
