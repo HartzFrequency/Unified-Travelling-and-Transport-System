@@ -1,10 +1,8 @@
 from pymongo import MongoClient
 connection_string = "mongodb+srv://HarshShrivastava:harsh554@cluster0.aghgect.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-
-
 client = MongoClient(connection_string)
-db = client['UTTS']  
+db = client['UTS']  
 
 def query_login_check(username, password):
     # Query to find user by username and password
