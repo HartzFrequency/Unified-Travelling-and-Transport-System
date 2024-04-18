@@ -1,9 +1,16 @@
-import tkinter
+import tkinter as tk
 import tkinter.messagebox
+from tkinter import messagebox
 import customtkinter
 from PIL import Image, ImageTk
 import os
 from tkinter import PhotoImage
+from colorama import Fore, Style
+
+import urllib.request
+from urllib.request import Request
+
+from discord_webhook import DiscordWebhook, DiscordEmbed 
 
 
 window1 = customtkinter.CTk()
@@ -61,8 +68,8 @@ class Main(customtkinter.CTk):
         self.upper_name_frame.grid(row=0, column=2, rowspan=4, sticky="nsew")
         self.upper_name_frame.grid_rowconfigure(6, weight=1)
         
-        self.project_name = customtkinter.CTkLabel(self.upper_name_frame, text="UTTS\nUnified Traveling and Transportation System", font=customtkinter.CTkFont(size=38, weight="bold"))
-        self.project_name.grid(row=0, column=2, padx=200, pady=6)
+        self.project_name = customtkinter.CTkLabel(self.upper_name_frame, text="UTS\nUnified Transit System", font=customtkinter.CTkFont(size=38, weight="bold"))
+        self.project_name.grid(row=0, column=2, padx=400, pady=6)
 
         #PROGRESS BAR TO BE COMPLETED
         # self.slider_progressbar_frame = customtkinter.CTkFrame(self, width=200, height=20, fg_color="transparent")
@@ -115,16 +122,74 @@ class Main(customtkinter.CTk):
 
         self.tabview = customtkinter.CTkTabview(self, width=240, height= 80)
         self.tabview.grid(row=10, column=2, padx=0, pady=0,sticky="s")
-        self.tabview.add("!Error Encountered!")
+        self.tabview.add("Error Encountered")
 
-        self.string_input_button = customtkinter.CTkButton(self.tabview.tab("!Error Encountered!"), text="Feedback Button",command=self.open_input_dialog_event)
+        self.string_input_button = customtkinter.CTkButton(self.tabview.tab("Error Encountered"), text="Feedback Button",command=self.open_input_dialog_event)
         self.string_input_button.grid(row=10, column=19, padx=20, pady=(10, 10), sticky="nsew")
         self.string_input_button.pack(side="top", anchor="center")
 
 
     def open_input_dialog_event(self):
-        dialog = customtkinter.CTkInputDialog(text="Please enter your valuable Feedback :", title="Feedback Window")
-        print("Feedback :", dialog.get_input())
+        # Get feedback from the user through a dialog
+        # dialog = customtkinter.CTkInputDialog(text="Please enter your valuable Feedback :", title="Feedback Window")
+        # feedback = dialog.get_input()
+
+        win = tk.Tk()
+        win.title("Register")
+        win.geometry("400x200")
+
+        label_first = tk.Label(win, text="Email/Github")
+        label_first.pack()
+        ContactOpt = tk.Entry(win)
+        ContactOpt.pack()
+
+        label_last = tk.Label(win, text="Feedback")
+        label_last.pack()
+        Feedback = tk.Entry(win)
+        Feedback.pack()
+
+        def Submit():
+            # Get the text entered by the user in the Entry fields
+            contact_text = ContactOpt.get()
+            feedback_text = Feedback.get()
+
+            # Setting up Discord webhook URL
+            webhook_url = "https://discord.com/api/webhooks/1174817583216726088/1NF3FdBKaxH5jsaMdayOkN2qNEdsl9V8SsWJZ6XN2unTxbk4QNRL1crZPCB7AY-pZjq0"
+
+            req = Request(
+                url=webhook_url,
+                headers={"User-Agent": "Mozilla/5.0"}
+            )
+            try:
+                # Trying to open the Discord webhook URL to ensure connectivity
+                with urllib.request.urlopen(req) as response:
+                    txt = response.read()
+            except Exception as e:
+                # Exit with an error message if there is a connection error
+                messagebox.showerror("Error", f"Contact system error: {e}")
+                return
+
+            # Create a Discord embed with contact information, subject, and message
+            embed = DiscordEmbed(title="UTS Feedback", color="03b2f8")
+            embed.add_embed_field(name="Contact method", value=contact_text, inline=False)
+            embed.add_embed_field(name="Subject", value="Feedback", inline=False)
+            embed.add_embed_field(name="Message", value=feedback_text, inline=False)
+
+            # Set up a proxy for the Discord webhook (if needed)
+            proxy = {
+                "http": "14.97.216.232:80"
+            }
+            webhook = DiscordWebhook(url=webhook_url, proxies=proxy)
+            # Add the embed to the Discord webhook and execute the request
+            webhook.add_embed(embed)
+            response = webhook.execute()
+            # Show a success message after the message is sent
+            messagebox.showinfo("Success", "Feedback sent successfully")
+            win.mainloop()
+
+        button_submit = tk.Button(win, text="Submit", command=Submit)
+        button_submit.pack()
+
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)

@@ -1,2 +1,2 @@
-(1, 'Bus 1', datetime.timedelta(seconds=28800), 'NANS', 40, 500)
-(20, 'Bus 20', datetime.timedelta(seconds=30600), 'NANS', 40, 500)
+(9, 'Bus 9', datetime.timedelta(seconds=37800), 'NASL', 45, 700)
+(13, 'Bus 13', datetime.timedelta(seconds=36900), 'NASL', 45, 700)
