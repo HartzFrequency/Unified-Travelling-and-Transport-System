@@ -1,2 +1,12 @@
-__pycache__/
-tempCodeRunnerFile.py
+# Ignore virtual environment directory
+venv/
+
+# Ignore compiled Python files
+*.pyc
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+
+# Ignore logs
+logs/
