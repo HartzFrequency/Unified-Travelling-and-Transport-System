@@ -4,6 +4,12 @@ venv/
 # Ignore cache files
 __pycache__/
 
+# Ignore temporary code runner files
+tempCodeRunnerFile.py
+
 # Ignore IDE files
 .vscode/
 .idea/
+
+
+
