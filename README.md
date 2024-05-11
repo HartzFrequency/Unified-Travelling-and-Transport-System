@@ -17,7 +17,7 @@ The Unified Travelling and Transport System provides the following features:
 - Route planning: Users can plan their travel routes by selecting their starting and destination points.
 - Real-time tracking: Users can track their current location and the location of their ride in real-time.
 - Fare estimation: Users can get an estimate of the fare for their ride before booking it.
-- Payment options: Users can pay for their rides using various payment options, including credit/debit cards and mobile wallets.
+- Payment options: Users can pay for their rides using various payment options, including credit/debit cards, and mobile wallets.
 - Multi-modal transport: The platform supports different modes of transport, including buses, trains, taxis, and private cars.
 
 ## Installation
@@ -44,8 +44,8 @@ pip install mysql-connector-python
 To use the Unified Travelling and Transport System, run the following command:
 
 ```
-Import the SQL files in 'utts' database
-Connect with database using your SQL username and password inside GraphicUser_InterFace\Modules\SQL.py
+Import the SQL files in the 'utts' database
+Connect with the database using your SQL username and password inside GraphicUser_InterFace\Modules\SQL.py
 Run python File GraphicUser_InterFace\Login_page.py
 ```
 
