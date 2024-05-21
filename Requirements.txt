@@ -2,3 +2,6 @@ tk
 customtkinter
 pillow
 mysql-connector-python
+pymongo
+colorama
+discord_webhook
