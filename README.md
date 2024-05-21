@@ -1,65 +1,70 @@
-# Unified Travelling and Transport System
+# Unified Travelling and Transport System (UTTS)
 
-The Unified Travelling and Transport System is a project aimed at developing a Unified platform for all transportation-related activities. It is designed to provide a seamless experience for users, whether they are commuting locally or travelling long distances. The platform provides features such as route planning, real-time tracking, fare estimation, and payment options for different modes of transport.
+The Unified Travelling and Transport System (UTTS) is an innovative software platform designed to provide users with a seamless and comprehensive travel service experience. Developed using Python and powered by MongoDB, UTTS ensures efficient scheduling and management of travel plans across various modes of transportation.
 
 ## Table of Contents
 
+- [Overview](#overview)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
+## Overview
+
+The Unified Travelling and Transport System (UTTS) aims to revolutionize the way users plan and manage their travel. With its robust architecture and user-friendly interface, UTTS integrates multiple transportation options, providing real-time information and secure transactions. 
+
 ## Features
 
-The Unified Travelling and Transport System provides the following features:
-
-- Route planning: Users can plan their travel routes by selecting their starting and destination points.
-- Real-time tracking: Users can track their current location and the location of their ride in real-time.
-- Fare estimation: Users can get an estimate of the fare for their ride before booking it.
-- Payment options: Users can pay for their rides using various payment options, including credit/debit cards and mobile wallets.
-- Multi-modal transport: The platform supports different modes of transport, including buses, trains, taxis, and private cars.
+- **User Authentication**: Secure login for registered users, quick registration for new users, and a "forgot password" option for easy account recovery.
+- **Feedback System**: Users can provide valuable feedback to help improve services continuously.
+- **Multi-modal Ticket Booking**: Convenient booking of tickets for buses, trains, and airplanes from a single platform.
+- **Real-time Information**: Access up-to-date information on service availability and schedules to make informed travel decisions.
+- **Scalability**: MongoDB's large-scale dataset handling capabilities ensure support for numerous users and transactions while maintaining performance.
+- **Secure Payments**: Hassle-free and secure payment options with strong data encryption and storage protocols.
 
 ## Installation
 
-To install the Unified Travelling and Transport System, follow these steps:
+To set up the Unified Travelling and Transport System, follow these steps:
 
 1. Clone the repository:
-
-```
-git clone https://github.com/HartzFrequency/Unified-Travelling-and-Transport-System.git
-```
+    ```bash
+    git clone https://github.com/HartzFrequency/Unified-Travelling-and-Transport-System.git
+    ```
 
 2. Install the required dependencies:
-
-```
-pip install tk
-pip3 install customtkinter
-pip install pillow
-pip install mysql-connector-python
-```
+    ```bash
+    pip install tk
+    pip install customtkinter
+    pip install pillow
+    pip install pymongo
+    ```
 
 ## Usage
 
-To use the Unified Travelling and Transport System, run the following command:
+To start using the Unified Transit System:
 
-```
-Import the SQL files in 'utts' database
-Connect with database using your SQL username and password inside GraphicUser_InterFace\Modules\SQL.py
-Run python File GraphicUser_InterFace\Login_page.py
-```
-
+1. Set up your MongoDB database and ensure it is running.
+2. Update the database connection details in `GraphicUser_InterFace/Modules/SQL.py`.
+3. Import the SQL files into the `utts` database.
+4. Run the application:
+    ```bash
+    python GraphicUser_InterFace/Login_page.py
+    ```
 
 ## Contributing
 
-Contributions to the Unified Travelling and Transport System are welcome. To contribute, follow these steps:
+We welcome contributions to the Unified Travelling and Transport System. To contribute:
 
 1. Fork the repository.
-2. Create a new branch.
-3. Make your changes and commit them.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them with clear messages.
 4. Push your changes to your fork.
-5. Submit a pull request.
+5. Submit a pull request detailing your changes.
 
 ## License
 
-The Unified Travelling and Transport System is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Unified Transit System is open-source software, licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
