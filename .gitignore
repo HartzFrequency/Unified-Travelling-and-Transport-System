@@ -1,2 +1,5 @@
+# Ignore compiled Python files
 __pycache__/
+
+# Ignore temporary code runner files
 tempCodeRunnerFile.py
