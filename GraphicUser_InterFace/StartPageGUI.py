@@ -19,6 +19,9 @@ customtkinter.set_appearance_mode("System")
 #AVAILABLE THEMES->"blue", "green", "dark-blue" 
 customtkinter.set_default_color_theme("blue")
 
+WIN_X = 1440
+WIN_Y = 540
+
 class Main(customtkinter.CTk):
 
     def __init__(self):
@@ -26,7 +29,7 @@ class Main(customtkinter.CTk):
 
         #DEFINING WINDOW NAME AND SIZE
         self.title("Home page")
-        self.geometry(f"{1440}x{540}")
+        self.geometry(f"{WIN_X}x{WIN_Y}")
 
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=0)
@@ -196,6 +199,7 @@ class Main(customtkinter.CTk):
 
     def change_scaling_event(self, new_scaling: str):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
+        self.geometry(f"{int(WIN_X*new_scaling_float)}x{int(WIN_Y*new_scaling_float)}")
         customtkinter.set_widget_scaling(new_scaling_float)
 
     def open_Login_window(self):
