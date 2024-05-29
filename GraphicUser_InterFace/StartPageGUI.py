@@ -206,7 +206,9 @@ class Main(customtkinter.CTk):
 
     def change_scaling_event(self, new_scaling: str):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
-        self.geometry(f"{int(WIN_X*new_scaling_float)}x{int(WIN_Y*new_scaling_float)}")
+        WIN_X = int(WIN_X*new_scaling_float)
+        WIN_Y = int(WIN_Y*new_scaling_float)
+        self.geometry(f"{WIN_X}x{WIN_Y}")
         customtkinter.set_widget_scaling(new_scaling_float)
 
     def open_Login_window(self):
