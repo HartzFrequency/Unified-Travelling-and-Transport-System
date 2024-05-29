@@ -9,7 +9,7 @@ from colorama import Fore, Style
 
 import urllib.request
 from urllib.request import Request
-
+import pickle as pk
 from discord_webhook import DiscordWebhook, DiscordEmbed 
 
 
@@ -26,7 +26,7 @@ class Main(customtkinter.CTk):
 
     def __init__(self):
         super().__init__()
-
+        
         #DEFINING WINDOW NAME AND SIZE
         self.title("Home page")
         self.geometry(f"{WIN_X}x{WIN_Y}")
@@ -61,8 +61,13 @@ class Main(customtkinter.CTk):
         # SCALING BUTTON
         self.scaling_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["70%", "80%", "90%", "100%", "110%", "120%", "130%"],command=self.change_scaling_event)
         self.scaling_optionemenu.grid(row=8, column=0, padx=20, pady=(5,20))
-
-        self.appearance_mode_optionemenu.set("Dark")
+        try:
+            with open('runtimevars.dat', 'rb') as file:
+                theme_selection = pk.load(file)
+        except:
+            theme_selection = 'Dark'
+        self.appearance_mode_optionemenu.set(theme_selection)
+        self.change_appearance_mode_event(theme_selection)
         self.scaling_optionemenu.set("100%")
 
     
@@ -196,6 +201,8 @@ class Main(customtkinter.CTk):
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)
+        with open('runtimevars.dat', 'wb') as file:
+            pk.dump(new_appearance_mode, file)
 
     def change_scaling_event(self, new_scaling: str):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
