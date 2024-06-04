@@ -7,6 +7,8 @@ import os
 from tkinter import PhotoImage
 from colorama import Fore, Style
 
+import pickle as pk
+
 import urllib.request
 from urllib.request import Request
 
@@ -19,14 +21,30 @@ customtkinter.set_appearance_mode("System")
 #AVAILABLE THEMES->"blue", "green", "dark-blue" 
 customtkinter.set_default_color_theme("blue")
 
+WINX = 1440
+WINY = 540
+SCALE = 100
+THEME = 'Dark'
+
+def update_config():
+    global WINX, WINY, SCALE, THEME
+    try:
+        with open('LocalDATA/config.ini', 'rb') as file:
+            WINX, WINY, SCALE, THEME = pk.load(file)
+    except:
+        with open('LocalDATA/config.ini', 'wb') as file:
+            pk.dump([WINX,WINY,SCALE,THEME], file)
+
+update_config()
+
 class Main(customtkinter.CTk):
 
     def __init__(self):
         super().__init__()
 
         #DEFINING WINDOW NAME AND SIZE
-        self.title("Home page")
-        self.geometry(f"{1440}x{540}")
+        self.title("Home Page")
+        self.geometry(f"{WINX}x{WINY}")
 
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=0)
@@ -62,8 +80,6 @@ class Main(customtkinter.CTk):
         self.appearance_mode_optionemenu.set("Dark")
         self.scaling_optionemenu.set("100%")
 
-    
-        
         self.upper_name_frame = customtkinter.CTkFrame(self, width=140,height=50, corner_radius=15)
         self.upper_name_frame.grid(row=0, column=2, rowspan=4, sticky="nsew")
         self.upper_name_frame.grid_rowconfigure(6, weight=1)
@@ -186,17 +202,24 @@ class Main(customtkinter.CTk):
             # Show a success message after the message is sent
             messagebox.showinfo("Success", "Feedback sent successfully")
             win.mainloop()
-
         button_submit = tk.Button(win, text="Submit", command=Submit)
         button_submit.pack()
 
-
     def change_appearance_mode_event(self, new_appearance_mode: str):
-        customtkinter.set_appearance_mode(new_appearance_mode)
+        global WINX, WINY, SCALE, THEME
+        THEME = new_appearance_mode
+        customtkinter.set_appearance_mode(THEME)
+        update_config()
 
     def change_scaling_event(self, new_scaling: str):
+        global WINX, WINY, SCALE, THEME
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
-        customtkinter.set_widget_scaling(new_scaling_float)
+        SCALE = new_scaling_float
+        WINX = int((WINX)*new_scaling_float)
+        WINY = int((WINY)*new_scaling_float)
+        self.geometry(f"{WINX}x{WINY}")
+        customtkinter.set_widget_scaling(SCALE)
+        update_config()
 
     def open_Login_window(self):
         self.destroy()            
