@@ -11,7 +11,7 @@ import pickle as pk
 
 import urllib.request
 from urllib.request import Request
-
+import pickle as pk
 from discord_webhook import DiscordWebhook, DiscordEmbed 
 
 
@@ -21,6 +21,7 @@ customtkinter.set_appearance_mode("System")
 #AVAILABLE THEMES->"blue", "green", "dark-blue" 
 customtkinter.set_default_color_theme("blue")
 
+<<<<<<< HEAD
 WINX = 1440
 WINY = 540
 SCALE = 100
@@ -36,15 +37,24 @@ def update_config():
             pk.dump([WINX,WINY,SCALE,THEME], file)
 
 update_config()
+=======
+WIN_X = 1440
+WIN_Y = 540
+>>>>>>> 744d2195e88a6a3acb18a13cc6c27d6fb8d7dc66
 
 class Main(customtkinter.CTk):
 
     def __init__(self):
         super().__init__()
-
+        
         #DEFINING WINDOW NAME AND SIZE
+<<<<<<< HEAD
         self.title("Home Page")
         self.geometry(f"{WINX}x{WINY}")
+=======
+        self.title("Home page")
+        self.geometry(f"{WIN_X}x{WIN_Y}")
+>>>>>>> 744d2195e88a6a3acb18a13cc6c27d6fb8d7dc66
 
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=0)
@@ -76,8 +86,13 @@ class Main(customtkinter.CTk):
         # SCALING BUTTON
         self.scaling_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["70%", "80%", "90%", "100%", "110%", "120%", "130%"],command=self.change_scaling_event)
         self.scaling_optionemenu.grid(row=8, column=0, padx=20, pady=(5,20))
-
-        self.appearance_mode_optionemenu.set("Dark")
+        try:
+            with open('runtimevars.dat', 'rb') as file:
+                theme_selection = pk.load(file)
+        except:
+            theme_selection = 'Dark'
+        self.appearance_mode_optionemenu.set(theme_selection)
+        self.change_appearance_mode_event(theme_selection)
         self.scaling_optionemenu.set("100%")
 
         self.upper_name_frame = customtkinter.CTkFrame(self, width=140,height=50, corner_radius=15)
@@ -206,20 +221,33 @@ class Main(customtkinter.CTk):
         button_submit.pack()
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
+<<<<<<< HEAD
         global WINX, WINY, SCALE, THEME
         THEME = new_appearance_mode
         customtkinter.set_appearance_mode(THEME)
         update_config()
+=======
+        customtkinter.set_appearance_mode(new_appearance_mode)
+        with open('runtimevars.dat', 'wb') as file:
+            pk.dump(new_appearance_mode, file)
+>>>>>>> 744d2195e88a6a3acb18a13cc6c27d6fb8d7dc66
 
     def change_scaling_event(self, new_scaling: str):
         global WINX, WINY, SCALE, THEME
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
+<<<<<<< HEAD
         SCALE = new_scaling_float
         WINX = int((WINX)*new_scaling_float)
         WINY = int((WINY)*new_scaling_float)
         self.geometry(f"{WINX}x{WINY}")
         customtkinter.set_widget_scaling(SCALE)
         update_config()
+=======
+        WIN_X = int(WIN_X*new_scaling_float)
+        WIN_Y = int(WIN_Y*new_scaling_float)
+        self.geometry(f"{WIN_X}x{WIN_Y}")
+        customtkinter.set_widget_scaling(new_scaling_float)
+>>>>>>> 744d2195e88a6a3acb18a13cc6c27d6fb8d7dc66
 
     def open_Login_window(self):
         self.destroy()            
