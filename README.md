@@ -35,10 +35,7 @@ To set up the Unified Travelling and Transport System, follow these steps:
 
 2. Install the required dependencies:
     ```bash
-    pip install tk
-    pip install customtkinter
-    pip install pillow
-    pip install pymongo
+    pip install -r requirements.txt
     ```
 
 ## Usage
