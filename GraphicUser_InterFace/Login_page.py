@@ -11,55 +11,56 @@ from pymongo import MongoClient
 import mysql.connector
 import Modules.SQL as sql
 
+# MongoDB connection setup
 connection_string = "mongodb+srv://HarshShrivastava:harsh554@cluster0.aghgect.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-
 client = MongoClient(connection_string)
 db = client['UTS']  
 
 def query_login_check(username, password):
-    # Query to find user by username and password
+    """Query to check if a user with the given username and password exists."""
     result = db.Users.find({'First': username, 'Password': password})
     return list(result)
 
 customtkinter.set_appearance_mode("dark")
 
 class Login(customtkinter.CTk):
-    width = 1240  #helps in image width
-    height = 1080 #helps in image height
+    """Class representing the login GUI."""
+    width = 1240          #helps in image width
+    height = 1080         #helps in image height
     def __init__(self):
         super().__init__()
 
-        # OPENEING WINDOW SIZE
+        # Window settings
         self.title("Login")
         self.geometry(f"{1240}x{720}")
         self.bg_image = customtkinter.CTkImage(Image.open("Image/Background_gradient.jpg"),size=(self.width, self.height))
         self.bg_image_label = customtkinter.CTkLabel(self, image=self.bg_image)
         self.bg_image_label.grid(row=0, column=0)
 
-        # LOGIN FRAME INSIDE WINDOW
+        # Login frame
         # TEXT : "Welcome!\nUnified Travelling & Transport System"
         self.login_frame = customtkinter.CTkFrame(self, corner_radius=15)
         self.login_frame.grid(row=0, column=0, sticky="ns")
-
+        # Welcome labels
         self.login_label = customtkinter.CTkLabel(self.login_frame, text="Welcome",font=customtkinter.CTkFont(size=24, weight="bold", slant="roman", family="Roboto"))
         self.login_label.grid(row=0, column=0, padx=30, pady=(100, 5))
 
         self.login_label_UTTS = customtkinter.CTkLabel(self.login_frame, text="Unified Transit System",font=customtkinter.CTkFont(size=20, slant="roman", family="Helvetica"))
         self.login_label_UTTS.grid(row=1, column=0, padx=30, pady=(0, 0))
 
-        #TEXT : LOGIN PAGE
+        #text : Login Page
         self.login_label_2 = customtkinter.CTkLabel(self.login_frame, text="Login Page",font=customtkinter.CTkFont(size=40, weight="bold", family="Roboto"))
         self.login_label_2.grid(row=2, column=0, padx=30, pady=(50, 15))
         
-        #TEXT : USERNAME
+        # Username entry
         self.username_entry = customtkinter.CTkEntry(self.login_frame, width=300, placeholder_text="Username")
         self.username_entry.grid(row=3, column=0, padx=30, pady=(15, 15))
         
-        #TEXT : PASSWORD
+        # Password entry
         self.password_entry = customtkinter.CTkEntry(self.login_frame, width=300, show="*", placeholder_text="Password")
         self.password_entry.grid(row=4, column=0, padx=30, pady=(0, 15))
 
-        
+        # Show password checkbox
         self.show_password_var = tk.BooleanVar()
         self.show_password_checkbutton = tk.Checkbutton(
             self.login_frame,
@@ -71,12 +72,12 @@ class Login(customtkinter.CTk):
             row=5, column=0, padx=30, sticky="w", pady=(0, 15)
         )
         
-        #TEXT : LOGIN BUTTON TEXT
+        # Login button
         self.login_button = customtkinter.CTkButton(self.login_frame, text="Login", command=self.login_event, width=200)
         self.login_button.grid(row=6, column=0, padx=30, pady=(15, 15))
 
         
-        # TEXT to register
+        # Register now label
         self.login_label_3 = customtkinter.CTkLabel(
             self.login_frame,
             text="Register now if you don't have an account.",
@@ -84,13 +85,13 @@ class Login(customtkinter.CTk):
         )
         self.login_label_3.grid(row=7, column=0, padx=30, pady=(20, 5))
 
-        # TEXT : Register BUTTON TEXT
+        # Register button
         self.login_button = customtkinter.CTkButton(
             self.login_frame, text="Register", command=self.register_event, width=200
         )
         self.login_button.grid(row=8, column=0, padx=30, pady=(0, 15))
 
-        # Forgot Password label
+        # Forgot password label
         self.forgot_password_label = customtkinter.CTkLabel(
             self.login_frame,
             text="Forgot password ?",
@@ -108,13 +109,14 @@ class Login(customtkinter.CTk):
 
 
     def toggle_password_visibility(self):
+        """Toggle the visibility of the password entry."""
         if self.show_password_var.get():
             self.password_entry.configure(show="")
         else:
             self.password_entry.configure(show="*")
 
     def login_event(self):
-        
+        """Event handler for the login button."""
         entered_username = self.username_entry.get()
         entered_password = self.password_entry.get()
         QueryCheckForPassword=query_login_check(entered_username, entered_password)
@@ -131,6 +133,7 @@ class Login(customtkinter.CTk):
         print("Login pressed - username:", entered_username, "password:",entered_password)
 
     def register_event(self, event=None):
+        """Event handler for the register button."""
         win = tk.Tk()
         win.title("Register")
         win.geometry("350x480")
@@ -179,6 +182,7 @@ class Login(customtkinter.CTk):
         error_label.pack()
 
         def register():
+            """Register the user with the provided information."""
             first = entry_first.get()
             last = entry_last.get()
             dob_str = entry_dob.get()
@@ -233,7 +237,9 @@ class Login(customtkinter.CTk):
         win.mainloop()
 
     def forgot_password_event(self):
+        """Event handler for the forgot password link."""
         def send_password():
+            """Send the password reset information."""
             username = entry_username.get()
             dob_str = entry_dob.get()
 
@@ -253,6 +259,7 @@ class Login(customtkinter.CTk):
 
                 # Open a new window to prompt for a new password
                 def update_password():
+                    """Update the user's password."""
                     new_password = entry_new_password.get()
 
                     # Check if the password meets the minimum length requirement
