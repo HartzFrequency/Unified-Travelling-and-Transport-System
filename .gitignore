@@ -1,2 +1,23 @@
+# Python bytecode files
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary files
 tempCodeRunnerFile.py
+
+# Virtual environment directories
+venv/
+.env/
+.env.bak/
+venv.bak/
+
+# Common system files
+.DS_Store
+
+# Log files
+*.log
+
+# Database files
+*.sqlite3
+*.db
