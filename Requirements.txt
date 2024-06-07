@@ -1,4 +1,11 @@
+# GUI framework
 tk
+
+# Custom tkinter framework
 customtkinter
+
+# Image processing library
 pillow
+
+# MySQL database connector
 mysql-connector-python
