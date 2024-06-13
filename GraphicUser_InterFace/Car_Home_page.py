@@ -3,6 +3,7 @@ import tkinter.messagebox
 import customtkinter
 from PIL import Image, ImageTk
 import os
+import pickle as pk
 from tkinter import PhotoImage
 from tkinter import messagebox
 import mysql.connector
@@ -12,6 +13,21 @@ window3 = customtkinter.CTk()
 customtkinter.set_appearance_mode("System")  
 customtkinter.set_default_color_theme("blue") 
 
+WINX = 1440
+WINY = 540
+SCALE = 100
+THEME = 'Dark'
+
+def update_config():
+    global WINX, WINY, SCALE, THEME
+    try:
+        with open('LocalDATA/config.ini', 'rb') as file:
+            WINX, WINY, SCALE, THEME = pk.load(file)
+    except:
+        with open('LocalDATA/config.ini', 'wb') as file:
+            pk.dump([WINX,WINY,SCALE,THEME], file)
+
+update_config()
 
 class Car(customtkinter.CTk):
 
@@ -19,7 +35,7 @@ class Car(customtkinter.CTk):
 
         super().__init__()
         self.title("Car Home Page")
-        self.geometry(f"{1024}x{380}")
+        self.geometry(f"{WINX}x{WINY}")
 
 
         self.sidebar_frame = customtkinter.CTkFrame(self, width=120, corner_radius=15)
@@ -130,13 +146,21 @@ class Car(customtkinter.CTk):
         import Display_availability    
         Display_availability.Available().mainloop()
 
-
     def change_appearance_mode_event(self, new_appearance_mode: str):
-        customtkinter.set_appearance_mode(new_appearance_mode)
+        global WINX, WINY, SCALE, THEME
+        THEME = new_appearance_mode
+        customtkinter.set_appearance_mode(THEME)
+        update_config()
 
     def change_scaling_event(self, new_scaling: str):
+        global WINX, WINY, SCALE, THEME
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
-        customtkinter.set_widget_scaling(new_scaling_float)
+        SCALE = new_scaling_float
+        WINX = int((WINX)*new_scaling_float)
+        WINY = int((WINY)*new_scaling_float)
+        self.geometry(f"{WINX}x{WINY}")
+        customtkinter.set_widget_scaling(SCALE)
+        update_config()
 
 if __name__ == "__main__":
     app3 = Car()
