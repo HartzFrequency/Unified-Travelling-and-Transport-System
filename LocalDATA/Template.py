@@ -3,7 +3,7 @@ import tkinter.messagebox
 import customtkinter
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
-customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
+customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue")
 
 
 class App(customtkinter.CTk):
@@ -74,6 +74,10 @@ class App(customtkinter.CTk):
         self.label_tab_2 = customtkinter.CTkLabel(self.tabview.tab("Tab 2"), text="CTkLabel on Tab 2")
         self.label_tab_2.grid(row=0, column=0, padx=20, pady=20)
 
+        # Add label to Tab 3
+        self.label_tab_3 = customtkinter.CTkLabel(self.tabview.tab("Tab 3"), text="CTkLabel on Tab 3")  # Added line
+        self.label_tab_3.grid(row=0, column=0, padx=20, pady=20)  # Added line
+
         # create radiobutton frame
         self.radiobutton_frame = customtkinter.CTkFrame(self)
         self.radiobutton_frame.grid(row=0, column=3, padx=(20, 20), pady=(20, 0), sticky="nsew")
@@ -84,8 +88,10 @@ class App(customtkinter.CTk):
         self.radio_button_1.grid(row=1, column=2, pady=10, padx=20, sticky="n")
         self.radio_button_2 = customtkinter.CTkRadioButton(master=self.radiobutton_frame, variable=self.radio_var, value=1)
         self.radio_button_2.grid(row=2, column=2, pady=10, padx=20, sticky="n")
+
+        # Make the third radio button responsive
         self.radio_button_3 = customtkinter.CTkRadioButton(master=self.radiobutton_frame, variable=self.radio_var, value=2)
-        self.radio_button_3.grid(row=3, column=2, pady=10, padx=20, sticky="n")
+        self.radio_button_3.grid(row=3, column=2, pady=10, padx=20, sticky="n")  # Removed state="disabled"
 
         # create slider and progressbar frame
         self.slider_progressbar_frame = customtkinter.CTkFrame(self, fg_color="transparent")
@@ -122,16 +128,16 @@ class App(customtkinter.CTk):
         self.checkbox_1.grid(row=1, column=0, pady=(20, 0), padx=20, sticky="n")
         self.checkbox_2 = customtkinter.CTkCheckBox(master=self.checkbox_slider_frame)
         self.checkbox_2.grid(row=2, column=0, pady=(20, 0), padx=20, sticky="n")
+
+        # Make the third checkbox responsive
         self.checkbox_3 = customtkinter.CTkCheckBox(master=self.checkbox_slider_frame)
-        self.checkbox_3.grid(row=3, column=0, pady=20, padx=20, sticky="n")
+        self.checkbox_3.grid(row=3, column=0, pady=20, padx=20, sticky="n")  # Removed state="disabled"
 
         # set default values
-        self.sidebar_button_3.configure(state="disabled", text="Disabled CTkButton")
-        self.checkbox_3.configure(state="disabled")
+        self.sidebar_button_3.configure(state="normal", text="Enabled CTkButton", command=self.enabled_button_event)  # Enabled the disabled button and added command
         self.checkbox_1.select()
         self.scrollable_frame_switches[0].select()
         self.scrollable_frame_switches[4].select()
-        self.radio_button_3.configure(state="disabled")
         self.appearance_mode_optionemenu.set("Dark")
         self.scaling_optionemenu.set("100%")
         self.optionmenu_1.set("CTkOptionmenu")
@@ -157,6 +163,9 @@ class App(customtkinter.CTk):
 
     def sidebar_button_event(self):
         print("sidebar_button click")
+    # Enable the 3rd button
+    def enabled_button_event(self):
+        print("Enabled CTkButton click")
 
 
 if __name__ == "__main__":
