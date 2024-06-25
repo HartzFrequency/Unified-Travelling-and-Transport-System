@@ -6,9 +6,7 @@ root.title("Payment Window")
 root.geometry("500x550") # Adjust window size as needed
 root.configure(bg="#f0f0f0")
 
-title_label = tk.Label(
-    root, text="Payment Details", font=("Arial", 18), bg="#f0f0f0", padx=20, pady=20
-)
+title_label = tk.Label(root, text="Payment Details", font=("Arial", 18), bg="#f0f0f0", padx=20, pady=20)
 title_label.pack()
 
 name_email_frame = tk.Frame(root, bg="#f0f0f0", pady=10)
