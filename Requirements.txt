@@ -8,4 +8,5 @@ customtkinter
 pillow
 
 # MySQL database connector
+mysql
 mysql-connector-python
