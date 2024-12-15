@@ -9,3 +9,6 @@ pillow
 
 # MySQL database connector
 mysql-connector-python
+pymongo
+colorama
+discord_webhook
